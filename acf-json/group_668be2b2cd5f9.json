@@ -422,6 +422,51 @@
             ]
         },
         {
+            "key": "field_668c0410a828f",
+            "label": "Logo",
+            "name": "vk_footer_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_668c0430a8290",
+            "label": "Copyright Text",
+            "name": "vk_footer_copyright",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_668be7f56cfa4",
             "label": "Social Media",
             "name": "",
@@ -525,5 +570,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720447045
+    "modified": 1720452188
 }
