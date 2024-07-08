@@ -1,0 +1,70 @@
+
+.vk-icon-banner {
+    position: relative;
+    padding: 50px 20px 20px;
+
+    &__row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__col {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            margin-right: 15px;
+            width: 50px;
+            
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .desc {
+            p {
+                margin-bottom: 0;
+            }
+
+            p, a {
+                color: $gray2;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        width: 40%;
+        height: 2px;
+        background-color: $lgray;
+    }
+
+    @include respond-to(lg-down) {
+        &__row {
+            flex-flow: wrap;
+        }
+
+        &__col {
+            padding: 0 7%;
+            margin: 15px 0;
+            width: 50%;
+        }
+    }
+
+    @include respond-to(sm-down) {
+        &__col {
+            padding: 0 50px;
+            width: 100%;
+        }
+    }
+}

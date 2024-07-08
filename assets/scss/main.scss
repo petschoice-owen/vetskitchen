@@ -12,7 +12,8 @@
   'base/base',
   'base/fonts',
   'base/wookie-icons',
-  'base/typography';
+  'base/typography',
+  'base/helpers';
 
 // 4. Components
 @import
@@ -21,4 +22,5 @@
 // 5. Layout-related sections
 @import
   'layout/header',
-  'layout/footer';
+  'layout/footer',
+  'layout/icon-banner';
