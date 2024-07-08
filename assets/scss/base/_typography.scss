@@ -1,0 +1,12 @@
+
+a,
+body a:where(:not(.wp-element-button)) {
+    color: $gray;
+    text-decoration: none;
+    outline: none;
+    transition: .2s ease-in-out;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
