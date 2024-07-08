@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-testimonials",
+    "title": "Vet's Kitchen Testimonials",
+    "description": "A block that displays the list of testimonials",
+    "style": "block-testimonials",
+    "script": "block-testimonials",
+    "category": "vetskitchen-blocks",
+    "icon": "editor-quote",
+    "apiVersion": 2,
+    "keywords": ["testimonials", "reviews"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "testimonials.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        }
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_testimonials": true
+            }
+        }
+    }
+}
