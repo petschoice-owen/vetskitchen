@@ -130,9 +130,8 @@
                 & > li.mega-menu-item > a.mega-menu-link {
                     height: auto;
                     font-family: Signika;
-                    font-weight: 700 !important;
-                    font-size: 12px;
-                    line-height: 22px;
+                    font-size: 14px;
+                    font-weight: 300 !important;
 
                     & > img {
                         display: block;
@@ -173,6 +172,12 @@
             #mega-menu-wrap-primary {
                 #mega-menu-primary {
                     & > li.mega-menu-item {
+                        & > a.mega-menu-link {
+                            font-weight: 700 !important;
+                            font-size: 12px;
+                            line-height: 22px;
+                        }
+
                         & > ul.mega-sub-menu {
                             border-bottom-left-radius: 6px;
                             border-bottom-right-radius: 6px;
@@ -220,6 +225,10 @@
                                     width: 175px;
                                 }
                             }
+                        }
+
+                        &:last-of-type > ul.mega-sub-menu {
+                            transform: translateY(13px) translate(-50%) !important;
                         }
                     }
                 }
@@ -294,6 +303,10 @@
 
             .container {
                 max-width: 100%;
+            }
+
+            #mega-menu-wrap-primary #mega-menu-primary>li.mega-menu-item>a.mega-menu-link>img {
+                display: none;
             }
         }
 
