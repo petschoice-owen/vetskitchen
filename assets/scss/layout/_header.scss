@@ -160,31 +160,45 @@
                             transform: translateY(13px) translate(-36%) !important;
                         }
 
-                        &.mega-menu-grid>ul.mega-menu-megamenu li.mega-menu-row {
-                            .mega-sub-menu {
-                                display: flex;
+                        &.mega-menu-megamenu>ul.mega-sub-menu {
+                            left: 0 !important;
+                            width: auto !important;
 
-                                li.mega-collapse-children {
-                                    & > .mega-menu-link {
-                                        padding: 0 10px;
-                                        margin-bottom: 10px;
-                                        font-size: 15px;
-                                        font-weight: 700;
-                                        color: $primary;
+                            li.mega-menu-row {
+                                .mega-sub-menu {
+                                    display: flex;
+
+                                    a.mega-menu-link:hover {
+                                        color: $green2;
                                     }
-
-                                    span.mega-indicator {
-                                        display: none;
-                                    }
-
-                                    & > ul.mega-sub-menu {
-                                        display: block;
+    
+                                    li.mega-collapse-children {
+                                        & > .mega-menu-link {
+                                            padding: 0 10px;
+                                            margin-bottom: 10px;
+                                            font-size: 15px;
+                                            font-weight: 700;
+                                            color: $primary;
+                                            pointer-events: none;
+                                        }
+    
+                                        span.mega-indicator {
+                                            display: none;
+                                        }
+    
+                                        & > ul.mega-sub-menu {
+                                            display: block;
+    
+                                            li.mega-menu-item > a.mega-menu-link {
+                                                line-height: 18px;
+                                            }
+                                        }
                                     }
                                 }
-                            }
-
-                            .mega-menu-column {
-                                width: 175px;
+    
+                                .mega-menu-column {
+                                    width: 175px;
+                                }
                             }
                         }
                     }
