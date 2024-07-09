@@ -23,6 +23,17 @@ jQuery(function($) {
         });
     };
 
+    const headerScroll = () => {
+        $(window).on('scroll', function() {
+            if($(window).scrollTop() > $('.header').height()) {
+                $('.header__fixedscroll').addClass('fixed');
+            }else {
+                $('.header__fixedscroll').removeClass('fixed');
+            }
+        });
+    };
+
     scrollToTop();
     footerMobileCollapse();
+    headerScroll();
 });
