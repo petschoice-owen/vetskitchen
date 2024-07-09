@@ -17,5 +17,12 @@ jQuery(function($) {
         });
     };
 
+    const footerMobileCollapse = () => {
+        $('.js-footer-mobile-collapse .footer__main-title').on('click', function(e) {
+            $(this).toggleClass('open');
+        });
+    };
+
     scrollToTop();
+    footerMobileCollapse();
 });

@@ -67,4 +67,10 @@
             width: 100%;
         }
     }
+
+    @media screen and (max-width: 575px) {
+        &__col {
+            padding: 0 20px;
+        }
+    }
 }

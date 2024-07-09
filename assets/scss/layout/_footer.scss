@@ -8,11 +8,13 @@
             font-size: 16px;
             font-weight: 600;
             line-height: 1.6;
+            color: $green2;
         }
 
         &-content {
             ul {
                 padding: 0;
+                margin-bottom: 0;
                 list-style: none;
 
                 a {
@@ -36,6 +38,10 @@
                     &:hover {
                         color: $orange2;
                     }
+                }
+
+                strong {
+                    font-weight: 500;
                 }
 
                 & + p {
@@ -98,6 +104,105 @@
         &__copyright {
             padding-top: 19px;
             padding-bottom: 7px;
+        }
+    }
+
+    @media (min-width: 790px) and (max-width: 1024px)  {
+        &__main {
+            div[class^=col-] {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 789px)  {
+        .container {
+            padding-right: 30px;
+            padding-left: 30px;
+            max-width: 90%;
+
+            @media screen and (max-width: 749px) {
+                max-width: 100%;
+            }
+        }
+
+        &__main {
+            background-color: $white;
+
+            div[class^=col-] {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            &-title {
+                position: relative;
+                padding-bottom: 12px;
+                padding-right: 20px;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid $lgray3;
+                transition: color 0.2s linear;
+                outline: none;
+                cursor: pointer;
+
+                &:after {
+                    content: '\e9b1';
+                    position: absolute;
+                    right: 0;
+                    top: 1px;
+                    font-family: 'wokiee_icons';
+                    font-size: 20px;
+                    line-height: 1;
+                    color: $gray;
+                }
+
+                &:hover:not(:focus):not(:active) {
+                    color: $orange2;
+                }
+
+                &.open {
+                    &:after {
+                        content: '\e9b2';
+                    }
+                    
+                    & + .footer__main-content {
+                        display: block;
+                    }
+                }
+            }
+
+            &-content {
+                display: none;
+                margin-top: 16px;
+
+                a,
+                p a {
+                    color: $rose;
+                }
+            }
+        }
+
+        &__mobile-collapse {
+            margin-top: 35px;
+        }
+
+        &__bottom {
+            padding-bottom: 34px;
+
+            .row {
+                margin-top: 34px;
+                justify-content: center;
+            }
+        }
+
+        &__copyright {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        &__social {
+            margin-top: 26px;
         }
     }
 }

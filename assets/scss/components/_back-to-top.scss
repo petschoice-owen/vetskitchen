@@ -41,4 +41,26 @@
             bottom: 50px;
         }
     }
+
+    @media screen and (max-width: 789px) {
+        display: block;
+        padding: 5px 0 33px 0;
+        width: 100%;
+        font-size: 12px;
+        font-family: 'Signika', sans-serif;
+        font-weight: 600;
+        color: $blue;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: $white;
+        transition: color 0.2s linear;
+
+        &:before {
+            content: "\e9c9";
+            display: block;
+            font-family: 'wokiee_icons';
+            font-size: 20px;
+            line-height: 1;
+        }
+    }
 }

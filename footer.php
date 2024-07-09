@@ -30,7 +30,7 @@
                             <?php while ( have_rows( 'vk_footer_firstcol', 'option' ) ) : the_row(); ?>
                                 <?php if ( get_sub_field( 'menu' ) ) : ?>
                                 <div class="col-md-6 col-lg-2 col-xl-3">
-                                    <div class="js-footer-mobile-collapse">
+                                    <div class="footer__mobile-collapse js-footer-mobile-collapse">
                                         <h4 class="footer__main-title"><?php echo get_sub_field( 'heading' );?></h4>
                                         <div class="footer__main-content">
                                             <ul>
@@ -56,7 +56,7 @@
                             <?php while ( have_rows( 'vk_footer_secondcol', 'option' ) ) : the_row(); ?>
                                 <?php if ( get_sub_field( 'menu' ) ) : ?>
                                 <div class="col-md-6 col-lg-2 col-xl-3">
-                                    <div class="js-footer-mobile-collapse">
+                                    <div class="footer__mobile-collapse js-footer-mobile-collapse">
                                         <h4 class="footer__main-title"><?php echo get_sub_field( 'heading' );?></h4>
                                         <div class="footer__main-content">
                                             <ul>
@@ -82,7 +82,7 @@
                             <?php while ( have_rows( 'vk_footer_thirdcol', 'option' ) ) : the_row(); ?>
                                 <?php if ( get_sub_field( 'content' ) ) : ?>
                                 <div class="col-md-6 col-lg col-xl-3">
-                                    <div class="js-footer-mobile-collapse">
+                                    <div class="footer__mobile-collapse js-footer-mobile-collapse">
                                         <h4 class="footer__main-title"><?php echo get_sub_field( 'heading' ); ?></h4>
                                         <div class="footer__main-content">
                                             <?php echo get_sub_field( 'content' ); ?>
@@ -96,7 +96,7 @@
                             <?php while ( have_rows( 'vk_footer_fourthcol', 'option' ) ) : the_row(); ?>
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <?php if ( get_sub_field( 'content' ) ) : ?>
-                                    <div class="js-footer-mobile-collapse">
+                                    <div class="footer__mobile-collapse js-footer-mobile-collapse">
                                         <h4 class="footer__main-title"><?php echo get_sub_field( 'heading' ); ?></h4>
                                         <div class="footer__main-content">
                                             <?php echo get_sub_field( 'content' ); ?>
@@ -138,9 +138,6 @@
                                         <?php echo $copyright; ?>
                                     </div>
                                 <?php endif; ?>
-                            </div>
-                            <div class="col-sm-6">
-                                
                             </div>
                         </div>
                     </div>
