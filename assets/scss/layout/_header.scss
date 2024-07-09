@@ -130,7 +130,7 @@
                 & > li.mega-menu-item > a.mega-menu-link {
                     height: auto;
                     font-family: Signika;
-                    font-weight: 700;
+                    font-weight: 700 !important;
                     font-size: 12px;
                     line-height: 22px;
 
@@ -142,6 +142,51 @@
 
                     &:hover {
                         font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        &__bottom {
+            #mega-menu-wrap-primary {
+                #mega-menu-primary {
+                    & > li.mega-menu-item {
+                        & > ul.mega-sub-menu {
+                            border-bottom-left-radius: 6px;
+                            border-bottom-right-radius: 6px;
+                            box-shadow: 0 1px 6px rgba(0,0,0,.2);
+                            transform: translateY(13px) translate(-36%) !important;
+                        }
+
+                        &.mega-menu-grid>ul.mega-menu-megamenu li.mega-menu-row {
+                            .mega-sub-menu {
+                                display: flex;
+
+                                li.mega-collapse-children {
+                                    & > .mega-menu-link {
+                                        padding: 0 10px;
+                                        margin-bottom: 10px;
+                                        font-size: 15px;
+                                        font-weight: 700;
+                                        color: $primary;
+                                    }
+
+                                    span.mega-indicator {
+                                        display: none;
+                                    }
+
+                                    & > ul.mega-sub-menu {
+                                        display: block;
+                                    }
+                                }
+                            }
+
+                            .mega-menu-column {
+                                width: 175px;
+                            }
+                        }
                     }
                 }
             }
