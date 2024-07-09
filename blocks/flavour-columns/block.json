@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-flavour-columns",
+    "title": "Vet's Kitchen Flavour Columns",
+    "description": "A block that displays the list of flavours in columns.",
+    "style": "block-flavour-columns",
+    "script": "block-flavour-columns",
+    "category": "vetskitchen-blocks",
+    "icon": "layout",
+    "apiVersion": 2,
+    "keywords": ["flavour column", "flavour", "column"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "flavour-columns.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        }
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_flavour_columns": true
+            }
+        }
+    }
+}
