@@ -94,16 +94,30 @@
                         <?php endif; ?>
                         <?php if ( have_rows( 'vk_footer_fourthcol', 'option' ) ) : ?>
                             <?php while ( have_rows( 'vk_footer_fourthcol', 'option' ) ) : the_row(); ?>
-                                <?php if ( get_sub_field( 'content' ) ) : ?>
                                 <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <?php if ( get_sub_field( 'content' ) ) : ?>
                                     <div class="js-footer-mobile-collapse">
                                         <h4 class="footer__main-title"><?php echo get_sub_field( 'heading' ); ?></h4>
                                         <div class="footer__main-content">
                                             <?php echo get_sub_field( 'content' ); ?>
                                         </div>
                                     </div>
+                                    <?php endif; ?>
+                                    <div class="footer__social">
+                                        <?php if ( $fb = get_field( 'vk_facebook_url', 'option' ) ) : ?>
+                                            <a href="<?php echo $fb; ?>" class="icon-g-64" target="_blank"></a>
+                                        <?php endif; ?>
+                                        <?php if ( $twitter = get_field( 'vk_twitter_url', 'option' ) ) : ?>
+                                            <a href="<?php echo $twitter; ?>" class="icon-h-58" target="_blank"></a>
+                                        <?php endif; ?>
+                                        <?php if ( $ig = get_field( 'vk_instagram_url', 'option' ) ) : ?>
+                                            <a href="<?php echo $ig; ?>" class="icon-g-67" target="_blank"></a>
+                                        <?php endif; ?>
+                                        <?php if ( $youtube = get_field( 'vk_youtube_url', 'option' ) ) : ?>
+                                            <a href="<?php echo $youtube; ?>" class="icon-g-76" target="_blank"></a>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                                <?php endif; ?>
                             <?php endwhile; ?>
                         <?php endif; ?>
                     </div>
@@ -133,6 +147,7 @@
                 </div>
             <?php endif; ?>
         </footer>
+        <a href="#" class="vk-back-to-top js-back-to-top"><?php echo __( 'Back to top', 'vetskitchen' ); ?></a>
         <?php wp_footer(); ?>
     </body>
 </html>

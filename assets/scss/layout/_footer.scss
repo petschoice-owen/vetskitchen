@@ -4,6 +4,7 @@
         background-color: $aliceblue;
 
         &-title {
+            margin-bottom: 0;
             font-size: 16px;
             font-weight: 600;
             line-height: 1.6;
@@ -25,6 +26,22 @@
                     }
                 }
             }
+
+            p {
+                margin-bottom: 0;
+
+                a {
+                    color: $primary;
+
+                    &:hover {
+                        color: $orange2;
+                    }
+                }
+
+                & + p {
+                    margin-top: 6px;
+                }
+            }
         }
     }
 
@@ -38,6 +55,25 @@
     &__copyright {
         font-size: 14px;
         line-height: 22px;
+    }
+
+    &__social {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: -8px;
+
+        a {
+            display: inline-block;
+            padding: 4px;
+            font-size: 18px;
+            line-height: 26px;
+            color: $lgray2;
+
+            &:hover {
+                color: $dark;
+            }
+        }
     }
 
     @media screen and (min-width: 790px) {
@@ -54,7 +90,7 @@
         }
 
         &__bottom {
-            padding: 10px 0;
+            padding: 10px 0 40px;
             color: $gray3;
             background-color: $white;
         }

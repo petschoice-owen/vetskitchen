@@ -126,6 +126,24 @@
                 min-height: 75px;
                 font-family: Signika;
                 font-weight: 700;
+
+                & > li.mega-menu-item > a.mega-menu-link {
+                    height: auto;
+                    font-family: Signika;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 22px;
+
+                    & > img {
+                        display: block;
+                        margin: 0 auto 3px;
+                        width: 30px;
+                    }
+
+                    &:hover {
+                        font-weight: 700;
+                    }
+                }
             }
         }
     }
