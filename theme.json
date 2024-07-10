@@ -21,6 +21,11 @@
                     "name": "Black",
                     "slug": "black",
                     "color": "#000000"
+                },
+                {
+                    "name": "Rose White",
+                    "slug": "rose-white",
+                    "color": "#fff6f1"
                 }
             ],
             "gradients": [

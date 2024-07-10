@@ -28,9 +28,13 @@ else : ?>
                         $description = get_sub_field('description');
                         ?>
                         <div class="col-lg-4 col-sm-6 col-12">
-                            <img src="<?php echo $icon; ?>" class="icon" alt="<?php echo $title; ?>" />
-                            <p class="title"><?php echo $title; ?></p>
-                            <p class="description"><?php echo $description; ?></p>
+                            <div class="wrapper">
+                                <div class="wrapper-image">
+                                    <img src="<?php echo $icon; ?>" class="icon" alt="<?php echo $title; ?>" />
+                                </div>
+                                <h4 class="title"><?php echo $title; ?></h4>
+                                <p class="description"><?php echo $description; ?></p>
+                            </div>
                         </div>
                     <?php endwhile; ?>
                 </div>
