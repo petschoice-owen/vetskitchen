@@ -1,0 +1,28 @@
+{
+    "name": "vetskitchen-wrapper",
+    "title": "Vet's Kitchen - Wrapper",
+    "description": "A block to wrap any content in a max-width container.",
+    "category": "vetskitchen-blocks",
+    "icon": "align-full-width",
+    "apiVersion": 2,
+    "keywords": ["wrapper"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "wrapper.php"
+    },
+    "styles": [],
+    "supports": {
+        "align": false,
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_wrapper": true
+            }
+        }
+    }
+}
