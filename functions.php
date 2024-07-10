@@ -9,7 +9,7 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'inc/*.php' ) as $filename ) {
 
 
 // make website exclusive to whitelisted IP addresses
-add_action('init', 'restrict_access_by_ip');
+// add_action('init', 'restrict_access_by_ip');
 
 function restrict_access_by_ip() {
     // 5.255.58.50, 85.199.247.218 - Pets Choice Server

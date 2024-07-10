@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-image-text-content",
+    "title": "Vet's Kitchen Image with Text Content",
+    "description": "A block that displays an image with text content in a section.",
+    "style": "block-image-text-content",
+    "script": "block-image-text-content",
+    "category": "vetskitchen-blocks",
+    "icon": "align-left",
+    "apiVersion": 2,
+    "keywords": ["image", "text", "content", "column", "text content", "image text"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "image-text-content.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        }
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image-text-content": true
+            }
+        }
+    }
+}

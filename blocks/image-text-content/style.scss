@@ -1,0 +1,49 @@
+.vetskitchen-image-text-content {
+    min-height: 200px;
+
+    .col-image {
+        .image {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .acf-innerblocks-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 30px 0;
+        text-align: center;
+
+        h1, h2, h3, h4, h5, h6, p, ul, ol {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .image-right {
+        .col-content {
+            order: 1;
+        }
+
+        .col-image {
+            order: 2;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .col-content {
+            order: 1;
+        }
+        
+        .col-image {
+            order: 2;
+        }
+
+        .acf-innerblocks-container {
+            padding: 50px 0;
+        }
+    }
+}
