@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Signika:100,200,300,400,500,600,700,800,900&family=Hind:100,200,300,400,500,600,700,800,900&display=swap');
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.row .col-lg-4 {
+    width: calc(33.33% - 8px);
+}
+
 .wp-block-button .wp-block-button__link {
     display: inline-flex;
     justify-content: center;

@@ -282,7 +282,7 @@
                         }
 
                         &:last-of-type > ul.mega-sub-menu {
-                            transform: translateY(13px) translate(-50%) !important;
+                            transform: translateY(13px) translate(-55%) !important;
                         }
 
                         &.mega-menu-megamenu {
@@ -574,7 +574,7 @@
     @include respond-to(md-down) {
         &__cta {
             grid-gap: 8px;
-            
+
             &-text {
                 font-size: 13px;
             }
