@@ -33,7 +33,21 @@ jQuery(function($) {
         });
     };
 
+    const headerMobileMenu = () => {
+        $('.header .mega-menu-item-has-children > .mega-menu-link').each(function () {
+            $title = $(this).text();
+            $('<a href="#" class="mobile-menu__back-btn js-header-back-menu">Back</a><div class="mobile-menu__title">'+$title+'</div>').prependTo($(this).siblings('.mega-sub-menu'));
+        });
+
+        $('.js-header-back-menu').on('click', function(e) {
+            e.preventDefault();
+
+            $(this).closest('.mega-menu-item').removeClass('mega-toggle-on');
+        });
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
+    headerMobileMenu();
 });
