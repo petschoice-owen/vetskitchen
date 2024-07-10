@@ -70,30 +70,32 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="header__cta">
-				<?php if ( $image = get_field( 'vk_header_banner_image', 'option' ) ) : ?>
-					<div class="header__cta-thumb">
-						<?php echo wp_get_attachment_image( $image, 'medium' ); ?>
-					</div>
-				<?php endif; ?>
-				<?php if ( $text = get_field( 'vk_header_banner_text', 'option' ) ) : ?>
-					<div class="header__cta-text">
-						<?php echo $text; ?>
-					</div>
-				<?php endif; ?>
-				<?php
-					$link = get_field( 'vk_header_banner_button', 'option' );
-					if( $link ) : 
-						$link_url = $link['url'];
-						$link_title = $link['title'];
-						$link_target = $link['target'] ? $link['target'] : '_self';
-				?>
-					<div class="header__cta-button">
-						<a href="<?php echo esc_url( $link_url ); ?>" class="btn-white" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-					</div>
-				<?php endif; ?>
+		<?php if ( get_field( 'vk_header_banner_image', 'option' ) || get_field( 'vk_header_banner_text', 'option' ) || get_field( 'vk_header_banner_button', 'option' ) ) : ?>
+			<div class="container">
+				<div class="header__cta">
+					<?php if ( $image = get_field( 'vk_header_banner_image', 'option' ) ) : ?>
+						<div class="header__cta-thumb">
+							<?php echo wp_get_attachment_image( $image, 'medium' ); ?>
+						</div>
+					<?php endif; ?>
+					<?php if ( $text = get_field( 'vk_header_banner_text', 'option' ) ) : ?>
+						<div class="header__cta-text">
+							<?php echo $text; ?>
+						</div>
+					<?php endif; ?>
+					<?php
+						$link = get_field( 'vk_header_banner_button', 'option' );
+						if( $link ) : 
+							$link_url = $link['url'];
+							$link_title = $link['title'];
+							$link_target = $link['target'] ? $link['target'] : '_self';
+					?>
+						<div class="header__cta-button">
+							<a href="<?php echo esc_url( $link_url ); ?>" class="btn-white" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 	</header>
 	<main>
