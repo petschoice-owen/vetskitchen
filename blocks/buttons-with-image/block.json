@@ -1,0 +1,27 @@
+{
+    "name": "vetskitchen-buttons-with-image",
+    "title": "Vet's Kitchen Buttons w/ Image",
+    "description": "A group of button-style links with image on it",
+    "style": "block-buttons-with-image",
+    "category": "vetskitchen-blocks",
+    "icon": "button",
+    "apiVersion": 2,
+    "keywords": ["button", "link"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "buttons-with-image.php"
+    },
+    "styles": [],
+    "supports": {
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_buttons-with-image": true
+            }
+        }
+    }
+}
