@@ -1,0 +1,20 @@
+
+main {
+    .wp-block {
+        &-group {
+            padding-top: 50px;
+            padding-bottom: 50px;
+    
+            .wp-block-group__inner-container {
+                @extend .container;
+                margin-right: auto;
+                margin-left: auto;
+                width: 100%;
+                
+                & > *:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

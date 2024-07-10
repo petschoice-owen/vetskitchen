@@ -12,3 +12,22 @@
 small {
     font-size: 80%;
 }
+
+%alignfull {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    z-index: 1;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+}   
+
+.alignfull:not(.wp-block-image) {
+    @extend %alignfull;
+
+    .wp-block-group__inner-container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
