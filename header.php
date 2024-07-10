@@ -27,7 +27,9 @@
 				<div class="container">
 					<div class="header__middle-wrap">
 						<div class="header__logo"><?php echo get_custom_logo() ? get_custom_logo() : get_bloginfo(); ?></div>
-						<h6 class="header__tel">01793 887 555</h6>
+						<?php if ( $tel = get_field( 'vk_topbanner_tel', 'option' ) ) : ?>
+							<h6 class="header__tel"><?php echo $tel; ?></h6>
+						<?php endif; ?>
 						<div class="header__links">
 							<div class="account-details">
 							<a href="<?php echo home_url('/account/login'); ?>"><?php echo __( 'Sign In', 'vetskitchen' ); ?></a> or <a href="<?php echo home_url('/account/register'); ?>"><?php echo __( 'Register', 'vetskitchen' ); ?></a>
@@ -70,7 +72,27 @@
 		</div>
 		<div class="container">
 			<div class="header__cta">
-
+				<?php if ( $image = get_field( 'vk_header_banner_image', 'option' ) ) : ?>
+					<div class="header__cta-thumb">
+						<?php echo wp_get_attachment_image( $image, 'medium' ); ?>
+					</div>
+				<?php endif; ?>
+				<?php if ( $text = get_field( 'vk_header_banner_text', 'option' ) ) : ?>
+					<div class="header__cta-text">
+						<?php echo $text; ?>
+					</div>
+				<?php endif; ?>
+				<?php
+					$link = get_field( 'vk_header_banner_button', 'option' );
+					if( $link ) : 
+						$link_url = $link['url'];
+						$link_title = $link['title'];
+						$link_target = $link['target'] ? $link['target'] : '_self';
+				?>
+					<div class="header__cta-button">
+						<a href="<?php echo esc_url( $link_url ); ?>" class="btn-white" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</header>
