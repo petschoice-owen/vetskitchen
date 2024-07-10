@@ -58,17 +58,25 @@ function block_categories( $categories ) {
 		}
 	}
 
+	// if( $include ) {
+	// 	$categories = array_merge(
+	// 		$categories,
+	// 		[
+	// 			[
+	// 				'slug'  => 'vetskitchen-blocks',
+	// 				'title' => 'Vet\'s Kitchen'
+	// 			]
+	// 		]
+	// 	);
+	// }
+
 	if( $include ) {
-		$categories = array_merge(
-			$categories,
-			[
-				[
-					'slug'  => 'vetskitchen-blocks',
-					'title' => 'Vet\'s Kitchen'
-				]
-			]
-		);
-	}
+        // Prepend custom category to appear first
+        array_unshift($categories, array(
+            'slug'  => 'vetskitchen-blocks',
+            'title' => 'Vet\'s Kitchen'
+        ));
+    }
 
 	return $categories;
 }

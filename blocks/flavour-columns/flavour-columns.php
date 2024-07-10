@@ -42,16 +42,4 @@ else : ?>
         </div>
     <?php endif; ?>
 
-    <!-- <div <?php echo $wrapper_attributes; ?>>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-6">
-                    <img src="" class="icon" alt="" />
-                    <p class="title"></p>
-                    <p class="description"></p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 <?php endif; ?>
