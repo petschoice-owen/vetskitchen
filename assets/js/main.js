@@ -44,6 +44,12 @@ jQuery(function($) {
 
             $(this).closest('.mega-menu-item').removeClass('mega-toggle-on');
         });
+
+        $('body').on('click', '.js-close-menu > a', function(e) {
+            e.preventDefault();
+
+            $(this).closest('.mega-menu-wrap').find('.mega-menu-toggle').trigger('click');
+        });
     };
 
     scrollToTop();
