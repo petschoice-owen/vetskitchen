@@ -1,0 +1,40 @@
+
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-tabs {
+    margin-bottom: 30px;
+
+    .nav-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+
+        .nav-link {
+            padding: 10px 15px;
+            flex-grow: 1;
+            color: $white;
+            text-align: center;
+            background-color: $green3;
+            border: 1px solid $green3;
+            border-radius: 4px 4px 0 0;
+
+            &.active {
+                background-color: $orange4;
+                border: 1px solid $lgray5;
+            }
+        }
+    }
+
+    .tab-content {
+        padding-top: 10px;
+        
+        .tab-pane {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
