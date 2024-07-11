@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-checklist-slider",
+    "title": "Vet's Kitchen Checklist Slider",
+    "description": "A checklist that will become a slider on mobile",
+    "style": "block-checklist-slider",
+    "script": "block-checklist-slider",
+    "category": "vetskitchen-blocks",
+    "icon": "slides",
+    "apiVersion": 2,
+    "keywords": ["text", "slider", "checklist"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "checklist-slider.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        }
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_checklist_slider": true
+            }
+        }
+    }
+}

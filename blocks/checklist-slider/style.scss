@@ -1,0 +1,49 @@
+
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-checklist-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: $aliceblue;
+    background-color: $green2;
+
+    .slick-track {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 20px 11px 15px;
+        font-size: 30px;
+        line-height: 1;
+        font-weight: 600;
+
+        .icon {
+            position: relative;
+            top: -5px;
+            margin-right: 10px;
+            font-size: 42px;
+        }
+
+        &.slick-slide {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    @include respond-to(sm-down) {
+        &__item {
+            font-size: 25px;
+
+            .icon {
+                font-size: 35px;
+            }
+        }
+    }
+}

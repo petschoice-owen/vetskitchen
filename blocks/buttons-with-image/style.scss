@@ -4,6 +4,7 @@
 
 .vetskitchen-buttons-with-image {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     grid-gap: 30px;
@@ -16,6 +17,7 @@
         grid-gap: 10px;
         padding: 10px;
         width: 100%;
+        max-width: calc(50% - 15px);
         color: $white;
         background-color: $green2;
         border-radius: 20px;
@@ -43,8 +45,9 @@
                 left: -8px;
                 width: 144px;
                 height: 10px;
-                background: url('../../assets/images/border__image.png');
+                background-image: url('../../assets/images/border__image.png');
                 background-repeat: no-repeat;
+                background-size: contain;
             }
         }
 
@@ -55,6 +58,35 @@
 
         &:hover {
             text-decoration: none;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        grid-gap: 10px;
+
+        a {
+            max-width: calc(50% - 5px);
+
+            .text-wrapper {
+                grid-gap: 10px;
+
+                svg {
+                    max-width: 6px;
+                }
+            }
+
+            .text {
+                font-size: 16px;
+
+                &:after {
+                    bottom: -11px;
+                    width: 100%;
+                }
+            }
+
+            & > img {
+                max-width: 50px;
+            }
         }
     }
 }
