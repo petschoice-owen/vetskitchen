@@ -1,6 +1,6 @@
 {
     "name": "vetskitchen-image-text-content",
-    "title": "Vet's Kitchen Image with Text Content",
+    "title": "Vet's Kitchen - Image with Text Content",
     "description": "A block that displays an image with text content in a section.",
     "style": "block-image-text-content",
     "script": "block-image-text-content",

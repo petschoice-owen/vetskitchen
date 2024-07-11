@@ -23,7 +23,7 @@ small {
     width: 100vw;
 }   
 
-.alignfull:not(.wp-block-image) {
+.alignfull {
     @extend %alignfull;
 
     .wp-block-group__inner-container {

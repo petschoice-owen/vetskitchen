@@ -1,6 +1,6 @@
 {
     "name": "vetskitchen-flavour-columns",
-    "title": "Vet's Kitchen Flavour Columns",
+    "title": "Vet's Kitchen - Flavour Columns",
     "description": "A block that displays the list of flavours in columns.",
     "style": "block-flavour-columns",
     "script": "block-flavour-columns",
