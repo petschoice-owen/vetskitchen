@@ -11,7 +11,7 @@
 $wrapper_attributes = get_block_wrapper_attributes(
     [
         'class' => 'vetskitchen-dogclub-banner',
-        'id'    =>  isset($block['id'])
+        'id'    =>  isset($block['anchor'])
     ]
 );
 $allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/button', 'core/image' );

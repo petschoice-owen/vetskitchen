@@ -13,6 +13,7 @@
     },
     "styles": [],
     "supports": {
+        "anchor": true
     },
     "attributes": {
     },

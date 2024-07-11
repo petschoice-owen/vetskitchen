@@ -17,7 +17,8 @@
         "color": {
             "background": true,
             "gradients": true
-        }
+        },
+        "anchor": true
     },
     "attributes": {
     },
