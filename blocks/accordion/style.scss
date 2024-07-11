@@ -1,0 +1,53 @@
+
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-accordion {
+    margin-bottom: 15px;
+
+    &__item {
+        border: 1px solid $pale;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+        &-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            min-height: 54px;
+            font-family: 'Hind', sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+            color: $black;
+            line-height: 1.2;
+            background-color: $pale;
+            cursor: pointer;
+
+            &:after {
+                content: "＋";
+                margin-left: 20px;
+                font-size: 22px;
+                font-weight: 400;
+                transition: 0.3s transform;
+            }
+
+            &[aria-expanded="true"]:after {
+                transform: rotate(-225deg) translateY(3px);
+            }
+        }
+        
+        &-content {
+            padding: 15px 25px;
+            color: $black;
+
+            & > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        & + .vetskitchen-accordion__item {
+            margin-top: 5px;
+        }
+    }
+}

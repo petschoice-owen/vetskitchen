@@ -1,0 +1,29 @@
+{
+    "name": "vetskitchen-accordion",
+    "title": "Vet's Kitchen - Accordion",
+    "description": "A vertically collapsing accordions.",
+    "style": "block-accordion",
+    "script": "block-accordion",
+    "category": "vetskitchen-blocks",
+    "icon": "list-view",
+    "apiVersion": 2,
+    "keywords": ["accordion", "collapse"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "accordion.php"
+    },
+    "styles": [],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_accordion": true
+            }
+        }
+    }
+}
