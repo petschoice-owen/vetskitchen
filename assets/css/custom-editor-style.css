@@ -68,3 +68,14 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #008077;
 }
 
+.vetskitchen-dogclub-banner__right-image {
+    max-width: 150px;
+}
+
+.vetskitchen-dogclub-banner__left-image {
+    max-width: 300px;
+}
+
+.vetskitchen-dogclub-banner .wp-block-button {
+    display: block;
+}

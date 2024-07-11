@@ -6,12 +6,16 @@
     padding-top: 60px;
     padding-bottom: 200px;
     font-family: 'Signika', sans-serif;
+    line-height: 1.7;
+    color: $black;
     text-align: center;
     background: $lgray4 url('../../assets/images/dogclub-banner.webp') no-repeat;
     background-size: cover;
     border-radius: 15px;
 
     .acf-innerblocks-container {
+        position: relative;
+        z-index: 1;
         margin: 0 auto;
         max-width: 460px;
     }
@@ -27,10 +31,88 @@
         margin-top: 50px;
     }
 
+    &__left-image {
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-width: 569px;
+    }
+
+    &__right-image {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        width: 100%;
+        max-width: 230px;
+        height: auto;
+        transform: translate(0px, -50%);
+    }
+
     @media screen and (min-width: 1025px) {
         h2 {
             margin-bottom: 23px;
             font-size: 62px;
+        }
+    }
+
+    @include respond-to(lg-down) {
+        padding-bottom: 70px;
+
+        &__left-image {
+            top: 22%;
+            bottom: 0;
+            padding-left: 20px;
+            max-width: 319px;
+        }
+    }
+
+    @media screen and (max-width:1024px){
+        &__left-image {
+            max-width: 239px;
+        }
+
+        &__right-image {
+            top: 39%;
+            right: 32px;
+            max-width: 140px;
+        }
+
+        .wp-block-button {
+            margin-top: 40px;
+        }
+
+        .acf-innerblocks-container {
+            h2 + p~p {
+                margin: 0 auto;
+                max-width: 320px;
+                font-size: 15px;
+            }
+        }
+    }
+
+    @include respond-to(sm-down) {
+        padding-top: 30px;
+        padding-bottom: 40px;
+        margin-right: -12px;
+        margin-left: -12px;
+        background-image: url('../../assets/images/dogclub-banner-mobile.webp');
+
+        .wp-block-image {
+            position: relative;
+            z-index: 1;
+            margin-top: 10px;
+            margin-bottom: 0;
+
+            & + .wp-block-button {
+                margin-top: -13px;
+
+                & > .wp-block-button__link {
+                    width: 100%;
+                    max-width: 265px;
+                }
+            }
         }
     }
 }

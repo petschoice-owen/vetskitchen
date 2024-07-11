@@ -14,7 +14,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
         'id'    =>  isset($block['id'])
     ]
 );
-$allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/button' );
+$allowed_blocks = array( 'core/heading', 'core/paragraph', 'core/button', 'core/image' );
 $template = array( array( 'core/heading', array() ) );
 ?>
 <?php
@@ -26,8 +26,8 @@ else :
 ?>
     <div <?php echo $wrapper_attributes; ?>>
         <InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="false" />
-        <?php echo wp_get_attachment_image( $imgLeft, 'large', "", ["class" => "vetskitchen-dogclub-banner__left-image"] ); ?>
-        <?php echo wp_get_attachment_image( $imgRight, 'large', "", ["class" => "vetskitchen-dogclub-banner__right-image"] ); ?>
+        <?php echo wp_get_attachment_image( $imgLeft, 'large', "", ["class" => "vetskitchen-dogclub-banner__left-image d-none d-md-block"] ); ?>
+        <?php echo wp_get_attachment_image( $imgRight, 'medium', "", ["class" => "vetskitchen-dogclub-banner__right-image d-none d-md-block"] ); ?>
     </div>
 <?php
 endif;    
