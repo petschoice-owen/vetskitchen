@@ -10,7 +10,8 @@
 
 $wrapper_attributes = get_block_wrapper_attributes(
     [
-        'class' => 'vetskitchen-checklist-slider js-checklist-slider'
+        'class' => 'vetskitchen-checklist-slider js-checklist-slider',
+        'id'    =>  isset($block['id'])
     ]
 );
 ?>

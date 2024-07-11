@@ -32,6 +32,18 @@
 			]
         },
         "typography": {
+            "fontFamilies": [
+				{
+					"fontFamily": "Hind, sans-serif",
+					"slug": "hind",
+					"name": "Hind"
+				},
+                {
+					"fontFamily": "Signika, sans-serif",
+					"slug": "signika",
+					"name": "Signika"
+				}
+			],
             "fontSizes": [
                 {
 					"slug": "small",

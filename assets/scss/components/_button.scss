@@ -22,14 +22,35 @@
     }
 }
 
-.wp-block-button .wp-block-button__link {
-    @extend %btn;
-    min-height: 50px;
-    color: $white;
-    background-color: $orange3;
+.wp-block-button {
+    & > .wp-block-button__link {
+        @extend %btn;
+        min-height: 50px;
+        color: $white;
+        background-color: $orange3;
 
-    @include on-event() {
-        text-decoration: none;
-        background-color: $green2;
+        img {
+            max-width: 10px;
+            margin-left: 10px;
+        }
+    
+        @include on-event() {
+            text-decoration: none;
+            background-color: $green2;
+        }
+    }
+
+    &.is-style-outline {
+        color: $orange3;
+
+        & > .wp-block-button__link {
+            color: $orange3;
+            border-color: $orange3;
+    
+            @include on-event() {
+                color: $green2;
+                border-color: $green2;
+            }
+        }
     }
 }

@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-dogclub-banner",
+    "title": "Vet's Kitchen Dog Club Banner",
+    "description": "A dog club banner",
+    "style": "block-dog-club-banner",
+    "script": "block-dog-club-banner",
+    "category": "vetskitchen-blocks",
+    "icon": "cover-image",
+    "apiVersion": 2,
+    "keywords": ["dog", "club", "banner"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "dog-club-banner.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        }
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_dogclub_banner": true
+            }
+        }
+    }
+}

@@ -9,7 +9,7 @@
     "apiVersion": 2,
     "keywords": ["image", "text", "content", "column", "text content", "image text"],
     "acf": {
-        "mode": "edit",
+        "mode": "preview",
 	    "renderTemplate": "image-text-content.php"
     },
     "styles": [],

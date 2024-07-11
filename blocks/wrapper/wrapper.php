@@ -10,7 +10,7 @@
 $wrapper_attributes = get_block_wrapper_attributes(
     [
         'class' => 'vetskitchen-wrapper mx-auto',
-        'id'    =>  isset($block['anchor'])
+        'id'    =>  isset($block['id'])
     ]
 );
 ?>
