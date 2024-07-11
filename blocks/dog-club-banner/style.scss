@@ -1,0 +1,17 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-dogclub-banner {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 200px;
+    text-align: center;
+    background: $lgray4 url('../../assets/images/dogclub-banner.webp') no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+
+    .acf-innerblocks-container {
+        margin: 0 auto;
+        max-width: 460px;
+    }
+}
