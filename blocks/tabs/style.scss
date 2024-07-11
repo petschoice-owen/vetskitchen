@@ -28,7 +28,11 @@
 
     .tab-content {
         padding-top: 10px;
-        
+    }
+}
+
+body:not(.wp-admin) .vetskitchen-tabs {
+    .tab-content {
         .tab-pane {
             display: none;
 
