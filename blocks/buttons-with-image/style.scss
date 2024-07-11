@@ -61,6 +61,12 @@
         }
     }
 
+    @include respond-to(sm-down) {
+        a .text-wrapper {
+            grid-gap: 10px;
+        }
+    }
+
     @media screen and (max-width: 480px) {
         grid-gap: 10px;
 
@@ -68,8 +74,6 @@
             max-width: calc(50% - 5px);
 
             .text-wrapper {
-                grid-gap: 10px;
-
                 svg {
                     max-width: 6px;
                 }
