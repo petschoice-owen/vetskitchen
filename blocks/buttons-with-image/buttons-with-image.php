@@ -10,7 +10,7 @@
 $wrapper_attributes = get_block_wrapper_attributes(
     [
         'class' => 'vetskitchen-buttons-with-image',
-        'id'    =>  isset($block['anchor'])
+        'id'    =>  isset($block['anchor']) ? $block['anchor'] : ''
     ]
 );
 ?>

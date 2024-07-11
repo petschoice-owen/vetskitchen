@@ -11,7 +11,7 @@
 $wrapper_attributes = get_block_wrapper_attributes(
     [
         'class' => 'vetskitchen-accordion',
-        'id'    =>  $block['anchor']
+        'id'    =>  isset($block['anchor']) ? $block['anchor'] : ''
     ]
 );
 ?>

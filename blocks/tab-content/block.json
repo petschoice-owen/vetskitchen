@@ -1,0 +1,23 @@
+{
+    "name": "vetskitchen-tab-content",
+    "title": "Vet's Kitchen - Tab Content",
+    "description": "Tab Group Content",
+    "style": "block-tab-content",
+    "category": "vetskitchen-blocks",
+    "icon": "welcome-add-page",
+    "apiVersion": 2,
+    "keywords": ["tabs", "content"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "tab-content.php"
+    },
+    "parent": ["vetskitchen-tabs"],
+    "styles": [],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+    }
+}

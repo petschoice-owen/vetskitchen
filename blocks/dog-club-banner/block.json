@@ -3,7 +3,6 @@
     "title": "Vet's Kitchen - Dog Club Banner",
     "description": "A dog club banner",
     "style": "block-dog-club-banner",
-    "script": "block-dog-club-banner",
     "category": "vetskitchen-blocks",
     "icon": "cover-image",
     "apiVersion": 2,

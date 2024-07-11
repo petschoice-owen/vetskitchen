@@ -1,0 +1,28 @@
+{
+    "name": "vetskitchen-tabs",
+    "title": "Vet's Kitchen - Tabs",
+    "description": "Horizontal tabs component",
+    "style": "block-tabs",
+    "category": "vetskitchen-blocks",
+    "icon": "table-row-after",
+    "apiVersion": 2,
+    "keywords": ["tabs", "nav"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "tabs.php"
+    },
+    "styles": [],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_tabs": true
+            }
+        }
+    }
+}
