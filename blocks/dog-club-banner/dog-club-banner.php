@@ -21,9 +21,13 @@ $template = array( array( 'core/heading', array() ) );
 if ( isset($block['data']['preview_image_dogclub_banner']) ) :
     echo '<img src="'. get_template_directory_uri() .'/assets/images/blocks-preview/dogclub-banner.png" style="width:100%; height:auto;">';
 else :
+    $imgLeft = get_field( 'vk_dcb_image_left' );
+    $imgRight = get_field( 'vk_dcb_image_right' );
 ?>
     <div <?php echo $wrapper_attributes; ?>>
         <InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="false" />
+        <?php echo wp_get_attachment_image( $imgLeft, 'large', "", ["class" => "vetskitchen-dogclub-banner__left-image"] ); ?>
+        <?php echo wp_get_attachment_image( $imgRight, 'large', "", ["class" => "vetskitchen-dogclub-banner__right-image"] ); ?>
     </div>
 <?php
 endif;    

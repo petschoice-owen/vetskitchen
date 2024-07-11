@@ -5,6 +5,7 @@
     position: relative;
     padding-top: 60px;
     padding-bottom: 200px;
+    font-family: 'Signika', sans-serif;
     text-align: center;
     background: $lgray4 url('../../assets/images/dogclub-banner.webp') no-repeat;
     background-size: cover;
@@ -13,5 +14,23 @@
     .acf-innerblocks-container {
         margin: 0 auto;
         max-width: 460px;
+    }
+
+    h2 {
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: $blue2;
+    }
+
+    .wp-block-button {
+        margin-top: 50px;
+    }
+
+    @media screen and (min-width: 1025px) {
+        h2 {
+            margin-bottom: 23px;
+            font-size: 62px;
+        }
     }
 }

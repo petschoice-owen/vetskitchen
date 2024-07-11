@@ -12,8 +12,10 @@ function load_blocks() {
 		if ( file_exists( get_template_directory() . '/blocks/' . $block . '/block.json' ) ) {
 			register_block_type( get_template_directory() . '/blocks/' . $block . '/block.json' );
 			if ( file_exists( get_template_directory() . '/blocks/' . $block . '/style.min.css' ) ) {
-				wp_register_style( 'block-' . $block, get_template_directory_uri() . '/blocks/' . $block . '/style.min.css', array('main-style'), $version );
-				wp_enqueue_style( 'block-' . $block );
+				wp_register_style( 'block-' . $block, get_template_directory_uri() . '/blocks/' . $block . '/style.min.css', array(), $version );
+				add_action( 'wp_enqueue_scripts', function() use ($block) {
+					wp_enqueue_style( 'block-' . $block );
+				}, 5 );
 			}
 			if ( file_exists( get_template_directory() . '/blocks/' . $block . '/script.js' ) ) {
 				wp_register_script( 'block-' . $block, get_template_directory_uri() . '/blocks/' . $block . '/script.js', array(), $version, array(
