@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-whats-included",
+    "title": "Vet's Kitchen - What's Included",
+    "description": "A block showcasing dog club's inclusions.",
+    "style": "block-whats-included",
+    "category": "vetskitchen-blocks",
+    "icon": "insert",
+    "apiVersion": 2,
+    "keywords": ["dog", "club", "included"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "whats-included.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        },
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_whats_included": true
+            }
+        }
+    }
+}
