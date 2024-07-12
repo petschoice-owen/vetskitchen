@@ -54,3 +54,15 @@
         }
     }
 }
+
+.btn-orange {
+    @extend %btn;
+    min-height: 50px;
+    color: $white;
+    background-color: $orange3;
+
+    @include on-event() {
+        text-decoration: none;
+        background-color: $green2;
+    }
+}
