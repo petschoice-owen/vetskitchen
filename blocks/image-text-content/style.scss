@@ -1,5 +1,9 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
 .vetskitchen-image-text-content {
     min-height: 200px;
+    color: $black;
 
     .col-image {
         .image {
@@ -13,13 +17,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%;
         padding: 30px 0;
+        height: 100%;
         text-align: center;
 
-        h1, h2, h3, h4, h5, h6, p, ul, ol {
-            padding-bottom: 0;
-            margin-bottom: 0;
+        & > *:not(.wp-block-heading) {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 420px;
         }
     }
 
@@ -31,6 +36,10 @@
         .col-image {
             order: 2;
         }
+    }
+
+    .wp-block-buttons {
+        margin-top: 20px;
     }
 
     @media (max-width: 767px) {

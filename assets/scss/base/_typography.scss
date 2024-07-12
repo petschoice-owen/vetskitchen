@@ -7,11 +7,13 @@ body a:where(:not(.wp-element-button)) {
     transition: .2s ease-in-out;
 
     &:hover {
+        color: $green2;
         text-decoration: underline;
     }
 }
 
 h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
     font-family: 'Signika', sans-serif;
     font-weight: 600;
     color: $primary;
