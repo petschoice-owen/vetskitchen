@@ -1,0 +1,159 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-inclusions {
+    position: relative;
+    padding-top: 15px;
+    color: $black;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    h2 {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    &__blocks {
+        display: flex;
+        justify-content: space-between;
+
+        & > .plus-icon {
+            margin-top: 42px;
+
+            @include respond-to(lg-down) {
+                svg {
+                    width: 2vw;
+                }
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .title {
+            padding-top: 35px;
+            margin: 0 auto;
+            max-width: 140px;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subtext {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .plus-icon {
+            position: absolute;
+            top: auto;
+            left: 0;
+        }
+
+        .item-wrap {
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: -27px;
+                left: 50%;
+                width: 100px;
+                height: 10px;
+                background: url('../../assets/images/light-border.png') no-repeat;
+                background-size: 100%;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-gap: 30px;
+        padding-top: 33px;
+        width: 100%;
+        
+        .text {
+            max-width: 221px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 23px;
+        }
+    }
+
+    @include respond-to(sm-down) {
+        text-align: left;
+
+        &__blocks {
+            flex-direction: column;
+            padding: 0px 15px;
+        }
+
+        .plus-icon {
+            svg {
+                max-width: 30px;
+                height: 30px;
+            }
+        }
+
+        &__item {
+            display: grid;
+            grid-template-columns: 8fr 1fr;
+            padding-left: 30px;
+
+            img {
+                max-width: 70px;
+            }
+
+            .item-wrap {
+                display: flex;
+                align-items: center;
+
+                &:after {
+                    display: none;
+                }
+            }
+
+            .title {
+                padding-top: 0;
+                max-width: 100%;
+                font-size: 18px;
+            }
+        }
+
+        &__bottom {
+            padding: 20px 15px;
+            justify-content: flex-start;
+            grid-gap: 10px;
+
+            img {
+                display: none;
+            }
+        }
+    }
+}
