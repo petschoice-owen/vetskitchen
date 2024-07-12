@@ -41,6 +41,19 @@
     .wp-block-buttons {
         margin-top: 20px;
     }
+    .row.g-0 {
+        .col-image {
+            display: flex;
+
+            .wrapper-image {
+                width: 100%;
+            }
+
+            .image {
+                height: 100%;
+            }
+        }
+    }
 
     @media (max-width: 767px) {
         .col-content {
