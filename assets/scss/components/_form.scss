@@ -3,60 +3,157 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 20px;
     width: 100%;
     min-height: 50px;
     font-family: 'Hind', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.2;
     color: $gray;
-    background: $whitelilac;
+    background-color: $whitelilac;
     border: 1px solid $whitelilac;
-    border-radius: 10px;
-    transition: all 0.2s linear;
+    border-radius: 20px;
+    transition: .2s all linear;
 
     @include on-event() {
         text-decoration: none;
         background-color: $white;
         border-color: $green2;
+        outline: none;
     }
 
     &::-webkit-input-placeholder {
-        font-weight: 400;
-        color: $gray3;
+        font-weight: 100;
+        color: $lgray2;
         font-style: italic;
     }
     &::-moz-placeholder {
-        font-weight: 400;
-        color: $gray3;
+        font-weight: 100;
+        color: $lgray2;
         font-style: italic;
     }
     &:-ms-input-placeholder {
-        font-weight: 400;
-        color: $gray3;
+        font-weight: 100;
+        color: $lgray2;
         font-style: italic;
     }
     &:-moz-placeholder {
-        font-weight: 400;
-        color: $gray3;
+        font-weight: 100;
+        color: $lgray2;
         font-style: italic;
     }
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    @extend %user-input;
 
     &.wpcf7-not-valid {
         border-color: $redburn;
     }
 }
 
-input[type="text"],
-input[type="email"] {
-    @extend %user-input;
+select {
+    appearance: none;
+    cursor: pointer;
 }
 
 textarea {
-    @extend %user-input;
-    min-height: 200px;
-    resize: none; 
+    height: 160px;
+    padding: 20px;
+    border-radius: 10px;
+    resize: none;
+
+    &.textarea-small {
+        height: 80px;
+    }
 }
 
+.wpcf7-submit:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
 
+.wpcf7-not-valid-tip {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: $redburn;
+}
+
+.wpcf7-response-output {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.contact-form {
+    .col-12 {
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: $orange3;
+    }
+
+    .product-label-cf {
+        display: block;
+        padding: 0 10px;
+        margin-top: -10px;
+        font-style: italic;
+    }
+    
+    .wpcf7-acceptance {
+        & > span {
+            margin-left: 0;
+        }
+
+        input, label {
+            cursor: pointer;
+        }
+    
+        .wpcf7-list-item-label {
+            padding-left: 2px;
+        }
+    }
+
+    .dropdown {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            width: 10px;
+            height: 1px;
+            background-color: $green2;
+            pointer-events: none;
+        }
+
+        &::before {
+            right: 30px;
+            transform: translate(0, -50%) rotate(45deg);
+        }
+
+        &::after {
+            right: 24px;
+            transform: translate(0, -50%) rotate(-45deg);
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .is-layout-flex > .is-layout-flow:empty {
+        display: none;
+    }
+
+    .is-layout-flex > .is-layout-flow:not(:empty) {
+        flex-basis: 100% !important;
+    }
+}

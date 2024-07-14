@@ -57,12 +57,15 @@
 
 .btn-orange {
     @extend %btn;
-    min-height: 50px;
     color: $white;
     background-color: $orange3;
+    border: none;
+    transition: .2s all linear;
 
     @include on-event() {
+        color: $white;
         text-decoration: none;
         background-color: $green2;
+        border: none;
     }
 }
