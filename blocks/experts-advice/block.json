@@ -1,0 +1,33 @@
+{
+    "name": "vetskitchen-experts-advice",
+    "title": "Vet's Kitchen - Experts advice",
+    "description": "A block that displays an image showing info on hover and a two-column row with image and text.",
+    "style": "block-experts-advice",
+    "category": "vetskitchen-blocks",
+    "icon": "align-wide",
+    "apiVersion": 2,
+    "keywords": ["experts", "advice"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "experts-advice.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": false,
+            "gradients": false
+        },
+        "anchor": true,
+        "align": false
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_experts_advice": true
+            }
+        }
+    }
+}
