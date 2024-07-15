@@ -53,6 +53,16 @@
             }
         }
     }
+
+    &.is-style-btn-green > .wp-block-button__link {
+        color: $white;
+        background-color: $green2;
+
+        @include on-event() {
+            color: $white;
+            background-color: $gray2;
+        }
+    }
 }
 
 .btn-orange {
