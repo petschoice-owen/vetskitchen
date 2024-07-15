@@ -72,28 +72,28 @@ textarea {
     }
 }
 
-.wpcf7 form.wpcf7-form {
-    .wpcf7-submit:disabled {
-        opacity: .5;
-        pointer-events: none;
-    }
+.wpcf7 {
+    form.wpcf7-form {
+        .wpcf7-submit:disabled {
+            opacity: .5;
+            pointer-events: none;
+        }
+        
+        .wpcf7-not-valid-tip {
+            padding-top: 5px;
+            padding-left: 10px;
+            font-size: 14px;
+            color: $redburn;
+        }
     
-    .wpcf7-not-valid-tip {
-        padding-top: 5px;
-        padding-left: 10px;
-        font-size: 14px;
-        color: $redburn;
+        .wpcf7-response-output {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
     }
 
-    .wpcf7-response-output {
-        padding: 10px;
-        margin: 10px 0;
-        font-size: 16px;
-        text-align: center;
-    }
-}
-
-.contact-form {
     .col-12 {
         margin-bottom: 20px;
     }
@@ -147,15 +147,5 @@ textarea {
             right: 24px;
             transform: translate(0, -50%) rotate(-45deg);
         }
-    }
-}
-
-@media (max-width: 991px) {
-    .is-layout-flex > .is-layout-flow:empty {
-        display: none;
-    }
-
-    .is-layout-flex > .is-layout-flow:not(:empty) {
-        flex-basis: 100% !important;
     }
 }
