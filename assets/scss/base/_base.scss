@@ -11,6 +11,11 @@ main {
     overflow: hidden;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 // @media screen and (min-width: 576px) {
 //     .container {
 //         max-width: 546px;
