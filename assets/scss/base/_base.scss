@@ -16,6 +16,13 @@ img {
     height: auto;
 }
 
+hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $lgray5;
+    opacity: 1;
+}
+
 // @media screen and (min-width: 576px) {
 //     .container {
 //         max-width: 546px;
