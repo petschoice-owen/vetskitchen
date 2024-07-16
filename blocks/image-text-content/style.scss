@@ -11,6 +11,14 @@
             width: 100%;
             height: auto;
         }
+
+        .subtext {
+            padding-top: 40px;
+            padding-right: 30px;
+            font-size: 18px;
+            color: $gray;
+            text-align: right;
+        }
     }
 
     .acf-innerblocks-container {
