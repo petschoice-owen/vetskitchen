@@ -24,10 +24,10 @@ else :
         <div <?php echo $wrapper_attributes; ?>>
             <?php while ( have_rows( 'vk_accordion' ) ) : the_row(); ?>
             <div class="vetskitchen-accordion__item">
-                <div class="vetskitchen-accordion__item-header" data-bs-toggle="collapse" data-bs-target="#vk-accordion-<?php echo get_row_index(); ?>" aria-expanded="false" aria-controls="vk-accordion-<?php echo get_row_index(); ?>">
+                <div class="vetskitchen-accordion__item-header" data-bs-toggle="collapse" data-bs-target="#<?php echo $block['id']. '-' .get_row_index(); ?>" aria-expanded="false" aria-controls="vk-accordion-<?php echo get_row_index(); ?>">
                     <?php echo get_sub_field( 'vk_accordion_heading' ); ?>
                 </div>
-                <div id="vk-accordion-<?php echo get_row_index(); ?>" class="collapse">
+                <div id="<?php echo $block['id']. '-' . get_row_index(); ?>" class="collapse">
                     <div class="vetskitchen-accordion__item-content">
                         <?php echo get_sub_field( 'vk_accordion_content' ); ?>
                     </div>

@@ -26,6 +26,11 @@
                     "name": "Rose White",
                     "slug": "rose-white",
                     "color": "#fff6f1"
+                },
+                {
+                    "name": "Surfie Green",
+                    "slug": "surfie-green",
+                    "color": "#008077"
                 }
             ],
             "gradients": [

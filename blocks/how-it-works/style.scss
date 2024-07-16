@@ -1,0 +1,151 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-how-it-works {
+    background-color: $lgray6;
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 0 60px;
+        grid-gap: 30px;
+        background-image: url('../../assets/images/how-it-works-banner.webp');
+        background-size: cover;
+    }
+
+    .heading {
+        color: $green3;
+    }
+
+    .steps {
+        counter-reset: steps;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+
+            .counter {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 0 0 64px;
+                height: 64px;
+                font-family: 'Signika', sans-serif;
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 1;
+                color: $white;
+                background-color: $lblue3;
+                border-radius: 50%;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    width: calc(100% - 4px);
+                    height: calc(100% - 4px);
+                    border: 1px dashed $white;
+                    border-radius: 50%;
+                }
+            }
+
+            .text {
+                max-width: 360px;
+
+                & > *:last-child {
+                    margin-bottom: 0;
+                }
+
+                p {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    .left-content {
+        text-align: center;
+        background-image: url('../../assets/images/how-it-works-banner.webp');
+        background-size: cover;
+
+        &__image {
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .right-content {
+        &__bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            grid-gap: 20px;
+            padding-top: 100px;
+
+            .text {
+                position: relative;
+                padding-bottom: 14px;
+                font-family: 'Signika', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+                color: $gray5;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 2px;
+                    bottom: -5px;
+                    width: 100px;
+                    height: 10px;
+                    background: url('../../assets/images/underline.webp') no-repeat;
+                    background-size: contain;
+                }
+            }
+
+            @include respond-to(md-down) {
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 40px;
+            }
+        }
+    }
+
+    @include respond-to(sm-down) {
+        &__wrapper {
+            grid-template-columns: 1fr;
+            padding-top: 0;
+            background-image: none;
+        }
+
+        .heading {
+            margin-bottom: 0;
+            font-size: 23px;
+        }
+
+        .left-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 20px;
+            margin-right: -12px;
+            margin-left: -12px;
+            background-color: $white;
+
+            &__image {
+                margin: 0;
+            }
+        }
+
+        .right-content {
+            padding: 0 18px;
+        }
+    }
+}

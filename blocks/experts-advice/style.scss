@@ -1,0 +1,100 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-experts-advice {
+    padding-top: 53px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 950px;
+    text-align: center;
+
+    &__top {
+        position: relative;
+        
+        .heading {
+            color: $green3;
+        }
+
+        .text {
+            position: absolute;
+            padding: 10px;
+            top: 50%;
+            right: 9%;
+            max-width: 310px;
+            color: $white;
+            background: rgba(114,112,112,.69);
+            transform: translate(0, -50%);
+            transition: .2s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+
+            & > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &:hover .text {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px;
+        margin-top: -54px;
+        background-color: $lgray4;
+
+        .left-content {
+            align-self: center;
+            padding-top: 60px;
+            padding-bottom: 60px;
+            max-width: 360px;
+            font-size: 16px;
+            color: $black;
+
+            @include respond-to(md) {
+                padding-right: 30px;
+                max-width: 280px;
+            }
+        }
+
+        .right-content {
+            align-self: flex-end;
+
+            @include respond-to(md) {
+                margin-right: -30px;
+            }
+        }
+
+        .btn-orange {
+            margin-top: 34px;
+        }
+    }
+
+    @include respond-to(sm-down) {
+        padding-top: 40px;
+
+        &__main {
+            flex-direction: column;
+            margin-right: -12px;
+            margin-left: -12px;
+            background-image: url('../../assets/images/experts-advice-banner-mobile.webp');
+            
+            .left-content {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+
+            .btn-orange {
+                margin-top: 14px;
+            }
+
+            .right-content {
+                align-self: flex-start;
+                margin-left: -40px;
+            }
+        }
+    }
+}

@@ -85,3 +85,12 @@ function block_categories( $categories ) {
 }
 add_filter( 'block_categories_all', __NAMESPACE__ . '\block_categories' );
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
+add_action('init', function() {
+	register_block_style('core/button',
+		[
+			'name' => 'btn-green',
+			'label' => __('Green', 'vetskitchen'),
+		]
+	);
+});

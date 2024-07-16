@@ -19,11 +19,12 @@ $wrapper_attributes = get_block_wrapper_attributes(
 else : ?>
 
     <div <?php echo $wrapper_attributes; ?>>
-        <div class="row image-<?php echo get_field('image_position'); ?> <?php echo get_field( 'vk_itc_nogap' ) ? 'g-0' : ''; ?>">
+        <div class="row image-<?php echo get_field( 'image_position' ); ?> <?php echo get_field( 'vk_itc_nogap' ) ? 'g-0' : ''; ?>">
             <div class="col-md-6 col-12 col-image">
-                <div class="wrapper-image">
+                <div class="wrapper-image<?php echo get_field( 'vk_itc_hide_image_mobile' ) ? ' d-none d-md-block' : ''; ?>">
                     <?php echo wp_get_attachment_image( get_field('image'), 'large', "", ["class" => "image"] ); ?>
                 </div>
+                <?php echo get_field( 'vk_itc_text_below_image' ) ? '<div class="subtext">'. get_field( 'vk_itc_text_below_image' ) .'</div>' : ''; ?>
             </div>
             <div class="col-md-6 col-12 col-content">
                 <InnerBlocks />
