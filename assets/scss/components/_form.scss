@@ -149,3 +149,28 @@ textarea {
         }
     }
 }
+
+.senior-dog-form {
+    .acf-innerblocks-container {
+        padding: 0;
+    }
+
+    #mc_embed_signup {
+        padding: 0;
+        width: 100%;
+        background: none;
+
+        form {
+            padding: 30px 55px;
+            margin: 0;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: $white;
+            border: 0;
+            border-radius: 15px;
+        }
+
+        #mc_embed_signup_scroll {
+            padding-right: 50px;
+        }
+    }
+}

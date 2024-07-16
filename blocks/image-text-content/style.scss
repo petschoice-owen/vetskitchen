@@ -68,7 +68,19 @@
         }
     }
 
-    @media (max-width: 767px) {
+    @include respond-to(xl) {
+        &.alignfull:not(.fullwidth-text) {
+            .image-left .col-content {
+                padding-right: calc((100vw - 1176px) / 2);
+            }
+
+            .image-right .col-content {
+                padding-left: calc((100vw - 1176px) / 2);
+            }
+        }
+    }
+
+    @include respond-to(sm-down) {
         .col-content {
             order: 1;
         }
