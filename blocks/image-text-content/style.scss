@@ -29,6 +29,10 @@
         }
     }
 
+    &.alignfull .acf-innerblocks-container > *:not(.wp-block-heading) {
+        max-width: 576px;
+    }
+
     .image-right {
         .col-content {
             order: 1;
