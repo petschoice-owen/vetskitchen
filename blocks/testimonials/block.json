@@ -1,9 +1,8 @@
 {
     "name": "vetskitchen-testimonials",
-    "title": "Vet's Kitchen Testimonials",
+    "title": "Vet's Kitchen - Testimonials",
     "description": "A block that displays the list of testimonials",
     "style": "block-testimonials",
-    "script": "block-testimonials",
     "category": "vetskitchen-blocks",
     "icon": "editor-quote",
     "apiVersion": 2,
@@ -17,7 +16,8 @@
         "color": {
             "background": true,
             "gradients": true
-        }
+        },
+        "align": false
     },
     "attributes": {
     },
