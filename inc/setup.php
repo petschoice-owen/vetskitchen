@@ -10,8 +10,10 @@ function vetskitchen_enqueue_scripts() {
         wp_enqueue_script( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array(), '', array( 'strategy' => 'async', 'in_footer' => true ) );
         wp_enqueue_style( 'slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), $version);
     }
+    if ( is_post_type_archive( 'community' ) ) {
+        wp_enqueue_script ( 'masonry', 'https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array(), '', array( 'strategy' => 'async', 'in_footer' => true ) );
+    }
     wp_enqueue_script( 'main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '', true, $version );
-
 }
 add_action( 'wp_enqueue_scripts', 'vetskitchen_enqueue_scripts', 4 );
 
@@ -22,6 +24,7 @@ function vetskitchen_register_nav_menu() {
     ) );
 }
 add_action( 'after_setup_theme', 'vetskitchen_register_nav_menu', 0 );
+
 
 /*
 * Add ACF Options Page
@@ -35,6 +38,7 @@ if( function_exists( 'acf_add_options_page' ) ) {
         'redirect'		=> false
     ) );
 }
+
 /**
  * Theme Support
  */
@@ -44,7 +48,6 @@ add_theme_support( 'align-wide' );
 add_theme_support( 'editor-styles' );
 add_theme_support( 'custom-logo' );
 add_editor_style( 'assets/css/custom-editor-style.css' );
-
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**

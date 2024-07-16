@@ -5,7 +5,7 @@ string $singular = 'Custom Post',
 string $plural = 'Custom Posts',
 string $menu_icon = 'dashicons-admin-post',
 bool $hierarchical = true,
-bool $has_archive = false,
+bool $has_archive = true,
 string $description = '' ) {
     register_post_type( $post_type_name, array(
         'label'             => __( $singular, 'ocf' ),
@@ -84,11 +84,11 @@ function create_category_tax() {
 add_action( 'init', 'create_category_tax' );
 
 
-// rewrite community category "/community/%category%"
-add_filter( 'rewrite_rules_array', function( $rules ) {
-	$new_rules = array(
-        'community/([^/]+)/page/([0-9]{1,})/?$' => 'index.php?community-category=$matches[1]&paged=$matches[2]',
-        'community/([^/]+)/?$' => 'index.php?community-category=$matches[1]',
-    );
-    return $new_rules + $rules;
-});
+// // rewrite community category "/community/%category%"
+// add_filter( 'rewrite_rules_array', function( $rules ) {
+// 	$new_rules = array(
+//         'community/([^/]+)/page/([0-9]{1,})/?$' => 'index.php?community-category=$matches[1]&paged=$matches[2]',
+//         'community/([^/]+)/?$' => 'index.php?community-category=$matches[1]',
+//     );
+//     return $new_rules + $rules;
+// });
