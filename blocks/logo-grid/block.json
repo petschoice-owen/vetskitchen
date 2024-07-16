@@ -4,7 +4,7 @@
     "description": "A block that display a grid of logo/images.",
     "style": "block-logo-grid",
     "category": "vetskitchen-blocks",
-    "icon": "editor-ol",
+    "icon": "screenoptions",
     "apiVersion": 2,
     "keywords": ["logo", "grid"],
     "acf": {

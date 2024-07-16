@@ -109,6 +109,12 @@
         }
     }
 
+    @include respond-to(lg-down) {
+        .container {
+            max-width: 90%;
+        }
+    }
+
     @media (min-width: 790px) and (max-width: 1024px)  {
         &__main {
             div[class^=col-] {
@@ -122,7 +128,6 @@
         .container {
             padding-right: 30px;
             padding-left: 30px;
-            max-width: 90%;
 
             @media screen and (max-width: 749px) {
                 max-width: 100%;

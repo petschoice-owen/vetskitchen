@@ -153,6 +153,11 @@ textarea {
 .senior-dog-form {
     .col-content .acf-innerblocks-container {
         padding: 0;
+
+        @include respond-to(sm-down) {
+            padding-right: 12px;
+            padding-left: 12px;
+        }
     }
 
     #mc_embed_signup {
@@ -308,6 +313,28 @@ textarea {
         .button {
             @extend .btn-orange;
             width: 100%;
+        }
+    }
+}
+
+@include respond-to(md-down) {
+    .senior-dog-form {
+        #mc_embed_signup {
+            form {
+                padding: 25px;
+            }
+
+            #mc_embed_signup_scroll {
+                padding-right: 0;
+
+                &:after {
+                    display: none;
+                }
+            }
+
+            h2 {
+                font-size: 26px;
+            }
         }
     }
 }
