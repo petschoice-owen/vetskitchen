@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-logo-grid",
+    "title": "Vet's Kitchen - Logo Grid",
+    "description": "A block that display a grid of logo/images.",
+    "style": "block-logo-grid",
+    "category": "vetskitchen-blocks",
+    "icon": "editor-ol",
+    "apiVersion": 2,
+    "keywords": ["logo", "grid"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "logo-grid.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        },
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_logo_grid": true
+            }
+        }
+    }
+}
