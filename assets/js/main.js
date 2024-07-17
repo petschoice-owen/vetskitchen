@@ -52,8 +52,28 @@ jQuery(function($) {
         });
     };
 
+    const cptCommunity = () => {
+        if ($('#search_community').length) {
+            $('#search_community').click(function(e) {
+                e.preventDefault();
+                $(this).toggleClass('active');
+                $(this).closest('.categories').find('.search-wrapper').toggleClass('show');
+            });
+        }
+
+        $(document).ready(function() {
+            var queryString = window.location.search;
+        
+            if (queryString.includes('?post_type=community&s=')) {
+                $('#search_community').addClass('active');
+                $('.categories .search-wrapper').addClass('show');
+            }
+        });
+    }
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
     headerMobileMenu();
+    cptCommunity();
 });

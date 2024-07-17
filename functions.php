@@ -7,6 +7,16 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'inc/*.php' ) as $filename ) {
 }
 
 
+// change number of posts for CPT Community
+add_filter( 'pre_get_posts', 'custom_change_community_posts_per_page' );
+
+function custom_change_community_posts_per_page( $query ) {
+    if ( $query->is_post_type_archive( 'community' ) && ! is_admin() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', '20' );
+    }
+    return $query;
+}
+
 
 // make website exclusive to whitelisted IP addresses
 // add_action('init', 'restrict_access_by_ip');
@@ -14,9 +24,9 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'inc/*.php' ) as $filename ) {
 function restrict_access_by_ip() {
     // 5.255.58.50, 85.199.247.218 - Pets Choice Server
     // 120.29.86.34, 120.29.86.216, 120.29.86.218, 120.29.69.77, 120.29.87.133, 192.168.100.44 - Owen
-	// 120.29.76.215 - E
+	// 119.94.65.69, 120.29.76.215 - E
 	// 82.28.151.140 - Sam
-    $allowed_ips = array('5.255.58.50', '85.199.247.218', '120.29.69.77', '120.29.86.34', '120.29.86.216', '120.29.86.218', '120.29.87.133', '192.168.100.44', '120.29.76.215', '82.28.151.140');
+    $allowed_ips = array('5.255.58.50', '85.199.247.218', '120.29.69.77', '120.29.86.34', '120.29.86.216', '120.29.86.218', '120.29.87.133', '192.168.100.44', '119.94.65.69', '120.29.76.215', '82.28.151.140');
     $user_ip = $_SERVER['REMOTE_ADDR'];
     
     if (!in_array($user_ip, $allowed_ips)) {

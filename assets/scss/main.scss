@@ -22,9 +22,14 @@
   'components/back-to-top',
   'components/form';
 
-// 5. Layout-related sections
+  // 5. Layout-related sections
+  @import
+    'layout/header',
+    'layout/footer',
+    'layout/icon-banner',
+    'layout/gutenberg';
+
+// 6. Pages
 @import
-  'layout/header',
-  'layout/footer',
-  'layout/icon-banner',
-  'layout/gutenberg';
+  'pages/archive-community';
+  
