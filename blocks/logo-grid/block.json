@@ -1,15 +1,15 @@
 {
-    "name": "vetskitchen-testimonials",
-    "title": "Vet's Kitchen - Testimonials",
-    "description": "A block that displays the list of testimonials",
-    "style": "block-testimonials",
+    "name": "vetskitchen-logo-grid",
+    "title": "Vet's Kitchen - Logo Grid",
+    "description": "A block that display a grid of logo/images.",
+    "style": "block-logo-grid",
     "category": "vetskitchen-blocks",
-    "icon": "editor-quote",
+    "icon": "screenoptions",
     "apiVersion": 2,
-    "keywords": ["testimonials", "reviews"],
+    "keywords": ["logo", "grid"],
     "acf": {
         "mode": "edit",
-	    "renderTemplate": "testimonials.php"
+	    "renderTemplate": "logo-grid.php"
     },
     "styles": [],
     "supports": {
@@ -17,7 +17,7 @@
             "background": true,
             "gradients": true
         },
-        "align": false
+        "anchor": true
     },
     "attributes": {
     },
@@ -25,7 +25,7 @@
         "attributes": {
             "mode": "preview",
             "data": {
-                "preview_image_testimonials": true
+                "preview_image_logo_grid": true
             }
         }
     }

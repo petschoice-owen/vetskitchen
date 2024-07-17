@@ -28,38 +28,6 @@ hr {
     padding-right: 25px;
 }
 
-// @media screen and (min-width: 576px) {
-//     .container {
-//         max-width: 546px;
-//     }
-// }
-
-// @media screen and (min-width: 791px) {
-//     .container {
-//         max-width: 770px;
-//     }
-// }
-
-@media screen and (min-width: 1025px) {
-    .container {
-        max-width: 990px;
-    }
-}
-
-@media screen and (min-width: 1230px) {
-    .container {
-        max-width: 1200px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .container {
-        max-width: 90%;
-    }
-}
-
-@media screen and (max-width: 749px) {
-    .container {
-        max-width: 100%;
-    }
+.container {
+    max-width: 1200px;
 }

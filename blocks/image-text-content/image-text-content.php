@@ -8,9 +8,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
 */
 
+$fulltextClass = get_field( 'vk_itc_fullwidth_content' ) ? 'fullwidth-text' : '';
 $wrapper_attributes = get_block_wrapper_attributes(
     [
-        'class' => 'vetskitchen-image-text-content'
+        'class' => 'vetskitchen-image-text-content ' . $fulltextClass,
     ]
 );
 ?>

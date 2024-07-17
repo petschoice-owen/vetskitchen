@@ -1,0 +1,16 @@
+@import '../../assets/scss/abstract/variables';
+@import '../../assets/scss/abstract/mixins';
+
+.vetskitchen-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+    padding-top: 40px;
+    
+    &__item img {
+        width: 100%;
+        max-width: 230px;
+    }
+}
