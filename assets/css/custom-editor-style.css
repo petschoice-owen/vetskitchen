@@ -96,3 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 .vetskitchen-tab__content {
     padding: 20px 0;
 }
+
+.order-2 {
+    order: 2;
+}
