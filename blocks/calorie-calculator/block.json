@@ -1,0 +1,36 @@
+{
+    "name": "vetskitchen-calorie-calculator",
+    "title": "Vet's Kitchen - Calorie Calculator",
+    "description": "A block that displays the calorie calculator.",
+    "style": "block-calorie-calculator",
+    "script": "block-calorie-calculator",
+    "category": "vetskitchen-blocks",
+    "icon": "forms",
+    "apiVersion": 2,
+    "keywords": ["calorie", "calculator"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "calorie-calculator.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        },
+        "anchor": true,
+        "align": false,
+        "mode": false,
+        "multiple": false
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_calorie_calculator": true
+            }
+        }
+    }
+}
