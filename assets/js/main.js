@@ -57,7 +57,16 @@ jQuery(function($) {
             $('#search_community').click(function(e) {
                 e.preventDefault();
                 $(this).toggleClass('active');
-                $(this).closest('.categories').find('.search-wrapper').toggleClass('show');
+                // $(this).closest('.categories').find('.search-wrapper').toggleClass('show');
+
+                var $searchWrapper = $(this).closest('.categories').find('.search-wrapper');
+                $searchWrapper.toggleClass('show');
+
+                var $searchField = $searchWrapper.find('.search-field');
+                $searchField.focus();
+                var val = $searchField.val();
+                $searchField.val('');
+                $searchField.val(val);
             });
         }
 

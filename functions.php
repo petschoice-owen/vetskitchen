@@ -17,9 +17,20 @@ function custom_change_community_posts_per_page( $query ) {
     return $query;
 }
 
+// Redirect General Search to Custom Search
+function redirect_custom_search() {
+    if ( is_search() && isset( $_GET['post_type'] ) && $_GET['post_type'] == 'community' ) {
+        include( locate_template( 'search-community.php' ) );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'redirect_custom_search' );
+
+
+
 
 // make website exclusive to whitelisted IP addresses
-add_action('init', 'restrict_access_by_ip');
+// add_action('init', 'restrict_access_by_ip');
 
 function restrict_access_by_ip() {
     // 5.255.58.50, 85.199.247.218 - Pets Choice Server
