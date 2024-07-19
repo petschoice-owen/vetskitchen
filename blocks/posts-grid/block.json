@@ -1,0 +1,32 @@
+{
+    "name": "vetskitchen-posts-grid",
+    "title": "Vet's Kitchen - Posts Grid",
+    "description": "A block that display a grid of posts.",
+    "style": "block-posts-grid",
+    "category": "vetskitchen-blocks",
+    "icon": "grid-view",
+    "apiVersion": 2,
+    "keywords": ["posts", "grid"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "posts-grid.php"
+    },
+    "styles": [],
+    "supports": {
+        "color": {
+            "background": true,
+            "gradients": true
+        },
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_posts_grid": true
+            }
+        }
+    }
+}
