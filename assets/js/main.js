@@ -57,13 +57,13 @@ jQuery(function($) {
             $('#search_community').click(function(e) {
                 e.preventDefault();
                 $(this).toggleClass('active');
-                // $(this).closest('.categories').find('.search-wrapper').toggleClass('show');
 
                 var $searchWrapper = $(this).closest('.categories').find('.search-wrapper');
                 $searchWrapper.toggleClass('show');
 
                 var $searchField = $searchWrapper.find('.search-field');
                 $searchField.focus();
+
                 var val = $searchField.val();
                 $searchField.val('');
                 $searchField.val(val);
@@ -78,11 +78,84 @@ jQuery(function($) {
                 $('.categories .search-wrapper').addClass('show');
             }
         });
-    }
+    };
+
+    const cptNews = () => {
+        if ($('#search_news').length) {
+            $('#search_news').click(function(e) {
+                e.preventDefault();
+                $(this).toggleClass('active');
+
+                var $searchWrapper = $(this).closest('.categories').find('.search-wrapper');
+                $searchWrapper.toggleClass('show');
+
+                var $searchField = $searchWrapper.find('.search-field');
+                $searchField.focus();
+
+                var val = $searchField.val();
+                $searchField.val('');
+                $searchField.val(val);
+            });
+        }
+
+        $(document).ready(function() {
+            var queryString = window.location.search;
+        
+            if (queryString.includes('?post_type=news&s=')) {
+                $('#search_news').addClass('active');
+                $('.categories .search-wrapper').addClass('show');
+            }
+        });
+    };
+
+    const loadMore = () => {
+        if ( $('.js-posts-load-more').length ) {
+            $('.js-posts-load-more').on('click', function(e) {
+                e.preventDefault();
+                
+                var $this = $(this),
+                    $wrapper = $this.closest('.row'),
+                    $loader = $wrapper.find('.invert-loader');
+        
+                $this.hide();
+                $loader.show();
+        
+                $.ajax({
+                    url: wpAjax.ajaxUrl,
+                    data: { 
+                        action: 'invert_posts_load_more',
+                        offset: $offset
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(result) {
+                        $offset = result.offset;
+                        $this.show();
+                        $loader.hide();
+                        $wrapper.append(result.content);
+        
+                        if (result.offset >= result.total) {
+                            $this.hide();
+                        } else {
+                            $this.show();
+                        }
+                    },
+                    error: function() {
+                        $this.show();
+                        $loader.hide();
+                        alert('There was an error loading more posts.');
+                    }
+                });
+            });
+        }
+        
+    };
 
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
     headerMobileMenu();
     cptCommunity();
+    cptNews();
+    // loadMore();
 });

@@ -17,6 +17,17 @@ function custom_change_community_posts_per_page( $query ) {
     return $query;
 }
 
+// change number of posts for CPT News
+add_filter( 'pre_get_posts', 'custom_change_news_posts_per_page' );
+
+function custom_change_news_posts_per_page( $query ) {
+    if ( $query->is_post_type_archive( 'news' ) && ! is_admin() && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', '-1' );
+    }
+    return $query;
+}
+
+
 // Redirect General Search to Custom Search
 function redirect_custom_search() {
     if ( is_search() && isset( $_GET['post_type'] ) && $_GET['post_type'] == 'community' ) {

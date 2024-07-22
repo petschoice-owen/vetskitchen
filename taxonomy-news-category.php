@@ -1,10 +1,10 @@
 <?php
 /**
- * The template for displaying archive community pages
+ * The template for displaying taxonomy pages
  *
- * This is the template that displays all archives community by default.
- * Please note that this is the WordPress construct of archives
- * and that other 'archives' on your WordPress site may use a
+ * This is the template that displays all taxonomies by default.
+ * Please note that this is the WordPress construct of taxonomy
+ * and that other 'taxonomies' on your WordPress site may use a
  * different template.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
@@ -16,9 +16,9 @@ get_header();
 
 <?php if ( have_posts() ) : ?>
     <div class="container-fluid container-fluid-custom">
-        <h1 class="page-archive-heading">Our Veterinary Know-how</h1>
+        <h1 class="page-archive-heading"><?php single_term_title(); ?></h1>
         <div class="page-archive-description">
-            <p>Browse our articles on a range of topics, to help make pet parenting that little bit easier. <br> If there is any topic you would like information on, please get in touch!</p>
+            <?php echo term_description(); ?>
         </div>
         <div class="row">
             <div class="col-12">
@@ -70,11 +70,10 @@ get_header();
                 </div>
             </div>
         </div>
-        <div class="row" data-masonry='{"percentPosition": true }'>
+        <div class="row">
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'partials/content', 'community' ); ?>
             <?php endwhile; ?>
-            
         </div>
         <?php wp_reset_postdata(); ?>
     </div>

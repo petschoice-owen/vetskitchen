@@ -46,11 +46,12 @@ add_action( 'init', 'vetskitchen_custom_cpts' );
 
 function vetskitchen_custom_cpts() {
     vetskitchen_create_post_type( 'community', 'Community', 'Community', 'dashicons-groups' );
+    vetskitchen_create_post_type( 'news', 'News', 'News', 'dashicons-admin-post' );
     // vetskitchen_create_post_type( 'reports', 'Reports', 'Reports', 'dashicons-media-spreadsheet' );
 }
 
 
-// Register Taxonomy Category
+// Register Taxonomy Category - CPT Community 
 function create_category_tax() {
 	$labels = array(
 		'name'              => _x( 'Categories', 'taxonomy general name', 'textdomain' ),
@@ -82,6 +83,40 @@ function create_category_tax() {
 	register_taxonomy( 'community-category', array('community'), $args );
 }
 add_action( 'init', 'create_category_tax' );
+
+
+// Register Taxonomy Category - CPT News
+function create_category_tax_news() {
+	$labels = array(
+		'name'              => _x( 'Categories', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => _x( 'Category', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => __( 'Search Categories', 'textdomain' ),
+		'all_items'         => __( 'All Categories', 'textdomain' ),
+		'parent_item'       => __( 'Parent Category', 'textdomain' ),
+		'parent_item_colon' => __( 'Parent Category:', 'textdomain' ),
+		'edit_item'         => __( 'Edit Category', 'textdomain' ),
+		'update_item'       => __( 'Update Category', 'textdomain' ),
+		'add_new_item'      => __( 'Add New Category', 'textdomain' ),
+		'new_item_name'     => __( 'New Category Name', 'textdomain' ),
+		'menu_name'         => __( 'Category', 'textdomain' ),
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => __( '', 'textdomain' ),
+		'hierarchical' => true,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_tagcloud' => true,
+		'show_in_quick_edit' => true,
+		'show_admin_column' => false,
+		'show_in_rest' => true,
+	);
+	register_taxonomy( 'news-category', array('news'), $args );
+}
+add_action( 'init', 'create_category_tax_news' );
 
 
 // // rewrite community category "/community/%category%"

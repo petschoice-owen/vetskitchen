@@ -1,5 +1,5 @@
 <?php 
-    $featured_img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full' ); 
+    $featured_img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large' ); 
     if ( !empty($featured_img) ) : ?>
         <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
             <a href="<?php the_permalink(); ?>" class="post-link">
