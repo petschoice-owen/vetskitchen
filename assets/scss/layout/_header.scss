@@ -33,7 +33,7 @@
         }
     }
 
-    &__logo {
+    .header__logo {
         position: relative;
         z-index: 1;
         
@@ -350,7 +350,7 @@
             display: none;
         }
 
-        &__logo img {
+        .header__logo img {
             margin-top: 10px;
             max-width: 100px;
         }

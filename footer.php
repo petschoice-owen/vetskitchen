@@ -1,4 +1,5 @@
 
+            <?php echo is_woocommerce() ? '</div>' : ''; ?>
         </main>
         <?php if ( have_rows( 'vk_footer_icon_banner', 'option' ) ) : ?>
             <div class="vk-icon-banner">

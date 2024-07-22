@@ -15,7 +15,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 );
 ?>
 <?php
-if ( $block['data']['preview_image_wrapper'] ) :
+if ( isset($block['data']['preview_image_wrapper']) ) :
     echo '<img src="'. get_template_directory_uri() .'/assets/blocks-preview/preview-buttons-with-image.png" style="width:100%; height:auto;">';
 else :
 ?>

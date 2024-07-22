@@ -15,7 +15,7 @@ get_header();
 ?>
 
 <?php if ( have_posts() ) : ?>
-    <div class="container-fluid container-fluid-custom">
+    <div class="container-fluid container-fluid-custom js-container">
         <h1 class="page-archive-heading"><?php single_term_title(); ?></h1>
         <div class="page-archive-description">
             <?php echo term_description(); ?>
@@ -70,12 +70,21 @@ get_header();
                 </div>
             </div>
         </div>
-        <div class="row" data-masonry='{"percentPosition": true }'>
+        <div class="row js-posts-grid" data-masonry='{"percentPosition": true }'>
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'partials/content', 'community' ); ?>
             <?php endwhile; ?>
         </div>
         <?php wp_reset_postdata(); ?>
+        <?php
+        global $wp_query;
+        if ( $wp_query->max_num_pages > 1 ) :
+        ?>
+            <div class="my-4 text-center js-posts-load-more-wrapper">
+                <a href="#" class="btn-orange js-posts-load-more" data-post-type="community"><?php echo  __( 'Load More', 'vetskitchen' ); ?></a>
+                <div class="vk-loader"></div>
+            </div>
+        <?php endif; ?>
     </div>
 <?php else : ?>
     <div class="container no-result">

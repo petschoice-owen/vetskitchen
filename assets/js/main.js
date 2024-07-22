@@ -110,31 +110,35 @@ jQuery(function($) {
 
     const loadMore = () => {
         if ( $('.js-posts-load-more').length ) {
+            var $page = 0;
+
             $('.js-posts-load-more').on('click', function(e) {
                 e.preventDefault();
                 
                 var $this = $(this),
-                    $wrapper = $this.closest('.row'),
-                    $loader = $wrapper.find('.invert-loader');
-        
+                    $wrapper = $this.closest('.js-container').find('.js-posts-grid'),
+                    $loader = $this.closest('.js-container').find('.vk-loader'),
+                    $type = $this.data('post-type');
+                $page++;
                 $this.hide();
                 $loader.show();
         
                 $.ajax({
                     url: wpAjax.ajaxUrl,
                     data: { 
-                        action: 'invert_posts_load_more',
-                        offset: $offset
+                        action: 'vk_posts_load_more',
+                        page: $page,
+                        type: $type
                     },
                     type: 'post',
                     dataType: 'json',
                     success: function(result) {
-                        $offset = result.offset;
                         $this.show();
                         $loader.hide();
                         $wrapper.append(result.content);
-        
-                        if (result.offset >= result.total) {
+                        $wrapper.masonry('reloadItems');
+                        $wrapper.masonry('layout');
+                        if (result.page === result.max_page) {
                             $this.hide();
                         } else {
                             $this.show();
@@ -157,5 +161,5 @@ jQuery(function($) {
     headerMobileMenu();
     cptCommunity();
     cptNews();
-    // loadMore();
+    loadMore();
 });

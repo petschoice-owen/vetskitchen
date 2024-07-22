@@ -99,3 +99,4 @@
 		<?php endif; ?>
 	</header>
 	<main>
+		<?php echo is_woocommerce() ? '<div class="container">' : ''; ?>

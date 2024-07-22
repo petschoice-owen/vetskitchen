@@ -14,6 +14,7 @@ function vetskitchen_enqueue_scripts() {
         wp_enqueue_script ( 'masonry', 'https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array(), '', array( 'strategy' => 'async', 'in_footer' => true ) );
     }
     wp_enqueue_script( 'main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '', true, $version );
+    wp_localize_script( 'main-script', 'wpAjax', array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'vetskitchen_enqueue_scripts', 4 );
 
@@ -47,8 +48,15 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'align-wide' );
 add_theme_support( 'editor-styles' );
 add_theme_support( 'custom-logo' );
+
+add_theme_support( 'woocommerce' );
+add_theme_support( 'wc-product-gallery-zoom' );
+add_theme_support( 'wc-product-gallery-lightbox' );
+add_theme_support( 'wc-product-gallery-slider' );
+
 add_editor_style( 'assets/css/custom-editor-style.css' );
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
 
 /**
  * Allow SVG

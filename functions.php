@@ -8,7 +8,7 @@ foreach ( glob( plugin_dir_path( __FILE__ ) . 'inc/*.php' ) as $filename ) {
 
 
 // change number of posts for CPT Community
-add_filter( 'pre_get_posts', 'custom_change_community_posts_per_page' );
+// add_filter( 'pre_get_posts', 'custom_change_community_posts_per_page' );
 
 function custom_change_community_posts_per_page( $query ) {
     if ( $query->is_post_type_archive( 'community' ) && ! is_admin() && $query->is_main_query() ) {
