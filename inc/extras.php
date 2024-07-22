@@ -6,21 +6,22 @@ add_action('wp_ajax_nopriv_vk_posts_load_more', 'vk_posts_load_more');
 add_action('wp_ajax_vk_posts_load_more', 'vk_posts_load_more');
 function vk_posts_load_more() {
     $type = $_POST['type'];
-    $page = (isset($_POST['page'])) ? $_POST['page'] : 0;
+    $page = 2;
     $args = array(
         'post_type'         => $type,
         // 'posts_per_page'    => 20,
         'post_status'       => 'publish',
         'paged'             => $page,
     );
-    if( is_tax() ) {
+    if( $_POST['tax'] ) {
         $args['tax_query'] = array(
             array(
-                'taxonomy' => get_queried_object()->taxonomy,
-                'terms'  => get_queried_object_id()
+                'taxonomy' => $_POST['tax'],
+                'terms'    => $_POST['term']
             )
         );
     }
+
     $the_query = new WP_Query($args);
     $max_page = $the_query->max_num_pages;
     ob_start();

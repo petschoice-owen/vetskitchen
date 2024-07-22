@@ -110,16 +110,18 @@ jQuery(function($) {
 
     const loadMore = () => {
         if ( $('.js-posts-load-more').length ) {
-            var $page = 0;
+            var $page = 2;
 
             $('.js-posts-load-more').on('click', function(e) {
                 e.preventDefault();
                 
                 var $this = $(this),
+                    $tax = $this.data('tax'),
+                    $term = $this.data('term'),
                     $wrapper = $this.closest('.js-container').find('.js-posts-grid'),
                     $loader = $this.closest('.js-container').find('.vk-loader'),
                     $type = $this.data('post-type');
-                $page++;
+                
                 $this.hide();
                 $loader.show();
         
@@ -128,11 +130,14 @@ jQuery(function($) {
                     data: { 
                         action: 'vk_posts_load_more',
                         page: $page,
-                        type: $type
+                        type: $type,
+                        tax: $tax,
+                        term: $term
                     },
                     type: 'post',
                     dataType: 'json',
                     success: function(result) {
+                        $page++;
                         $this.show();
                         $loader.hide();
                         $wrapper.append(result.content);

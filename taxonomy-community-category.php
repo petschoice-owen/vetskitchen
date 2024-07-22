@@ -81,7 +81,7 @@ get_header();
         if ( $wp_query->max_num_pages > 1 ) :
         ?>
             <div class="my-4 text-center js-posts-load-more-wrapper">
-                <a href="#" class="btn-orange js-posts-load-more" data-post-type="community"><?php echo  __( 'Load More', 'vetskitchen' ); ?></a>
+                <a href="#" class="btn-orange js-posts-load-more" data-post-type="community" data-tax="community-category" data-term="<?php echo get_queried_object_id(); ?>"><?php echo  __( 'Load More', 'vetskitchen' ); ?></a>
                 <div class="vk-loader"></div>
             </div>
         <?php endif; ?>
