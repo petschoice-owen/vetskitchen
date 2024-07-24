@@ -40,7 +40,7 @@ function vk_product_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'vk_product_tabs', 9999 );
 
 function vk_remove_sidebar_product_pages() {
-    if ( is_product() ) {
+    if ( is_product() || is_shop() ) {
         remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
     }
 }
@@ -60,6 +60,8 @@ function vk_single_product_title() {
 remove_action( 'woocommerce_single_product_summary','woocommerce_template_single_title',5 );
 add_action( 'woocommerce_single_product_summary', 'vk_single_product_title',5 );
 
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
 /**
  * Remove WooCommerce breadcrumbs 
  */
@@ -67,3 +69,44 @@ function vk_remove_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
 add_action( 'init', 'vk_remove_breadcrumbs' );
+
+//QUANTITY PLUS MINUS
+function vk_display_quantity_minus() {
+   if ( ! is_product() ) return;
+   echo '<span class="minus-btn">-</span>';
+}
+add_action( 'woocommerce_before_quantity_input_field', 'vk_display_quantity_minus' );
+
+function vk_display_quantity_plus() {
+   if ( ! is_product() ) return;
+   echo '<span class="plus-btn">+</span>';
+}
+add_action( 'woocommerce_after_quantity_input_field', 'vk_display_quantity_plus' );
+
+// PRODUCT LISTING
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+// add_action( 'woocommerce_after_shop_loop_item_title', 'display_variation_on_product_listing', 5 );
+
+function display_variation_on_product_listing() {
+    global $product;
+
+    // Check if the product is a variable product
+    if ( $product->is_type( 'variable' ) ) {
+        // Get available variations
+        echo 'yes';
+        woocommerce_variable_add_to_cart();
+    }
+}
+
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+add_action( 'woocommerce_before_main_content', 'vk_output_content_wrapper',10 );
+function vk_output_content_wrapper() {
+	echo '<div class="vk-shop-wrapper">';
+}
+
+add_action( 'woocommerce_after_main_content', 'vk_output_content_wrapper_end', 10 );
+function vk_output_content_wrapper_end() {
+		echo '</div>';
+}

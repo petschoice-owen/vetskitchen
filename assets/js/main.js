@@ -160,6 +160,28 @@ jQuery(function($) {
         
     };
 
+    const productQuantity = () => {
+        // Quantity buttons
+        $(document).on('click', '.quantity .plus-btn, .quantity .minus-btn', function() {
+            var $quantityInput = $(this).closest('.quantity').find('.qty');
+            var currentValue = parseFloat($quantityInput.val());
+            var max_value = $quantityInput.attr('max') ? parseFloat($quantityInput.attr('max')) : '';
+            var step = $quantityInput.attr('step') ? parseFloat($quantityInput.attr('step')) : 1;
+            if ($(this).is('.plus-btn')) {
+                if (max_value !== '' && (max_value <= currentValue)) {
+                    return;
+                }
+                $quantityInput.val(currentValue + step);
+            } else {
+                if (currentValue > 1) {
+                    $quantityInput.val(currentValue - step);
+                }
+            }
+
+            $quantityInput.trigger('change');
+        });
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -167,4 +189,5 @@ jQuery(function($) {
     cptCommunity();
     cptNews();
     loadMore();
+    productQuantity();
 });

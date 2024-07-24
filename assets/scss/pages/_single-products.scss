@@ -1,0 +1,250 @@
+
+.single-product {
+    main {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    div.product {
+        .product_title {
+            margin-bottom: 0;
+            font-size: 30px;
+            line-height: 1.3;
+
+            .subtitle {
+                display: block;
+                color: #eb902e;
+            }
+
+            & + .price {
+                font-family: 'Signika', sans-serif;
+                font-size: 30px;
+                font-weight: 600;
+                color: $green2;
+            }
+        }
+
+        div.woocommerce-product-gallery {
+            ol.flex-control-thumbs {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+                margin-top: 10px;
+
+                li {
+                    width: auto;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid $lgray;
+                        transition: .2s ease-in-out;
+
+                        &.flex-active {
+                            border-color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        .woocommerce-variation-price {
+            margin-bottom: 30px;
+
+            .price {
+                font-family: 'Signika', sans-serif;
+                font-size: 30px;
+                font-weight: 600;
+                color: $green2;
+            }
+        }
+
+        form {
+            table {
+                margin-top: 20px;
+            }
+
+            table,
+            tbody,
+            tr,
+            td,
+            th {
+                display: block;
+            }
+
+            label {
+                display: block;
+                color: $green2;
+            }
+
+            select {
+                background: $lgray6 url('../icons/down-arrow.svg') no-repeat center right 15px;
+                background-size: 15px;
+            }
+
+            .quantity {
+                position: relative;
+
+                .minus-btn,
+                .plus-btn {
+                    position: absolute;
+                    top: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;
+                    height: 100%;
+                    font-size: 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+
+                .minus-btn {
+                    left: 0;
+                }
+
+                .plus-btn {
+                    right: 0;
+                }
+
+                .qty {
+                    width: 132px;
+                    font-family: 'Signika', sans-serif;
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: $gray5;
+                    -webkit-appearance: none;
+
+                    &::-webkit-inner-spin-button {
+                        display: none;
+                    }
+                }
+            }
+
+            .woocommerce-variation-add-to-cart {
+                display: flex;
+                gap: 10px;
+
+                button[type="submit"] {
+                    @extend .btn-orange;
+                    flex: 1;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        div.woocommerce-tabs {
+            margin-bottom: 40px;
+
+            ul.tabs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                padding: 0;
+
+                &:before {
+                    display: none;
+                }
+
+                li {
+                    display: flex;
+                    margin: 0;
+                    flex: 1;
+                    padding: 5px 10px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    background: $white;
+                    border: 1px solid $lgray3;
+                    border-radius: 0;
+
+                    @include respond-to(sm-down) {
+                        flex: 0 0 100%;
+                    }
+
+                    &.active {
+                        color: $white;
+                        background-color: $green2;
+                        border-bottom-color: $lgray3;
+                    }
+
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                    }
+
+                    &:before,
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+
+            .woocommerce-Tabs-panel {
+                color: $black;
+
+                table {
+                    margin-bottom: 20px;
+                    width: 100%;
+
+                    td {
+                        padding: 5px 10px;
+                        vertical-align: middle;
+                    }
+
+                    tbody {
+                        tr {
+                            &:nth-child(odd) {
+                                background-color: $whitelilac;
+                            }
+                        }
+                    }
+                }
+
+                &--description h2 {
+                    display: none;
+                }
+            }
+        }
+   } 
+
+   @include respond-to(md-up) {
+        div.product {
+            div.woocommerce-product-gallery {
+                display: flex;
+                gap: 10px;
+
+                .flex-viewport {
+                    height: auto !important;
+                }
+
+                .woocommerce-product-gallery__wrapper,
+                .woocommerce-product-gallery__image {
+                    height: 100%;
+                }
+
+                ol.flex-control-thumbs {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex: 0 0 80px;
+                    margin-top: 0;
+                    order: -1;
+
+                    li {
+                        width: 100%;
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+        }
+   }
+}

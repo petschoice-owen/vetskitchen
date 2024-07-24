@@ -92,3 +92,17 @@ function vetskitchen_add_block_group_inner( $block_content, $block ) {
 	return $updated_content;
 }
 add_filter( 'render_block_core/group', 'vetskitchen_add_block_group_inner', 10, 2 );
+
+
+function vk_widgets_init() {
+    register_sidebar( array(
+        'name'          => 'Shop Sidebar',
+        'id'            => 'shop_sidebar',
+        'description'   => 'Widgets in this area will be shown on the shop page.',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'vk_widgets_init' );
