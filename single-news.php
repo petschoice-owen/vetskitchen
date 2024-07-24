@@ -16,7 +16,7 @@ get_header();
 
 <?php if ( have_posts() ) : ?>
     <div class="container-fluid container-fluid-custom">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="categories">
                     <ul class="community-categories-list">
@@ -28,7 +28,7 @@ get_header();
                             </a>
                         </li>
                         <?php $terms = get_terms( array(
-                            'taxonomy' => 'community-category',
+                            'taxonomy' => 'news-category',
                             'hide_empty' => false,
                         ) ); ?>
                         <?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
@@ -40,15 +40,15 @@ get_header();
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <!-- <li>
+                        <li>
                             <a href="#" id="search_community" class="search">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
                                 </svg>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
-                    <!-- <div class="search-wrapper">
+                    <div class="search-wrapper">
                         <form role="search" method="get" class="search-form" action="<?php echo home_url( '/community' ); ?>">
                             <label>
                                 <input type="hidden" name="post_type" value="community" />
@@ -62,10 +62,10 @@ get_header();
                                 </svg>
                             </button>
                         </form>
-                    </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <?php while ( have_posts() ) : the_post(); ?>
             <div class="row">
                 <div class="col-single-post">
@@ -117,24 +117,24 @@ get_header();
                         </a>
                     </div>
                     <div class="back-button">
-                        <a href="/community" class="go-back">« Back to Community</a>
+                        <a href="/news" class="go-back">« Back to News</a>
                     </div>
                 </div>
             </div>
-            <?php
-                $categories = get_the_terms(get_the_ID(),'community-category');
+            <!-- <?php
+                $categories = get_the_terms(get_the_ID(),'news-category');
                 if ( $categories ) {
                     $category_ids = array();
                     foreach( $categories as $category ) {
                         $category_ids[] = $category->term_id;
                     }
                     $args = array(
-                        'post_type' => 'community',
+                        'post_type' => 'news',
                         'posts_per_page' => 4, 
                         'post__not_in' => array( get_the_ID() ),
                         'tax_query' => array(
                             array(
-                            'taxonomy' => 'community-category',
+                            'taxonomy' => 'news-category',
                             'terms' => $category_ids,
                             ),
                         ),
@@ -146,14 +146,14 @@ get_header();
                             <h2 class="section-heading">Related Articles</h2>
                             <div class="row">
                                 <?php while ( $related_posts_query->have_posts() ) : $related_posts_query->the_post(); ?>
-                                    <?php get_template_part( 'partials/content', 'community' ); ?>
+                                    <?php get_template_part( 'partials/content', 'news' ); ?>
                                 <?php endwhile; ?>
                             </div>
                         </div>
                         <?php wp_reset_postdata();
                     endif;
                 }
-            ?>
+            ?> -->
         <?php endwhile; ?>
     </div>
 <?php else : ?>
