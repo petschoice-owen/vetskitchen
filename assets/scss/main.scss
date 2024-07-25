@@ -28,7 +28,8 @@
     'layout/header',
     'layout/footer',
     'layout/icon-banner',
-    'layout/gutenberg';
+    'layout/gutenberg',
+    'layout/popup';
 
 // 6. Pages
 @import
@@ -37,5 +38,6 @@
   'pages/archive-news',
   'pages/single-news',
   'pages/single-products',
-  'pages/shop';
+  'pages/shop',
+  'pages/cart-checkout';
   

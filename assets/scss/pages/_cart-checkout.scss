@@ -1,0 +1,79 @@
+
+.woocommerce-page {
+    &.woocommerce-cart {
+        main {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .wp-block-woocommerce-cart-totals-block {
+            .wc-block-cart__submit-button {
+                @extend .btn-orange;
+                margin-top: 30px;
+                text-transform: uppercase;
+            }
+        }
+
+        table.wc-block-cart-items {
+            .wc-block-cart-items__row {
+                .wc-block-components-product {
+                    &-name {
+                        margin-bottom: 5px;
+                        font-family: 'Signika', sans-serif;
+                        color: $green2;
+                    }
+
+                    &-metadata  {
+                        font-size: 14px;
+                        color: $green2;
+                    }
+                }
+
+                .wc-block-components-quantity-selector {
+                    &__input {
+                        min-height: auto;
+                    }
+
+                    &__button {
+                        box-shadow: none !important;
+                    }
+
+                    &:after {
+                        border-radius: 20px;
+                    }
+                }
+
+                .wc-block-components-product-price {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $green2;
+                }
+            }
+        }
+
+        .wc-block-cart__empty-cart__title {
+            &:before {
+                content: "\e98e";
+                margin: 0;
+                width: auto;
+                height: auto;
+                font-family: 'wokiee_icons' !important;
+                font-size: 150px;
+                font-weight: 400;
+                color: #ebecee;
+                text-align: center;
+                background: none;
+                mask: none;
+            }
+        }
+    }
+
+    &.woocommerce-checkout {
+        .wc-block-checkout__actions {
+            .wc-block-components-checkout-place-order-button {
+                @extend .btn-orange;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
