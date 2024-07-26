@@ -150,12 +150,12 @@
         font-family: 'terfens';
         font-size: 16px;
         line-height: 1.6;
+        color: $gray;
 
         * {
             font-family: 'terfens';
             font-size: 16px;
             line-height: 1.6;
-            color: $gray;
         }
 
         a {
@@ -202,10 +202,30 @@
             opacity: .6;
         }
 
+        .wp-block-button {
+            .wp-element-button {
+                color: $white;
+                text-decoration: none;
+
+                @include on-event() {
+                    text-decoration: none;
+                    outline: none;
+                }
+            }
+        }
+
         img:not(.featured-image) {
             border: 10px solid $whitelilac;
             border-radius: 10px;
             box-shadow: 0 30px 15px -25px rgba(0,0,0,.3), 0 0 30px 0 rgba(0,0,0,.15);
+        }
+
+        .wp-block-image {
+            &.aligncenter {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
 

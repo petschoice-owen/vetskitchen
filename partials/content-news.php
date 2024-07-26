@@ -1,5 +1,5 @@
 <?php 
-    $featured_img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'medium' ); 
+    $featured_img = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large' ); 
     if ( !empty($featured_img) ) : ?>
         <div class="col-md-6 col-12">
             <div class="text">
