@@ -182,6 +182,55 @@ jQuery(function($) {
         });
     };
 
+    const gridListToggler = () => {
+        $(document).on('click', '.vk-view-buttons a', function(e) {
+            e.preventDefault();
+            var $class = 'columns-3';
+            if($(this).hasClass('list-view')) {
+                $class = 'columns-1';
+            }else if($(this).hasClass('two-col-view')) {
+                $class = 'columns-2';
+            }else if($(this).hasClass('four-col-view')) {
+                $class = 'columns-4';
+            }
+            $('.vk-view-buttons a').not($(this)).removeClass('active');
+            $(this).addClass('active');
+            $('ul.products').removeClass(function (index, css) {
+                return (css.match (/\bcolumns-\S+/g) || []).join(' ');
+            }).addClass($class);
+        });
+
+        if($('.vk-view-buttons').length > 0) {
+            $(window).on('load resize', function() {
+                if($(window).width() < 992) {
+                    if($('.vk-view-buttons .active').hasClass('three-col-view') || $('.vk-view-buttons .active').hasClass('four-col-view')) {
+                        $('.vk-view-buttons .two-col-view').trigger('click');
+                    }
+                }
+            });
+        }
+    };
+
+    const variationSwatch = () => {
+        $(document).on('click', '.variation-swatches .swatch', function(e) {
+            $('.variation-swatches .swatch').not($(this)).removeClass('active');
+            $(this).addClass('active');
+            $(this).closest('.product').find('.product-price').text($(this).data('price'));
+        });
+    };
+
+    const shopSidebar = () => {
+        $(document).on('click', '.vk-shop-sidebar .widget-title', function(e) {
+            if($(this).hasClass('close')) {
+                $(this).removeClass('close');
+                $(this).siblings('.wp-widget-group__inner-blocks').slideDown();
+            }else {
+                $(this).addClass('close');
+                $(this).siblings('.wp-widget-group__inner-blocks').slideUp();
+            }
+        });
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -190,4 +239,7 @@ jQuery(function($) {
     cptNews();
     loadMore();
     productQuantity();
+    gridListToggler();
+    variationSwatch();
+    shopSidebar();
 });

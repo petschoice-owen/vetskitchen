@@ -84,29 +84,106 @@ function vk_display_quantity_plus() {
 add_action( 'woocommerce_after_quantity_input_field', 'vk_display_quantity_plus' );
 
 // PRODUCT LISTING
-remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-
-// add_action( 'woocommerce_after_shop_loop_item_title', 'display_variation_on_product_listing', 5 );
-
-function display_variation_on_product_listing() {
-    global $product;
-
-    // Check if the product is a variable product
-    if ( $product->is_type( 'variable' ) ) {
-        // Get available variations
-        echo 'yes';
-        woocommerce_variable_add_to_cart();
-    }
-}
-
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-add_action( 'woocommerce_before_main_content', 'vk_output_content_wrapper',10 );
+
 function vk_output_content_wrapper() {
 	echo '<div class="vk-shop-wrapper">';
 }
+add_action( 'woocommerce_before_main_content', 'vk_output_content_wrapper',10 );
 
-add_action( 'woocommerce_after_main_content', 'vk_output_content_wrapper_end', 10 );
 function vk_output_content_wrapper_end() {
-		echo '</div>';
+    echo '</div>';
 }
+add_action( 'woocommerce_after_main_content', 'vk_output_content_wrapper_end', 10 );
+
+function vk_shop_action_wrapper_open() {
+    echo '<div class="vk-shop-nav-actions">';
+}
+add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_open', 19);
+
+function vk_shop_view_buttons() {
+    if(!is_shop()) {
+        echo '<div class="vk-view-buttons">
+            <a href="#" class="list-view"></a>
+            <a href="#" class="two-col-view"></a>
+            <a href="#" class="three-col-view active d-none d-lg-block"></a>
+            <a href="#" class="four-col-view d-none d-lg-block"></a></div>';
+    }
+}
+add_action('woocommerce_before_shop_loop', 'vk_shop_view_buttons', 31);
+
+function vk_shop_action_wrapper_close() {
+    echo '</div>';
+}
+add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_close', 32);
+
+// PRODUCT LOOP
+add_action( 'woocommerce_shop_loop_item_title', 'vk_display_product_category_before_title', 5 );
+add_action( 'woocommerce_shop_loop_item_title', function(){
+    echo '<div class="product-info">';
+}, 1 );
+add_action( 'woocommerce_shop_loop_item_title', function(){
+    echo '</div>';
+}, 25 );
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 15 );
+add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_link_open', 5 );
+add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 15 );
+add_action( 'woocommerce_shop_loop_item_title', function(){
+    global $product;
+    $excerpt = wp_trim_words($product->post->post_excerpt, 35);
+    echo '<div class="product-short-desc">'.$excerpt.'</div>';
+}, 16 );
+function vk_display_product_category_before_title() {
+    global $product;
+    $categories = get_the_terms( $product->get_id(), 'product_cat' );
+
+    if ( $categories && ! is_wp_error( $categories ) ) {
+        echo '<a href="'. esc_url( get_term_link( $categories[0]->slug, 'product_cat' ) ) .'" class="product-category">' . $categories[0]->name . '</a>';
+    }
+}
+function display_variation_on_product_listing() {
+    global $product;
+
+    if ( $product->is_type( 'variable' ) ) {
+        $variations = $product->get_available_variations();
+        if($variations) {
+            $firstVar = new WC_Product_Variation( $variations[0]['variation_id'] );
+            $firstVarPrice = $firstVar->get_price();
+            echo '<div class="product-price">'.get_woocommerce_currency_symbol() . $firstVarPrice.'</div>';
+            echo '<div class="variation-swatches">';
+            foreach ( $variations as $key => $variation ) {
+                $variation_id = $variation['variation_id'];
+                $variation_obj = new WC_Product_Variation( $variation_id );
+                $attributes = $variation_obj->get_variation_attributes();
+                $variation_price = $variation_obj->get_price();
+                $variation_name = implode( ' / ', array_map( function($value, $key) {
+                    return $value;
+                }, $attributes, array_keys( $attributes ) ) );
+    
+                echo '<div class="swatch'. (($key === 0) ? ' active' : '') .'" data-price="'. get_woocommerce_currency_symbol() . $variation_price .'">' . esc_html( $variation_name ) . '</div>';
+            }
+            echo '</div>';
+        }
+    }
+}
+add_action( 'woocommerce_shop_loop_item_title', 'display_variation_on_product_listing', 20 );
+add_action( 'woocommerce_after_shop_loop_item_title', function(){
+    echo '<div class="product-actions">';
+}, 1 );
+add_action( 'woocommerce_after_shop_loop_item_title', function(){
+    global $product;
+    if ( $product->is_type( 'variable' ) ) {
+        $variations = $product->get_available_variations();
+        if($variations) {
+            $firstVar = new WC_Product_Variation( $variations[0]['variation_id'] );
+            $firstVarPrice = $firstVar->get_price();
+            echo '<div class="product-price">'.get_woocommerce_currency_symbol() . $firstVarPrice.'</div>';
+        }
+    }
+}, 11 );
+add_action( 'woocommerce_after_shop_loop_item', function(){
+    echo '</div>';
+}, 30 );
