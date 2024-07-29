@@ -213,7 +213,7 @@ jQuery(function($) {
 
     const variationSwatch = () => {
         $(document).on('click', '.variation-swatches .swatch', function(e) {
-            $('.variation-swatches .swatch').not($(this)).removeClass('active');
+            $(this).closest('.product').find('.variation-swatches .swatch').not($(this)).removeClass('active');
             $(this).addClass('active');
             $(this).closest('.product').find('.product-price').text($(this).data('price'));
         });

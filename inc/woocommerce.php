@@ -138,11 +138,18 @@ add_action( 'woocommerce_shop_loop_item_title', function(){
 }, 16 );
 function vk_display_product_category_before_title() {
     global $product;
-    $categories = get_the_terms( $product->get_id(), 'product_cat' );
-
-    if ( $categories && ! is_wp_error( $categories ) ) {
-        echo '<a href="'. esc_url( get_term_link( $categories[0]->slug, 'product_cat' ) ) .'" class="product-category">' . $categories[0]->name . '</a>';
-    }
+    if( function_exists('yoast_get_primary_term_id') ) {
+        $primary_cat_id = yoast_get_primary_term_id( 'product_cat', $product->get_id() );
+        if($primary_cat_id) {
+            $primary_cat = get_term($primary_cat_id, 'product_cat');
+            echo '<a href="'. esc_url( get_term_link( $primary_cat->slug, 'product_cat' ) ) .'" class="product-category">' . $primary_cat->name . '</a>';
+        }
+    } else {
+		$categories = get_the_terms( $product->get_id(), 'product_cat' );
+		if ( $categories && ! is_wp_error( $categories ) ) {
+			echo '<a href="'. esc_url( get_term_link( $categories[0]->slug, 'product_cat' ) ) .'" class="product-category">' . $categories[0]->name . '</a>';
+		}
+	}
 }
 function display_variation_on_product_listing() {
     global $product;
@@ -159,9 +166,17 @@ function display_variation_on_product_listing() {
                 $variation_obj = new WC_Product_Variation( $variation_id );
                 $attributes = $variation_obj->get_variation_attributes();
                 $variation_price = $variation_obj->get_price();
-                $variation_name = implode( ' / ', array_map( function($value, $key) {
-                    return $value;
-                }, $attributes, array_keys( $attributes ) ) );
+                $attribute_names = array();
+				foreach ( $attributes as $attribute_name => $attribute_value ) {
+					$taxonomy = str_replace('attribute_', '', $attribute_name);
+					$term = get_term_by( 'slug', $attribute_value, $taxonomy );
+					if ( $term ) {
+						$attribute_names[] = $term->name;
+					} else {
+						$attribute_names[] = $attribute_value;
+					}
+				}
+				$variation_name = implode( ' / ', $attribute_names );
     
                 echo '<div class="swatch'. (($key === 0) ? ' active' : '') .'" data-price="'. get_woocommerce_currency_symbol() . $variation_price .'">' . esc_html( $variation_name ) . '</div>';
             }
@@ -187,3 +202,83 @@ add_action( 'woocommerce_after_shop_loop_item_title', function(){
 add_action( 'woocommerce_after_shop_loop_item', function(){
     echo '</div>';
 }, 30 );
+
+
+function vk_add_trustbox_before_product_description() {
+    global $product;
+	$sku = $product->get_sku();
+	if ($product->is_type('variable')) {
+        $available_variations = $product->get_available_variations();
+		$skuList = array();
+        if (!empty($available_variations)) {
+			foreach($available_variations as $variation) {
+				$variation_id = $variation['variation_id'];
+				$variation_sku = $variation['sku'];
+				$skuList[] = 'TRUSTPILOT_SKU_VALUE_'.$variation_id;
+				$skuList[] = $variation_sku;
+			}
+		}
+		$sku = implode(',',$skuList);
+	}
+    ?>
+    <!-- TrustBox widget - Product Mini -->
+    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="54d39695764ea907c0f34825" data-businessunit-id="57444e1d0000ff00058d4d37" data-style-height="24px" data-style-width="100%" data-theme="light" data-sku="<?php echo $sku; ?>" data-no-reviews="hide" data-scroll-to-list="true" data-style-alignment="center">
+    <a href="https://uk.trustpilot.com/review/vetskitchen.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+    <!-- End TrustBox widget -->
+<?php
+}
+add_action('woocommerce_single_product_summary', 'vk_add_trustbox_before_product_description', 15);
+
+//CART
+add_action( 'woocommerce_before_cart', function(){
+    echo '<h1 class="cart-title">Shopping Cart</h1>';
+    if( $notice = get_field( 'vk_cart_notice', 'option' ) ) {
+        echo '<div class="cart-notice">'. $notice .'</div>';
+    }
+}, 15 );
+
+function vk_conditionally_hide_checkout_button_cart_page() {
+    if(is_cart()) {
+        // Check if "Restricted Zone" is in the available shipping methods
+        $is_restricted_zone = false;
+        $shipping_methods = WC()->shipping()->get_packages();
+
+        foreach ($shipping_methods as $package) {
+            foreach ($package['rates'] as $rate) {
+                if ($rate->label === 'Restricted Zone') {
+                    $is_restricted_zone = true;
+                    break 2;
+                }
+            }
+        }
+
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                var isRestrictedZone = <?php echo json_encode($is_restricted_zone); ?>;
+                var isShippingInfoEmpty = $('#calc_shipping_postcode').val() === '';
+                if (isRestrictedZone || isShippingInfoEmpty) {
+                    $('.wc-proceed-to-checkout').hide();
+                    $('.restricted-zone-message').show();
+                } else {
+                    $('.wc-proceed-to-checkout').show();
+                    $('.restricted-zone-message').hide();
+                }
+
+                $(document).on('updated_cart_totals', function() {
+                    var shippingMethod = $('#shipping_method').text().trim();
+                    if ( shippingMethod.includes("Restricted Zone") ) {
+                        $('.wc-proceed-to-checkout').hide();
+                        $('.restricted-zone-message').show();
+                    }else {
+                        $('.wc-proceed-to-checkout').show();
+                        $('.restricted-zone-message').hide();
+                    }
+                });
+            });
+        </script>
+    <?php
+    }
+}
+add_action('woocommerce_cart_calculate_fees', 'vk_conditionally_hide_checkout_button_cart_page');

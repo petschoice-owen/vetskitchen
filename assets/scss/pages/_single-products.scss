@@ -21,6 +21,10 @@
                 font-size: 30px;
                 font-weight: 600;
                 color: $green2;
+
+                .bos4w-or-subscribe {
+                    display: none;
+                }
             }
         }
 
@@ -49,6 +53,12 @@
             }
         }
 
+        .summary {
+            .trustpilot-widget {
+                margin-bottom: 20px;
+            }
+        }
+
         .woocommerce-variation-price {
             margin-bottom: 30px;
 
@@ -57,6 +67,10 @@
                 font-size: 30px;
                 font-weight: 600;
                 color: $green2;
+
+                .bos4w-or-subscribe {
+                    display: none;
+                }
             }
         }
 
@@ -126,6 +140,7 @@
 
             .woocommerce-variation-add-to-cart {
                 display: flex;
+                flex-wrap: wrap;
                 gap: 10px;
 
                 button[type="submit"] {
@@ -133,6 +148,33 @@
                     flex: 1;
                     text-transform: uppercase;
                 }
+            }
+
+            .bos4w-display-wrap {
+                flex: 0 0 100%;
+
+                ul {
+                    padding: 0;
+
+                    li {
+                        padding: 5px 0;
+
+                        label {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        input {
+                            margin-top: -2px;
+                        }
+                    }
+                }
+            }
+
+            &.cart .reset_variations,
+            .bos4w-or-subscribe {
+                display: none !important;
             }
         }
 
