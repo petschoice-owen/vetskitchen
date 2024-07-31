@@ -74,9 +74,17 @@
             }
         }
 
+        span.onsale {
+            display: none;
+        }
+
         form {
             table {
                 margin-top: 20px;
+
+                & + .product-info-buttons {
+                    margin-top: 25px;
+                }
             }
 
             table,
@@ -264,11 +272,79 @@
                     flex: 1;
                     text-transform: uppercase;
                 }
+
+                .bos4w-display-wrap {
+                    display: none !important;
+                }
             }
         }
-   } 
+    } 
 
-   @include respond-to(md-up) {
+    .product-info-buttons {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 25px;
+
+        & > a {
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+            font-size: 14px;
+            color: $green2;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+
+            i {
+                font-size: 20px;
+            }
+
+            &:hover {
+                border-bottom-color: $green2;
+            }
+        }
+    }
+
+    .product-modal {
+        padding: 10px;
+
+        .modal-dialog {
+            max-width: 962px;
+            text-align: center;
+        }
+
+        .modal-content {
+            padding: 40px 20px;
+            border-radius: 20px;
+        }
+
+        .modal-body {
+            padding: 0;
+
+            ul, ol {
+                text-align: left;
+            }
+        }
+
+        .btn-orange {
+            padding: 5px 20px;
+            margin-top: 10px;
+            min-height: 40px;
+            font-size: 19px;
+            border-radius: 6px;
+        }
+
+        &__close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 24px;
+            color: $white;
+            text-decoration: none;
+        }
+    }
+
+    @include respond-to(md-up) {
         div.product {
             div.woocommerce-product-gallery {
                 display: flex;
@@ -301,5 +377,11 @@
                 }
             }
         }
-   }
+    }
+
+    @include respond-to(lg-down) {
+        .product-modal__close {
+            right: 0;
+        }
+    }
 }

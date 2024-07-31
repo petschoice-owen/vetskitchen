@@ -25,16 +25,21 @@ function vk_feeding_guidelines_product_tab_content() {
 function vk_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] );
     unset( $tabs['reviews'] );
-    $tabs['nutritional_information'] = array(
-        'title' => __( 'Nutritional Information', 'woocommerce' ),
-        'priority' => 20,
-        'callback' => 'vk_nutritional_information_product_tab_content',
-    );
-    $tabs['feeding_guidelines'] = array(
-        'title' => __( 'Feeding Guidelines', 'woocommerce' ),
-        'priority' => 30,
-        'callback' => 'vk_feeding_guidelines_product_tab_content',
-    );
+    global $product;
+    if(get_field( 'vk_product_nutritional_information', $product->get_ID() )) {
+        $tabs['nutritional_information'] = array(
+            'title' => __( 'Nutritional Information', 'woocommerce' ),
+            'priority' => 20,
+            'callback' => 'vk_nutritional_information_product_tab_content',
+        );
+    }
+    if(get_field( 'vk_product_feeding_guidelines', $product->get_ID() )) {
+        $tabs['feeding_guidelines'] = array(
+            'title' => __( 'Feeding Guidelines', 'woocommerce' ),
+            'priority' => 30,
+            'callback' => 'vk_feeding_guidelines_product_tab_content',
+        );
+    }
    return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'vk_product_tabs', 9999 );
@@ -61,6 +66,114 @@ remove_action( 'woocommerce_single_product_summary','woocommerce_template_single
 add_action( 'woocommerce_single_product_summary', 'vk_single_product_title',5 );
 
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
+
+function vk_add_trustbox_before_product_description() {
+    global $product;
+	$sku = $product->get_sku();
+	if ($product->is_type('variable')) {
+        $available_variations = $product->get_available_variations();
+		$skuList = array();
+        if (!empty($available_variations)) {
+			foreach($available_variations as $variation) {
+				$variation_id = $variation['variation_id'];
+				$variation_sku = $variation['sku'];
+				$skuList[] = 'TRUSTPILOT_SKU_VALUE_'.$variation_id;
+				$skuList[] = $variation_sku;
+			}
+		}
+		$sku = implode(',',$skuList);
+	}
+    ?>
+    <!-- TrustBox widget - Product Mini -->
+    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="54d39695764ea907c0f34825" data-businessunit-id="57444e1d0000ff00058d4d37" data-style-height="24px" data-style-width="100%" data-theme="light" data-sku="<?php echo $sku; ?>" data-no-reviews="hide" data-scroll-to-list="true" data-style-alignment="center">
+    <a href="https://uk.trustpilot.com/review/vetskitchen.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+    <!-- End TrustBox widget -->
+<?php
+}
+add_action('woocommerce_single_product_summary', 'vk_add_trustbox_before_product_description', 15);
+
+// Add modals before the WooCommerce product form
+function product_modals() {
+    $subscribe_content = get_field( 'vk_why_subscribe_modal', 'option' )['content'];
+    $subscribe_title = get_field( 'vk_why_subscribe_modal', 'option' )['heading'];
+    $subscribe_link = get_field( 'vk_why_subscribe_modal', 'option' )['link_text'];
+    $subscribe_button = get_field( 'vk_why_subscribe_modal', 'option' )['button'];
+    $shipping_content = get_field( 'vk_shipping_modal', 'option' )['content'];
+    $shipping_title = get_field( 'vk_shipping_modal', 'option' )['heading'];
+    $shipping_link = get_field( 'vk_shipping_modal', 'option' )['link_text'];
+    $shipping_button = get_field( 'vk_shipping_modal', 'option' )['button'];
+    if( $subscribe_content || $shipping_content ) {
+        echo '<div class="product-info-buttons">';
+        ?>
+        <?php if ( $subscribe_content ) : ?>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#whySubscribe"><i class="icon-f-43"></i> <?php echo $subscribe_link ? $subscribe_link : __( 'Why Subscribe?', 'vetskitchen' ); ?></a>
+            <div class="modal fade product-modal" id="whySubscribe" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <a href="#" type="button" class="product-modal__close icon-g-80" data-bs-dismiss="modal" aria-label="Close"></a>
+                        <div class="modal-body">
+                            <?php echo $subscribe_title ? '<h3 class="title">'.$subscribe_title.'</h3>' : ''; ?>
+                            <?php echo $subscribe_content; ?>
+                            <?php 
+                            if( $subscribe_button ): 
+                                $link_url = $subscribe_button['url'];
+                                $link_title = $subscribe_button['title'];
+                                $link_target = $subscribe_button['target'] ? $subscribe_button['target'] : '_self';
+                                ?>
+                                <a class="btn-orange" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ( $shipping_content ) : ?>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#shippingInfo"><i class="icon-f-48"></i> <?php echo $shipping_link ? $shipping_link : __( 'Shipping', 'vetskitchen' ); ?></a>
+            <div class="modal fade product-modal" id="shippingInfo" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <a href="#" type="button" class="product-modal__close icon-g-80" data-bs-dismiss="modal" aria-label="Close"></a>
+                        <div class="modal-body">
+                            <?php echo $shipping_title ? '<h3 class="title">'.$shipping_title.'</h3>' : ''; ?>
+                            <?php echo $shipping_content; ?>
+                            <?php 
+                            if( $shipping_button ): 
+                                $link_url = $shipping_button['url'];
+                                $link_title = $shipping_button['title'];
+                                $link_target = $shipping_button['target'] ? $shipping_button['target'] : '_self';
+                                ?>
+                                <a class="btn-orange" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php
+        echo '</div>';
+    }
+}
+function vk_add_modals_before_product_form() {
+    if ( is_product() ) {
+        global $product;
+        if ( $product->is_type( 'simple' ) ) {
+            product_modals();
+        }
+    }
+}
+add_action( 'woocommerce_before_add_to_cart_form', 'vk_add_modals_before_product_form' );
+
+function vk_add_modals_after_variations() {
+    if ( is_product() ) {
+        global $product;
+        if ( $product->is_type( 'variable' ) ) {
+            product_modals();
+        }
+    }
+}
+add_action( 'woocommerce_after_variations_table', 'vk_add_modals_after_variations' );
 
 /**
  * Remove WooCommerce breadcrumbs 
@@ -158,7 +271,7 @@ function display_variation_on_product_listing() {
         $variations = $product->get_available_variations();
         if($variations) {
             $firstVar = new WC_Product_Variation( $variations[0]['variation_id'] );
-            $firstVarPrice = $firstVar->get_price();
+            $firstVarPrice = number_format($firstVar->get_price(), 2);
             echo '<div class="product-price">'.get_woocommerce_currency_symbol() . $firstVarPrice.'</div>';
             echo '<div class="variation-swatches">';
             foreach ( $variations as $key => $variation ) {
@@ -178,7 +291,7 @@ function display_variation_on_product_listing() {
 				}
 				$variation_name = implode( ' / ', $attribute_names );
     
-                echo '<div class="swatch'. (($key === 0) ? ' active' : '') .'" data-price="'. get_woocommerce_currency_symbol() . $variation_price .'">' . esc_html( $variation_name ) . '</div>';
+                echo '<div class="swatch'. (($key === 0) ? ' active' : '') .'" data-price="'. get_woocommerce_currency_symbol() . number_format($variation_price, 2) .'">' . esc_html( $variation_name ) . '</div>';
             }
             echo '</div>';
         }
@@ -203,32 +316,6 @@ add_action( 'woocommerce_after_shop_loop_item', function(){
     echo '</div>';
 }, 30 );
 
-
-function vk_add_trustbox_before_product_description() {
-    global $product;
-	$sku = $product->get_sku();
-	if ($product->is_type('variable')) {
-        $available_variations = $product->get_available_variations();
-		$skuList = array();
-        if (!empty($available_variations)) {
-			foreach($available_variations as $variation) {
-				$variation_id = $variation['variation_id'];
-				$variation_sku = $variation['sku'];
-				$skuList[] = 'TRUSTPILOT_SKU_VALUE_'.$variation_id;
-				$skuList[] = $variation_sku;
-			}
-		}
-		$sku = implode(',',$skuList);
-	}
-    ?>
-    <!-- TrustBox widget - Product Mini -->
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="54d39695764ea907c0f34825" data-businessunit-id="57444e1d0000ff00058d4d37" data-style-height="24px" data-style-width="100%" data-theme="light" data-sku="<?php echo $sku; ?>" data-no-reviews="hide" data-scroll-to-list="true" data-style-alignment="center">
-    <a href="https://uk.trustpilot.com/review/vetskitchen.co.uk" target="_blank" rel="noopener">Trustpilot</a>
-    </div>
-    <!-- End TrustBox widget -->
-<?php
-}
-add_action('woocommerce_single_product_summary', 'vk_add_trustbox_before_product_description', 15);
 
 //CART
 add_action( 'woocommerce_before_cart', function(){
@@ -282,3 +369,167 @@ function vk_conditionally_hide_checkout_button_cart_page() {
     }
 }
 add_action('woocommerce_cart_calculate_fees', 'vk_conditionally_hide_checkout_button_cart_page');
+
+// CHECKOUT
+function vk_conditionally_hide_checkout_button_checkout_page() {
+    if ( is_checkout() ) {
+        $is_restricted_zone = false;
+        $shipping_methods = WC()->shipping()->get_packages();
+        if (!empty($package['rates'])) {
+            $is_restricted_zone = true;
+        }
+        foreach ($shipping_methods as $package) {
+            foreach ($package['rates'] as $rate) {
+                if ($rate->label === 'Restricted Zone') {
+                    $is_restricted_zone = true;
+                    break 2;
+                }
+            }
+        }
+    ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                var isRestrictedZone = <?php echo json_encode($is_restricted_zone); ?>;
+                if (isRestrictedZone) {
+                    $('#payment').hide();
+                    $('.restricted-zone-message').show();
+                } else {
+                    $('#payment').show();
+                    $('.restricted-zone-message').hide();
+                }
+
+                $('body').on('focusout, blur', '#billing_postcode, #shipping_postcode', function() {
+                    $(document.body).trigger('update_checkout');
+                });
+
+                $('body').on('updated_checkout', function() {
+                    var shippingMethod = $('#shipping_method').text().trim();
+                    if ( !shippingMethod || shippingMethod.includes("Restricted Zone") ) {
+                        $('#payment').hide();
+                        if(shippingMethod.includes("Restricted Zone")) {
+                            $('.restricted-zone-message').show();
+                        }
+                    }else {
+                        $('#payment').show();
+                        $('.restricted-zone-message').hide();
+                    }
+                });
+            });
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'vk_conditionally_hide_checkout_button_checkout_page');
+
+//  CART | CHECKOUT
+function vk_check_cart_total() {
+    $min_price = get_field( 'vk_minimum_order_price', 'option' );
+    $max_price = get_field( 'vk_maximum_order_price', 'option' );
+    if($min_price || $max_price) {
+        $cart_total = WC()->cart->get_cart_total();
+
+        $cart_total_value = floatval(preg_replace('/[^\d.]/', '', $cart_total));
+        $total =  get_woocommerce_currency_symbol() . number_format($cart_total_value, 2);
+        $notice = '';
+        if ($min_price && $cart_total_value < $min_price) {
+            $price = get_woocommerce_currency_symbol() . number_format($min_price, 2);
+            $notice .= sprintf(__('Your current order total is %1s — you must have an order with a minimum of %2s to place your order.', 'woocommerce'), $total, $price);
+        }
+        
+        if ($max_price && $cart_total_value > $max_price) {
+            $price = get_woocommerce_currency_symbol() . number_format($max_price, 2);
+            $notice .= sprintf(__('Your order value is %1s. We do not currently accept online order values of over %2s.', 'woocommerce'), $total, $price);
+        }
+
+        wp_send_json_success(array('notice' => $notice));
+    }
+}
+add_action('wp_ajax_vk_check_cart_total', 'vk_check_cart_total');
+add_action('wp_ajax_nopriv_vk_check_cart_total', 'vk_check_cart_total');
+
+// ACCOUNTS 
+function vk_separate_reg_form() {
+    if(is_admin()) return;
+    do_action( 'woocommerce_before_customer_login_form' );        
+    ?>
+    <div class="vk-registration">
+        <h1><?php echo __( 'Create an Account', 'vetskitchen' ); ?></h1>
+        <form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
+            <?php do_action( 'woocommerce_register_form_start' ); ?>
+
+            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
+
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="reg_username"><?php esc_html_e( 'Username', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
+                </p>
+
+            <?php endif; ?>
+
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
+            </p>
+
+            <?php if ( 'no' === get_option( 'woocommerce_registration_generate_password' ) ) : ?>
+
+                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                    <label for="reg_password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+                    <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
+                </p>
+
+            <?php else : ?>
+
+                <p><?php esc_html_e( 'A link to set a new password will be sent to your email address.', 'woocommerce' ); ?></p>
+
+            <?php endif; ?>
+
+            <?php do_action( 'woocommerce_register_form' ); ?>
+
+            <p class="woocommerce-form-row form-row">
+                <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
+                <button type="submit" class="woocommerce-Button woocommerce-button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
+            </p>
+
+            <?php do_action( 'woocommerce_register_form_end' ); ?>
+        </form>
+    </div>
+    <?php
+}
+add_shortcode( 'vk_registration_form', 'vk_separate_reg_form' );
+  
+function vk_separate_login_form() {
+    if(is_admin()) return;
+    if ( is_user_logged_in() ) return '<p>You are already logged in</p>'; 
+    ob_start();
+        do_action( 'woocommerce_before_customer_login_form' );
+        echo '<div class="vk-login">';
+            echo '<h1>'. __( 'Already Registered?', 'vetskitchen' ) .'</h1>';
+            echo '<div class="row"><div class="col-md-6 d-flex"><div class="vk-login__block">';
+                echo '<h2>'. __( 'New Customer', 'vetskitchen' ) .'</h2>';
+                echo '<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>';
+                echo '<a href="'.home_url('register').'" class="btn-orange">CREATE AN ACCOUNT</a>';
+            echo '</div></div><div class="col-md-6 d-flex"><div class="vk-login__block">';
+                echo '<h2>'. __( 'Login', 'vetskitchen' ) .'</h2>';
+                woocommerce_login_form( array( 'redirect' => wc_get_page_permalink( 'myaccount' ) ) );
+            echo '</div></div></div>';
+        echo '</div>';
+    return ob_get_clean();
+}
+add_shortcode( 'vk_login_form', 'vk_separate_login_form' );
+
+//redirect to myaccount if logged in
+function vk_redirect_login_registration_if_logged_in() {
+    $current_url = home_url( add_query_arg( null, null ) );
+    $lost_password_url = wp_lostpassword_url();
+    if ( is_page() && is_user_logged_in() && ( has_shortcode( get_the_content(), 'vk_login_form' ) || has_shortcode( get_the_content(), 'vk_registration_form' ) ) ) {
+        wp_redirect( wc_get_page_permalink( 'myaccount' ) );
+        exit;
+    }elseif ( is_account_page() && !is_user_logged_in() ) {
+        if ( strpos( $current_url, $lost_password_url ) === false ) {
+            wp_redirect( wc_get_page_permalink( 'myaccount' ) . '/login' );
+            exit;
+        }
+    }
+}
+add_action( 'template_redirect', 'vk_redirect_login_registration_if_logged_in' );

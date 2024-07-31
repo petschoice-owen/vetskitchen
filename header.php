@@ -32,12 +32,12 @@
 						<?php endif; ?>
 						<div class="header__links">
 							<div class="account-details">
-							<a href="<?php echo home_url('/account/login'); ?>"><?php echo __( 'Sign In', 'vetskitchen' ); ?></a> or <a href="<?php echo home_url('/account/register'); ?>"><?php echo __( 'Register', 'vetskitchen' ); ?></a>
+								<a href="<?php echo wc_get_page_permalink( 'myaccount' ) . '/login'; ?>"><?php echo __( 'Sign In', 'vetskitchen' ); ?></a> or <a href="<?php echo  wc_get_page_permalink( 'myaccount' ) . '/register'; ?>"><?php echo __( 'Register', 'vetskitchen' ); ?></a>
 							</div>
-							<div class="user"><a href="<?php echo home_url('/account'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/user.png" alt="" class="img-fluid" width="28px" /></a></div>
+							<div class="user"><a href="<?php echo wc_get_page_permalink( 'myaccount' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/user.png" alt="" class="img-fluid" width="28px" /></a></div>
 							<div class="header__cart">
-							<a href="<?php echo home_url('/cart'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/cart.png" width="32px" alt="" class="img-fluid"></a>
-							<div class="header__cart-count">0</div>
+								<a href="<?php echo home_url('/cart'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/cart.png" width="32px" alt="" class="img-fluid"></a>
+								<div class="header__cart-count">0</div>
 							</div>
 							<form role="search" method="get" class="search-form header__search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<label>

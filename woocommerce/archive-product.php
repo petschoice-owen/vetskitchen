@@ -37,7 +37,7 @@ do_action( 'woocommerce_before_main_content' );
  */
 do_action( 'woocommerce_shop_loop_header' );
 
-if(is_shop()) {
+if(is_shop() && !is_search()) {
 	$categories = get_field( 'vk_shop_categories_list', 'option' );
 	if(!$categories) {
 		$categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => true ) );

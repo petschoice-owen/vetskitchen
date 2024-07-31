@@ -49,17 +49,24 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			</div>
 		<?php endif; ?>
 		<div class="col-lg-5 col-xl-4">
-			<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-			
-			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-			
-			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+			<div class="woocommerce-checkout__sidebar">
+				<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+				
+				<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+				
+				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-			<div id="order_review" class="woocommerce-checkout-review-order">
-				<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+				<div id="order_review" class="woocommerce-checkout-review-order">
+					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+				</div>
+
+				<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+				<?php
+					if ( $restricted_message = get_field( 'vk_cart_restricted_zone_message', 'option' ) ) {
+						echo '<div class="restricted-zone-message w-100 border-0">'. $restricted_message .'</div>';
+					}
+				?>
 			</div>
-
-			<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 		</div>
 	</div>
 </form>

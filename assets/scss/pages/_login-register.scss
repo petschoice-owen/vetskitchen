@@ -1,0 +1,63 @@
+
+.vk-login {
+    padding: 50px 0 100px;
+
+    h1 {
+        margin-bottom: 40px;
+        font-size: 34px;
+        text-align: center;
+    }
+
+    &__block {
+        padding: 30px;
+        width: 100%;
+        border: 1px solid $lgray3;
+
+        h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .woocommerce-form-login {
+            &__rememberme {
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            &__submit {
+                @extend .btn-orange;
+                width: 100%;
+            }
+        }
+
+        .lost_password {
+            text-align: center;
+
+            a {
+                color: $green2;
+            }
+        }
+    }
+}
+
+.vk-registration {
+    padding: 50px 0 100px;
+
+    h1 {
+        margin-bottom: 40px;
+        font-size: 34px;
+        text-align: center;
+    }
+
+    form {
+        padding: 30px;
+        margin: 0 auto;
+        max-width: 580px;
+        border: 1px solid $lgray3;
+
+        .woocommerce-form-register__submit {
+            @extend .btn-orange;
+            width: 100%;
+        }
+    }
+}

@@ -231,6 +231,40 @@ jQuery(function($) {
         });
     };
 
+    const cartCheckout = () => {
+        if($('.woocommerce-cart').length > 0 || $('.woocommerce-checkout').length > 0) {
+            function updateCartCheckoutNotice() {
+                $.ajax({
+                    url: wpAjax.ajaxUrl,
+                    type: 'POST',
+                    data: {
+                        action: 'vk_check_cart_total'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#cart-checkout-notice').remove();
+                            if (response.data.notice) {
+                                $('.woocommerce-notices-wrapper').append('<div id="cart-checkout-notice">' + response.data.notice + '</div>');
+                                $('#payment').hide();
+                                $('.wc-proceed-to-checkout').hide();
+                            }
+                        }
+                    }
+                });
+            }
+        
+            updateCartCheckoutNotice();
+        
+            $(document.body).on('updated_cart_totals', function() {
+                updateCartCheckoutNotice();
+            });
+
+            $(document.body).on('updated_checkout', function() {
+                updateCartCheckoutNotice();
+            });
+        }
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -242,4 +276,5 @@ jQuery(function($) {
     gridListToggler();
     variationSwatch();
     shopSidebar();
+    cartCheckout();
 });

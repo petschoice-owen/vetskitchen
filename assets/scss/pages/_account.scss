@@ -1,0 +1,141 @@
+
+.woocommerce-account {
+    .woocommerce {
+        padding-top: 40px;
+        padding-bottom: 100px;
+
+        form.lost_reset_password {
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 580px;
+            border: 1px solid $lgray3;
+    
+            .form-row {
+                width: 100%;
+            }
+        }
+    
+        button[type="submit"] {
+            @extend .btn-orange;
+            width: 100%;
+        }
+
+        nav.woocommerce-MyAccount-navigation {
+            ul {
+                padding: 0;
+                list-style: none;
+                background: rgba(152,222,190,.6);
+
+                li {
+                    border-bottom: 1px solid rgba(0,95,88,.2);
+
+                    a {
+                        display: block;
+                        padding: 10px 15px;
+                        color: $primary;
+                        text-decoration: none;
+                    }
+
+                    &.is-active a {
+                        color: $white;
+                        background-color: $green2;
+                    }
+                }
+            }
+        }
+
+        .woocommerce-MyAccount-content {
+            padding: 20px;
+            border: 1px solid $lgray3;
+
+            a:not(.button) {
+                color: $primary;
+            }
+
+            fieldset {
+                margin-top: 15px;
+
+                legend {
+                    font-family: 'Signika', sans-serif;
+                    font-size: 20px;
+                    color: $primary;
+                }
+            }
+
+            .form-row-first,
+            .form-row-last {
+                width: 49%;
+            }
+
+            .show-password-input {
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+            }
+
+            .input-text,
+            textarea {
+                min-height: 40px;
+                line-height: 1.2;
+                border-radius: 0;
+            }
+
+            button[type="submit"] {
+                margin-top: 20px;
+                text-transform: uppercase;
+            }
+
+            .addresses {
+                .col-1,
+                .col-2 {
+                    width: 100%;
+                }
+
+                .col-1 {
+                    margin-bottom: 20px;
+                }
+
+                .title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 10px;
+                    margin-bottom: 20px;
+
+                    &:before,
+                    &:after {
+                        display: none !important;
+                    }
+
+                    h3 {
+                        float: none;
+                        margin-bottom: 0;
+                        font-size: 20px;
+                    }
+
+                    .edit {
+                        float: none;
+                        display: inline-block;
+                        padding: 5px 10px;
+                        font-family: 'Open Sans', sans-serif;
+                        font-size: 12px;
+                        line-height: 1;
+                        color: $white;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        background-color: $orange5;
+                        border-radius: 10px;
+
+                        &:hover {
+                            background-color: $green2;
+                        }
+                    }
+                }
+            }
+
+            .no_subscriptions {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

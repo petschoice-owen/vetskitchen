@@ -118,6 +118,21 @@
                 width: 50%;
                 text-align: center;
 
+                & > a:first-of-type {
+                    display: block;
+                }
+
+                .onsale {
+                    right: auto;
+                    left: 0;
+                    padding: 2px 5px 0 5px;
+                    margin: 0;
+                    min-height: 0;
+                    line-height: 1;
+                    background: #f83572;
+                    border-radius: 10px;
+                }
+
                 .woocommerce-loop-product__title {
                     padding-top: 0;
                     padding-bottom: 5px;
@@ -312,7 +327,7 @@
         font-size: 24px;
     }
 
-    &.woocommerce-shop {
+    &.woocommerce-shop:not(.search-results) {
         main {
             .woocommerce-products-header {
                 display: none;
@@ -383,6 +398,65 @@
                     }
                 }
             }
+        }
+    }
+
+    div.product p.price {
+        del {
+            color: $orange2;
+        }
+
+        ins {
+            text-decoration: none;
+            color: #f83572;
+        }
+    }
+
+    .woocommerce-error, 
+    .woocommerce-info,
+    .woocommerce-message {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: $whitelilac;
+
+        &:before {
+            top: 50%;
+            left: 1.5em;
+            transform: translateY(-50%);
+        }
+
+        &:after {
+            display: none !important;
+        }
+
+        .button {
+            font-weight: 500;
+            color: $white;
+            text-transform: uppercase;
+            background: $orange5;
+
+            &:hover {
+                color: $white;
+                background: $green2;
+            }
+        }
+    }
+
+    .woocommerce-info {
+        border-top-color: $lblue;
+
+        &:before {
+            color: $lblue;
+        }
+    }
+
+    .woocommerce-message {
+        border-top-color: $green2;
+
+        &:before {
+            color: $green2;
         }
     }
 
