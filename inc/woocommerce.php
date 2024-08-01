@@ -45,7 +45,7 @@ function vk_product_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'vk_product_tabs', 9999 );
 
 function vk_remove_sidebar_product_pages() {
-    if ( is_product() || is_shop() ) {
+    if ( is_product() ) {
         remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
     }
 }
@@ -216,13 +216,11 @@ function vk_shop_action_wrapper_open() {
 add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_open', 19);
 
 function vk_shop_view_buttons() {
-    if(!is_shop()) {
-        echo '<div class="vk-view-buttons">
-            <a href="#" class="list-view"></a>
-            <a href="#" class="two-col-view"></a>
-            <a href="#" class="three-col-view active d-none d-lg-block"></a>
-            <a href="#" class="four-col-view d-none d-lg-block"></a></div>';
-    }
+    echo '<div class="vk-view-buttons">
+        <a href="#" class="list-view"></a>
+        <a href="#" class="two-col-view"></a>
+        <a href="#" class="three-col-view active d-none d-lg-block"></a>
+        <a href="#" class="four-col-view d-none d-lg-block"></a></div>';
 }
 add_action('woocommerce_before_shop_loop', 'vk_shop_view_buttons', 31);
 
@@ -279,6 +277,7 @@ function display_variation_on_product_listing() {
                 $variation_obj = new WC_Product_Variation( $variation_id );
                 $attributes = $variation_obj->get_variation_attributes();
                 $variation_price = $variation_obj->get_price();
+
                 $attribute_names = array();
 				foreach ( $attributes as $attribute_name => $attribute_value ) {
 					$taxonomy = str_replace('attribute_', '', $attribute_name);
@@ -291,7 +290,7 @@ function display_variation_on_product_listing() {
 				}
 				$variation_name = implode( ' / ', $attribute_names );
     
-                echo '<div class="swatch'. (($key === 0) ? ' active' : '') .'" data-price="'. get_woocommerce_currency_symbol() . number_format($variation_price, 2) .'">' . esc_html( $variation_name ) . '</div>';
+                echo '<div class="swatch'. (($key === 0) ? ' active' : '') . ( !$variation_obj->is_in_stock() ? ' out-of-stock' : '' ) .'" data-price="'. get_woocommerce_currency_symbol() . number_format($variation_price, 2) .'">' . esc_html( $variation_name ) . '</div>';
             }
             echo '</div>';
         }

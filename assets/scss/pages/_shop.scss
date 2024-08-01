@@ -120,6 +120,7 @@
 
                 & > a:first-of-type {
                     display: block;
+                    margin-bottom: 10px;
                 }
 
                 .onsale {
@@ -220,6 +221,10 @@
                         border-radius: 3px;
                         cursor: pointer;
 
+                        &.out-of-stock {
+                            text-decoration: line-through;
+                        }
+
                         &.active {
                             color: $white;
                             background-color: $green2;
@@ -234,6 +239,10 @@
                     line-height: 20px;
                     font-weight: 500;
                     color: $dark;
+
+                    .bos4w-or-subscribe {
+                        display: none !important;
+                    }
                 }
 
                 .product-actions {
@@ -327,79 +336,79 @@
         font-size: 24px;
     }
 
-    &.woocommerce-shop:not(.search-results) {
-        main {
-            .woocommerce-products-header {
-                display: none;
-            }
+    // &.woocommerce-shop:not(.search-results) {
+    //     main {
+    //         .woocommerce-products-header {
+    //             display: none;
+    //         }
     
-            ul.products {
-                display: flex;
-                flex-wrap: wrap;
+    //         ul.products {
+    //             display: flex;
+    //             flex-wrap: wrap;
         
-                li.product {
-                    flex: 0 0 100%;
-                    padding: 10px 15px;
-                    margin: 0;
-                    width: 100%;
+    //             li.product {
+    //                 flex: 0 0 100%;
+    //                 padding: 10px 15px;
+    //                 margin: 0;
+    //                 width: 100%;
     
-                    a {
-                        display: block;
-                        text-align: center;
+    //                 a {
+    //                     display: block;
+    //                     text-align: center;
     
-                        &:hover {
-                            img {
-                                transform: scale3d(1.1, 1.1, 1);
-                            }
+    //                     &:hover {
+    //                         img {
+    //                             transform: scale3d(1.1, 1.1, 1);
+    //                         }
     
-                            .woocommerce-loop-category__title {
-                                background: rgba(0, 128, 119, 0.9);
-                            }
-                        }
-                    }
+    //                         .woocommerce-loop-category__title {
+    //                             background: rgba(0, 128, 119, 0.9);
+    //                         }
+    //                     }
+    //                 }
     
-                    img {
-                        height: 355px;
-                        object-fit: contain;
-                        transition: transform 1s ease-in-out;
-                    }
+    //                 img {
+    //                     height: 355px;
+    //                     object-fit: contain;
+    //                     transition: transform 1s ease-in-out;
+    //                 }
     
-                    .woocommerce-loop-category__title {
-                        position: absolute;
-                        bottom: 20px;
-                        left: 50%;
-                        display: inline-block;
-                        padding: 12px 30px;
-                        max-width: 409px;
-                        font-family: 'Signika', sans-serif;
-                        font-size: 16px;
-                        font-weight: 600;
-                        line-height: 1.3;
-                        color: $white;
-                        background: rgba(248, 135, 41, 0.9);
-                        border-radius: 20px;
-                        transform: translateX(-50%);
-                        transition: .2s ease-in-out;
+    //                 .woocommerce-loop-category__title {
+    //                     position: absolute;
+    //                     bottom: 20px;
+    //                     left: 50%;
+    //                     display: inline-block;
+    //                     padding: 12px 30px;
+    //                     max-width: 409px;
+    //                     font-family: 'Signika', sans-serif;
+    //                     font-size: 16px;
+    //                     font-weight: 600;
+    //                     line-height: 1.3;
+    //                     color: $white;
+    //                     background: rgba(248, 135, 41, 0.9);
+    //                     border-radius: 20px;
+    //                     transform: translateX(-50%);
+    //                     transition: .2s ease-in-out;
     
-                        .count {
-                            display: none;
-                        }
-                    }
+    //                     .count {
+    //                         display: none;
+    //                     }
+    //                 }
 
-                    @include respond-to(lg-up) {
-                        flex: 0 0 50% !important;
-                        width: 50% !important;
-                    }
+    //                 @include respond-to(lg-up) {
+    //                     flex: 0 0 50% !important;
+    //                     width: 50% !important;
+    //                 }
     
-                    @include respond-to(sm-down) {
-                        img {
-                            height: 250px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //                 @include respond-to(sm-down) {
+    //                     img {
+    //                         height: 250px;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     div.product p.price {
         del {
@@ -432,6 +441,7 @@
         }
 
         .button {
+            order: 5;
             font-weight: 500;
             color: $white;
             text-transform: uppercase;

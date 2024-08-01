@@ -146,6 +146,7 @@
             <?php endif; ?>
         </footer>
         <a href="#" class="vk-back-to-top js-back-to-top"><?php echo __( 'Back to top', 'vetskitchen' ); ?></a>
+        <div class="mobile-overlay"></div>
         <?php wp_footer(); ?>
     </body>
 </html>

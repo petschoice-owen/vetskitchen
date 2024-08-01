@@ -24,9 +24,9 @@
             ul {
                 padding: 0;
                 list-style: none;
-                background: rgba(152,222,190,.6);
 
                 li {
+                    margin-bottom: 2px;
                     border-bottom: 1px solid rgba(0,95,88,.2);
 
                     a {
@@ -34,6 +34,7 @@
                         padding: 10px 15px;
                         color: $primary;
                         text-decoration: none;
+                        background: rgba(152,222,190,.6);
                     }
 
                     &.is-active a {

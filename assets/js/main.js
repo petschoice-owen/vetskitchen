@@ -24,6 +24,13 @@ jQuery(function($) {
     };
 
     const headerScroll = () => {
+        $(window).on('load resize', function() {
+            var totalHeight = 0;
+            $('header.header > div').each(function() {
+                totalHeight += $(this).outerHeight(true); // include margin in the height
+            });
+            $('header.header').css('height', totalHeight);
+        });
         $(window).on('scroll', function() {
             if($(window).scrollTop() > $('.header').height()) {
                 $('.header__fixedscroll').addClass('fixed');
@@ -265,6 +272,35 @@ jQuery(function($) {
         }
     };
 
+    const mobileNavPopup = () => {
+        $(document).on('click', '.mobile-overlay', function(e) {
+            $('.js-mobile-nav-popup.open').removeClass('open');
+            $(this).hide();
+        });
+
+        $(document).on('click', '.js-mobile-nav-popup .close', function(e) {
+            $(this).closest('.js-mobile-nav-popup').removeClass('open');
+            $('.mobile-overlay').hide();
+        });
+
+        $(document).on('click', '.js-cart-mobile', function(e) {
+            e.preventDefault();
+            $('.mobile-minicart').addClass('open');
+            $('.mobile-overlay').show();
+        });
+
+        $(document).on('click', '.header__account--mobile', function(e) {
+            e.preventDefault();
+            $('.mobile-account').addClass('open');
+            $('.mobile-overlay').show();
+        });
+
+        $(document).on('click', '.js-mobile-search', function(e) {
+            e.preventDefault();
+            $('.mobile-search').toggleClass('open');
+        });
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -277,4 +313,5 @@ jQuery(function($) {
     variationSwatch();
     shopSidebar();
     cartCheckout();
+    mobileNavPopup();
 });

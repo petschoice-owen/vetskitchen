@@ -650,48 +650,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_66a74b9f21e7f",
-            "label": "Shop Page",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0
-        },
-        {
-            "key": "field_66a74bac21e80",
-            "label": "Categories List",
-            "name": "vk_shop_categories_list",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "product_cat",
-            "add_term": 1,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "bidirectional": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
             "key": "field_66a7b1a15fbe2",
             "label": "Cart",
             "name": "",
@@ -1016,5 +974,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722439001
+    "modified": 1722535764
 }

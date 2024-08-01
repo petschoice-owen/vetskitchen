@@ -1,0 +1,28 @@
+{
+    "name": "vetskitchen-product-categories",
+    "title": "Vet's Kitchen - Product Categories",
+    "description": "A block that display a grid of selected product categories.",
+    "style": "block-product-categories",
+    "category": "vetskitchen-blocks",
+    "icon": "grid-view",
+    "apiVersion": 2,
+    "keywords": ["product", "categories", "grid"],
+    "acf": {
+        "mode": "edit",
+	    "renderTemplate": "product-categories.php"
+    },
+    "styles": [],
+    "supports": {
+        "anchor": true
+    },
+    "attributes": {
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image_product_categories": true
+            }
+        }
+    }
+}
