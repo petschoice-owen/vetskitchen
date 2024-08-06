@@ -77,7 +77,20 @@ add_filter( 'woocommerce_registration_errors', 'vk_validate_new_reg_fields', 10,
 function vk_save_new_reg_fields( $customer_id ) {
     if (isset($_POST['acf'])) {
         foreach ($_POST['acf'] as $key => $value) {
-            update_user_meta($customer_id, $key, sanitize_text_field($value));
+            $field_key = str_replace('acf[', '', str_replace(']', '', $key));
+            $field = get_field_object($field_key);
+            if ($field) {
+                $field_name = $field['name'];
+                if ($field['type'] == 'checkbox') {
+                    $sanitized_value = array_map('sanitize_text_field', $value);
+                    update_user_meta($customer_id, $field_name, $sanitized_value);
+                } else {
+                    $sanitized_value = sanitize_text_field($value);
+                    update_user_meta($customer_id, $field_name, $sanitized_value);
+                }
+            } else {
+                error_log("Unknown field key: $field_key");
+            }
         }
     }
     if ( isset( $_POST['billing_first_name'] ) ) {
