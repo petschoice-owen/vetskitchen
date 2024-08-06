@@ -50,7 +50,7 @@ input[type="email"],
 input[type="tel"],
 input[type="number"],
 input[type="password"],
-select,
+select:not(.ui-datepicker-month):not(.ui-datepicker-year),
 textarea {
     @extend %user-input;
 
@@ -59,7 +59,7 @@ textarea {
     }
 }
 
-select {
+select:not(.ui-datepicker-month):not(.ui-datepicker-year) {
     background-image: url('../icons/down-arrow.svg');
     background-repeat: no-repeat;
     background-position: center right 15px;

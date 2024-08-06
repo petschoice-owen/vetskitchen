@@ -126,9 +126,11 @@
                 .onsale {
                     right: auto;
                     left: 0;
-                    padding: 2px 5px 0 5px;
+                    padding: 2px 5px 1px;
                     margin: 0;
                     min-height: 0;
+                    font-size: 12px;
+                    font-weight: 600;
                     line-height: 1;
                     background: #f83572;
                     border-radius: 10px;
@@ -242,6 +244,12 @@
 
                     .bos4w-or-subscribe {
                         display: none !important;
+                    }
+
+                    ins {
+                        margin-right: 5px;
+                        color: #f83572;
+                        text-decoration: none;
                     }
                 }
 

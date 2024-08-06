@@ -1,0 +1,374 @@
+{
+    "key": "group_66b09d3607029",
+    "title": "User Information",
+    "fields": [
+        {
+            "key": "field_66b09d36f86ba",
+            "label": "How many pets do you have?",
+            "name": "user_number_of_pets",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "10": "10"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66b09efc01a1b",
+            "label": "What type of pet do you have?",
+            "name": "user_pet_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "dog": "Dog",
+                "cat": "Cat"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 1,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_66b0dd53f5175",
+            "label": "What is your pet's name?",
+            "name": "user_pet_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b09f6001a1c",
+            "label": "When is your pet's birthday?",
+            "name": "user_pet_birthday",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_66b09f9001a1d",
+            "label": "What breed is your pet?",
+            "name": "user_pet_breed",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b09fab01a1e",
+            "label": "Main Health Complain",
+            "name": "user_main_health_complain",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Digestive Upset": "Digestive Upset",
+                "Skin\/ Coat Problems": "Skin\/ Coat Problems",
+                "Stiff Joints\/ Arthritis": "Stiff Joints\/ Arthritis",
+                "Overweight": "Overweight",
+                "Underweight": "Underweight",
+                "Uninary Problems": "Uninary Problems",
+                "Other": "Other"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66b0a01401a1f",
+            "label": "Dietary Requirement(s)",
+            "name": "user_dietary_requirements",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Puppy\/ Kitten": "Puppy\/ Kitten",
+                "Senior": "Senior",
+                "Sensitive Skin": "Sensitive Skin",
+                "Hypoallergenic": "Hypoallergenic",
+                "Joint Care": "Joint Care",
+                "Grain Free": "Grain Free",
+                "Healthy Weight\/ Light": "Healthy Weight\/ Light",
+                "Low Fat": "Low Fat",
+                "Chicken Free": "Chicken Free",
+                "Small Breed": "Small Breed",
+                "Large Breed": "Large Breed"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_66b0a8a301a21",
+            "label": "What is the second type of pet do you have?",
+            "name": "user_second_pet_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "dog": "Dog",
+                "cat": "Cat"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 1,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_66b0a8c101a22",
+            "label": "What is your pet's name?",
+            "name": "user_second_pet_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b0a8d401a23",
+            "label": "When is your pet's birthday?",
+            "name": "user_second_pet_birthday",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_66b0a8f801a24",
+            "label": "What breed is your pet?",
+            "name": "user_second_pet_breed",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b0a96701a26",
+            "label": "What is the third type of pet do you have?",
+            "name": "user_third_pet_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "dog": "Dog",
+                "cat": "Cat"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 1,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_66b0a96c01a27",
+            "label": "What is your pet's name?",
+            "name": "user_third_pet_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b0a97101a28",
+            "label": "When is your pet's birthday?",
+            "name": "user_third_pet_birthday",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_66b0a97701a29",
+            "label": "What breed is your pet?",
+            "name": "user_third_pet_breed",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "user_form",
+                "operator": "==",
+                "value": "edit"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1722868517
+}

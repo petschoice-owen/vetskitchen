@@ -26,8 +26,7 @@
                 list-style: none;
 
                 li {
-                    margin-bottom: 2px;
-                    border-bottom: 1px solid rgba(0,95,88,.2);
+                    margin-bottom: 4px;
 
                     a {
                         display: block;
@@ -35,6 +34,7 @@
                         color: $primary;
                         text-decoration: none;
                         background: rgba(152,222,190,.6);
+                        border-radius: 5px;
                     }
 
                     &.is-active a {
@@ -136,6 +136,37 @@
 
             .no_subscriptions {
                 margin-bottom: 0;
+            }
+
+            #message.updated {
+                padding: 10px;
+                background: rgba(152,222,190,.6);
+
+                p:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+
+            .acf-fields > .acf-field {
+                padding-right: 0;
+                padding-left: 0;
+
+                .acf-input {
+                    select,
+                    input[type="text"] {
+                        min-height: 40px;
+                        line-height: 1.2;
+                        border-radius: 0;
+                    }
+                }
+            }
+
+            ul.acf-radio-list, ul.acf-checkbox-list {
+                border: 0;
+
+                label {
+                    font-size: 14px;
+                }
             }
         }
     }

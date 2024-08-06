@@ -59,5 +59,35 @@
             @extend .btn-orange;
             width: 100%;
         }
+
+        .acf-fields > .acf-field {
+            padding: 0;
+            margin-bottom: 1rem;
+            border: 0;
+
+            input[type="text"],
+            input[type="date"],
+            select {
+                padding: 10px 20px;
+            }
+
+            &[data-name="user_pet_type"], 
+            &[data-name="user_second_pet_type"],
+            &[data-name="user_third_pet_type"] {
+                padding-top: 20px;
+                margin-top: 30px;
+                border-top: 1px solid rgba(0,128,119,.36);
+            }
+
+            &[data-name="user_pet_type"]:before {
+                content: 'Tell us about them...?';
+                display: block;
+                margin-bottom: 20px;
+                font-family: 'Signika', sans-serif;
+                font-size: 30px;
+                color: $green2;
+                text-align: center;
+            }
+        }
     }
 }

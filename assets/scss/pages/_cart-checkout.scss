@@ -413,6 +413,10 @@
             font-size: 16px;
             color: $gray;
         }
+
+        .form-row textarea {
+            height: 5em;
+        }
     }
 
     div#cart-checkout-notice {

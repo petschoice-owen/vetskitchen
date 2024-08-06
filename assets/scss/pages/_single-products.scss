@@ -71,6 +71,15 @@
                 .bos4w-or-subscribe {
                     display: none;
                 }
+
+                del {
+                    color: $orange2;
+                }
+        
+                ins {
+                    text-decoration: none;
+                    color: #f83572;
+                }
             }
         }
 

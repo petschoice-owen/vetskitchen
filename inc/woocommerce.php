@@ -229,6 +229,34 @@ function vk_shop_action_wrapper_close() {
 }
 add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_close', 32);
 
+/* Replace text of Sale! badge with percentage */
+function vk_woocommerce_sale_flash_show_percentage($text) {
+    global $product; 
+    $stock = $product->get_stock_status();
+    $product_type = $product->get_type();
+    $sale_price  = 0;
+    $regular_price = 0;
+    if($product_type == 'variable'){
+        $product_variations = $product->get_available_variations();
+        foreach ($product_variations as $key => $value){
+            if($value['display_price'] < $value['display_regular_price']){
+                $sale_price = $value['display_price'];
+                $regular_price = $value['display_regular_price'];
+            }
+        }
+        if($regular_price > $sale_price && $stock != 'outofstock') {
+            $product_sale = round(((intval($regular_price) - floatval($sale_price)) / floatval($regular_price)) * 100);
+            return '<span class="onsale">Sale ' . esc_html($product_sale) . '%</span>';
+        }
+    }else {
+        $regular_price = get_post_meta( get_the_ID(), '_regular_price', true);
+        $sale_price = get_post_meta( get_the_ID(), '_sale_price', true);
+        $product_sale = round(((floatval($regular_price) - floatval($sale_price)) / floatval($regular_price)) * 100);
+        return '<span class="onsale">Sale ' . esc_html($product_sale) . '%</span>';
+    }
+}
+add_filter( 'woocommerce_sale_flash', 'vk_woocommerce_sale_flash_show_percentage' );
+
 // PRODUCT LOOP
 add_action( 'woocommerce_shop_loop_item_title', 'vk_display_product_category_before_title', 5 );
 add_action( 'woocommerce_shop_loop_item_title', function(){
@@ -269,14 +297,22 @@ function display_variation_on_product_listing() {
         $variations = $product->get_available_variations();
         if($variations) {
             $firstVar = new WC_Product_Variation( $variations[0]['variation_id'] );
-            $firstVarPrice = number_format($firstVar->get_price(), 2);
-            echo '<div class="product-price">'.get_woocommerce_currency_symbol() . $firstVarPrice.'</div>';
+            $firstVarPrice = $firstVar->get_price();
+            $firstVarPriceHtml = get_woocommerce_currency_symbol() . number_format((float)$firstVarPrice, 2, '.', '');
+            if ($firstVar->is_on_sale()) {
+                $firstVarPriceHtml = '<ins>'.$firstVarPriceHtml.'</ins>'.'<del>'.get_woocommerce_currency_symbol() . number_format((float)$firstVar->get_regular_price(), 2, '.', '').'</del>';
+            }
+            echo '<div class="product-price">'.$firstVarPriceHtml.'</div>';
             echo '<div class="variation-swatches">';
             foreach ( $variations as $key => $variation ) {
                 $variation_id = $variation['variation_id'];
                 $variation_obj = new WC_Product_Variation( $variation_id );
                 $attributes = $variation_obj->get_variation_attributes();
                 $variation_price = $variation_obj->get_price();
+                $variation_price_html = get_woocommerce_currency_symbol() . number_format((float)$variation_price, 2, '.', '');
+                if ($variation_obj->is_on_sale()) {
+                    $variation_price_html = '<ins>'.$variation_price_html.'</ins>'.'<del>'.get_woocommerce_currency_symbol() . number_format((float)$variation_obj->get_regular_price(), 2, '.', '').'</del>';
+                }
 
                 $attribute_names = array();
 				foreach ( $attributes as $attribute_name => $attribute_value ) {
@@ -290,7 +326,7 @@ function display_variation_on_product_listing() {
 				}
 				$variation_name = implode( ' / ', $attribute_names );
     
-                echo '<div class="swatch'. (($key === 0) ? ' active' : '') . ( !$variation_obj->is_in_stock() ? ' out-of-stock' : '' ) .'" data-price="'. get_woocommerce_currency_symbol() . number_format($variation_price, 2) .'">' . esc_html( $variation_name ) . '</div>';
+                echo '<div class="swatch'. (($key === 0) ? ' active' : '') . ( !$variation_obj->is_in_stock() ? ' out-of-stock' : '' ) .'" data-price="'. $variation_price_html .'">' . esc_html( $variation_name ) . '</div>';
             }
             echo '</div>';
         }
@@ -307,7 +343,11 @@ add_action( 'woocommerce_after_shop_loop_item_title', function(){
         if($variations) {
             $firstVar = new WC_Product_Variation( $variations[0]['variation_id'] );
             $firstVarPrice = $firstVar->get_price();
-            echo '<div class="product-price">'.get_woocommerce_currency_symbol() . $firstVarPrice.'</div>';
+            $firstVarPriceHtml = get_woocommerce_currency_symbol() . number_format((float)$firstVarPrice, 2, '.', '');
+            if ($firstVar->is_on_sale()) {
+                $firstVarPriceHtml = '<ins>'.$firstVarPriceHtml.'</ins>'.'<del>'.get_woocommerce_currency_symbol() . number_format((float)$firstVar->get_regular_price(), 2, '.', '').'</del>';
+            }
+            echo '<div class="product-price">'.$firstVarPriceHtml.'</div>';
         }
     }
 }, 11 );
@@ -346,19 +386,29 @@ function vk_conditionally_hide_checkout_button_cart_page() {
                 var isShippingInfoEmpty = $('#calc_shipping_postcode').val() === '';
                 if (isRestrictedZone || isShippingInfoEmpty) {
                     $('.wc-proceed-to-checkout').hide();
-                    $('.restricted-zone-message').show();
                 } else {
                     $('.wc-proceed-to-checkout').show();
+                    
+                }
+                if (isRestrictedZone) {
+                    $('.restricted-zone-message').show();
+                }else {
                     $('.restricted-zone-message').hide();
                 }
 
                 $(document).on('updated_cart_totals', function() {
                     var shippingMethod = $('#shipping_method').text().trim();
-                    if ( shippingMethod.includes("Restricted Zone") ) {
+                    if ( !shippingMethod || shippingMethod.includes("Restricted Zone") ) {
                         $('.wc-proceed-to-checkout').hide();
+                    }else {
+                        if(!$('#cart-checkout-notice').length > 0) {
+                            $('.wc-proceed-to-checkout').show();
+                        }
+                    }
+
+                    if ( shippingMethod.includes("Restricted Zone") ) {
                         $('.restricted-zone-message').show();
                     }else {
-                        $('.wc-proceed-to-checkout').show();
                         $('.restricted-zone-message').hide();
                     }
                 });

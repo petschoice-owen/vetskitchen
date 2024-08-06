@@ -84,6 +84,43 @@
         }
     }
 
+    &-newsletter {
+        form {
+            margin: 20px 0 !important;
+        }
+
+        #mc_embed_signup_scroll {
+            div.mc-field-group {
+                padding-bottom: 0;
+
+                input {
+                    padding: 8px 16px;
+                    background-color: $white;
+                    border: solid 1px $lgray3;
+                    border-radius: 20px 0 0 20px;
+
+                    @include placeholder() {
+                        font-style: normal;
+                    }
+                }
+            }
+
+            input.button {
+                margin-bottom: 0;
+                height: 50px;
+                font-family: 'Signika', sans-serif;
+                font-size: 20px;
+                color: $white;
+                background-color: $orange5;
+                border-radius: 0 20px 20px 0;
+
+                &:hover {
+                    background-color: $green2;
+                }
+            }
+        }
+    }
+
     @media screen and (min-width: 790px) {
         &__main {
             padding-bottom: 53px;
