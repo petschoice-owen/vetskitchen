@@ -196,6 +196,12 @@ function vk_display_quantity_plus() {
 }
 add_action( 'woocommerce_after_quantity_input_field', 'vk_display_quantity_plus' );
 
+add_action( 'woocommerce_single_product_summary', function() {
+    if(is_user_logged_in()) {
+        echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+    }
+}, 45 );
+
 // PRODUCT LISTING
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -335,6 +341,9 @@ function display_variation_on_product_listing() {
 add_action( 'woocommerce_shop_loop_item_title', 'display_variation_on_product_listing', 20 );
 add_action( 'woocommerce_after_shop_loop_item_title', function(){
     echo '<div class="product-actions">';
+    if(is_user_logged_in()) {
+        echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+    }
 }, 1 );
 add_action( 'woocommerce_after_shop_loop_item_title', function(){
     global $product;
@@ -582,3 +591,17 @@ function vk_redirect_login_registration_if_logged_in() {
     }
 }
 add_action( 'template_redirect', 'vk_redirect_login_registration_if_logged_in' );
+
+//WISHLIST
+function vk_wishlist_content() {
+    if (is_user_logged_in()) {
+        echo do_shortcode('[yith_wcwl_wishlist]');
+    } else {
+        echo '<div class="wishlist--not-loggedin">';
+        echo '<h1>WISHLIST</h1>';
+        echo '<p>Please login and you will add product to your wishlist.</p>';
+        echo '<div class="actions"><a href="'. wc_get_page_permalink( 'myaccount' ) . '/login' .'" class="btn-orange">Sign In</a><a href="'. wc_get_page_permalink( 'myaccount' ) . '/register' .'" class="btn-orange-outline">Register</a></div>';
+        echo '</div>';
+    }
+}
+add_shortcode( 'vk_wishlist', 'vk_wishlist_content' );

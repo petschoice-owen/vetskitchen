@@ -1,0 +1,149 @@
+
+.wishlist--not-loggedin {
+    padding: 40px 10px;
+    text-align: center;
+
+    h1 {
+        font-size: 34px;
+    }
+
+    p {
+        color: $green2;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.woocommerce-wishlist {
+    .wishlist-title-container {
+        text-align: center;
+
+        a.show-title-form {
+            display: none;
+        }
+    }
+
+    table.wishlist_table,
+    ul.wishlist_table.mobile {
+        .product-add-to-cart a.add_to_cart {
+            padding: 5px 10px;
+            font-family: 'Signika', sans-serif;
+            line-height: 1;
+            color: $white;
+            text-transform: uppercase;
+            text-decoration: none;
+            background-color: $orange3;
+            
+            &:hover {
+                background-color: $green2;
+            }
+        }
+    }
+
+    ul.wishlist_table.mobile {
+        padding: 0 10px;
+        
+        li {
+            margin-bottom: 15px;
+
+            .item-wrapper {
+                margin-bottom: 0;
+            }
+
+            .item-details {
+                h3 {
+                    font-size: 16px;
+
+                    a {
+                        color: $green2;
+                    }
+                }
+    
+                .item-details-table {
+                    margin-bottom: 0;
+
+                    td {
+                        font-size: 14px;
+                    }
+
+                    .value {
+                        color: $green2;
+                    }
+                }
+            }
+
+            .additional-info {
+                margin-bottom: 10px;
+                margin-left: 75px;
+
+                td {
+                    font-size: 14px;
+                }
+
+                .value {
+                    color: $green2;
+                }
+            }
+
+            .product-add-to-cart,
+            .product-remove {
+                display: inline-flex;
+            }
+
+            .product-add-to-cart {
+                width: calc(100% - 40px);
+
+                a.add_to_cart {
+                    padding: 10px;
+                    width: 100%;
+                }
+            }
+
+            .product-remove {
+                width: 35px;
+
+                a {
+                    display: block;
+                    margin-left: auto;
+                    font-size: 20px;
+                    color: $green2;
+                }
+            }
+        }
+    }
+
+    table.wishlist_table {
+        font-size: 14px;
+
+        thead {
+            th {
+                border: 0;
+            }
+
+            .product-price,
+            .product-stock-status {
+                text-align: center;
+            }
+        }
+
+        tbody tr {
+            color: $green2;
+
+            .product-name a {
+                color: $green2;
+            }
+
+            td.product-remove a {
+                margin: auto;
+                font-weight: 500;
+            }
+        }
+    }
+}

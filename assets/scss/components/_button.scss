@@ -79,3 +79,17 @@
         border: none;
     }
 }
+
+.btn-orange-outline {
+    @extend %btn;
+    color: $orange3;
+    background-color: $white;
+    border: 2px solid $orange3;
+    transition: .2s all linear;
+
+    @include on-event() {
+        color: $white;
+        text-decoration: none;
+        background-color: $orange3;
+    }
+}
