@@ -26,6 +26,11 @@ else :
 ?>
     <div <?php echo $wrapper_attributes; ?>>
         <InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="false" />
+        <!-- TrustBox widget - Starter -->
+        <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5613c9cde69ddc09340c6beb" data-businessunit-id="57444e1d0000ff00058d4d37" data-style-height="100%" data-style-width="100%" data-theme="light">
+        <a href="https://uk.trustpilot.com/review/vetskitchen.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+        <!-- End TrustBox widget -->
         <?php echo wp_get_attachment_image( $imgLeft, 'large', "", ["class" => "vetskitchen-dogclub-banner__left-image d-none d-md-block"] ); ?>
         <?php echo wp_get_attachment_image( $imgRight, 'medium', "", ["class" => "vetskitchen-dogclub-banner__right-image d-none d-md-block"] ); ?>
     </div>

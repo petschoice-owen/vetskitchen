@@ -149,7 +149,9 @@ jQuery(function($) {
                         $loader.hide();
                         $wrapper.append(result.content);
                         $wrapper.masonry('reloadItems');
-                        $wrapper.masonry('layout');
+                        $wrapper.imagesLoaded().progress(function() {
+                            $wrapper.masonry('layout');
+                        });
                         if (result.page === result.max_page) {
                             $this.hide();
                         } else {
@@ -271,6 +273,25 @@ jQuery(function($) {
             $(document.body).on('updated_checkout', function() {
                 updateCartCheckoutNotice();
             });
+        }
+
+        if($('.woocommerce-checkout').length > 0) {
+            function hasSubscriptionProducts() {
+                var hasSubscription = false;
+                $('body').find('.cart_item').each(function() {
+                    if ($(this).find('.subscription-price').length > 0) {
+                        hasSubscription = true;
+                        return false;
+                    }
+                });
+        
+                return hasSubscription;
+            }
+            if(hasSubscriptionProducts()) {
+                $('input[name="_mc4wp_subscribe_woocommerce"]').prop('checked', true);
+            } else {
+                $('input[name="_mc4wp_subscribe_woocommerce"]').prop('checked', false);
+            }
         }
     };
 

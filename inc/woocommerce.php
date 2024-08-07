@@ -218,6 +218,7 @@ add_action( 'woocommerce_after_main_content', 'vk_output_content_wrapper_end', 1
 
 function vk_shop_action_wrapper_open() {
     echo '<div class="vk-shop-nav-actions">';
+    echo '<a href="" class="js-mobile-shop-filter vk-filter-toggle">Filter</a>';
 }
 add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_open', 19);
 
@@ -478,6 +479,11 @@ function vk_conditionally_hide_checkout_button_checkout_page() {
     }
 }
 add_action('wp_footer', 'vk_conditionally_hide_checkout_button_checkout_page');
+
+function vk_woocommerce_checkout_terms_and_conditions() {
+    remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 );
+}
+add_action( 'wp', 'vk_woocommerce_checkout_terms_and_conditions' );
 
 //  CART | CHECKOUT
 function vk_check_cart_total() {

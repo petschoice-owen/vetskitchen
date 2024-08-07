@@ -50,10 +50,23 @@
         transform: translate(0px, -50%);
     }
 
+    .trustpilot-widget {
+        margin-top: 20px;
+    }
+
     @media screen and (min-width: 1025px) {
         h2 {
             margin-bottom: 23px;
             font-size: 62px;
+        }
+    }
+
+    @include respond-to(xl) {
+        .trustpilot-widget {
+            position: absolute !important;
+            right: 20%;
+            bottom: 60px;
+            margin-top: 0;
         }
     }
 

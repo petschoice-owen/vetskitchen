@@ -185,8 +185,16 @@
     }
 
     select.form-input {
+        min-height: 40px;
+        border-radius: 5px;
         background: $lgray6 url('../../assets/icons/down-arrow.svg') no-repeat center right 15px;
         background-size: 15px;
+    }
+
+    select#dog_weight_type {
+        padding: 10px;
+        background-position: center right 8px;
+        background-size: 8px;
     }
 
     .form-inline {

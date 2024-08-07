@@ -113,7 +113,7 @@ else :
                                 <h4>Sorry, our calorie calculator is only intended for fully grown dogs.</h4>
                             </div>
                             <div class="form-group hide_div">
-                                <label>Is your neutered?</label>
+                                <label>Is your dog neutered?</label>
                                 <div class="buttons">
                                     <div class="custom-radio">
                                         <input type="radio" id="neutered_yes" name="neutered" value="1.6">
@@ -126,9 +126,9 @@ else :
                                 </div>
                             </div>
                             <div class="form-group hide_div">
-                                <label>How Much does your dog weigh?</label>
+                                <label>How much does your dog weigh?</label>
                                 <div class="form-inline justify-close">
-                                    <input type="number" id="dog_weight" name="dog_weight" class="form-input w-45" placeholder="Please enter a weight">
+                                    <input type="number" id="dog_weight" name="dog_weight" class="form-input w-60" placeholder="Please enter a weight">
                                     <select class="form-input w-20" id="dog_weight_type" name="dog_weight_type">
                                         <option value="Kg">Kg</option>
                                         <option value="LBS">Pound</option>

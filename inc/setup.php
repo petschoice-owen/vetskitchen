@@ -11,6 +11,7 @@ function vetskitchen_enqueue_scripts() {
         wp_enqueue_style( 'slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), $version);
     }
     if ( is_post_type_archive( 'community' ) || in_array( 'tax-community-category', get_body_class() ) ) {
+        wp_enqueue_script ( 'imagesloaded', 'https:////cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js', array(), '', array( 'strategy' => 'async', 'in_footer' => true ) );
         wp_enqueue_script ( 'masonry', 'https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array(), '', array( 'strategy' => 'async', 'in_footer' => true ) );
     }
     wp_enqueue_script( 'main-script', get_template_directory_uri() . '/assets/js/main.js', array(), '', true, $version );

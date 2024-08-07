@@ -160,7 +160,7 @@ get_header();
     <div class="container no-result">
         <h1 class="page-archive-heading">Sorry, there are no related posts for your search: <span class="searched-word"><?php echo get_search_query() ?></span></h1>
         <div class="page-archive-description">
-            <p>Please try your search again or browse our community posts <a href="/community">here</a>.</p>
+            <p>Please try your search again or browse our community posts <a href="/knowhow">here</a>.</p>
         </div>
     </div>
 <?php endif; ?>

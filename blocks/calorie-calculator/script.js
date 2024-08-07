@@ -286,62 +286,62 @@ jQuery(function ($) {
                 var products = "";
                 if(age_years <= 6){
                     var products_array = [
-                        {
-                            "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/sensitive-care-dry-food-pork-potato-adult_1024x1024.jpg?v=1610999731",
-                            "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/sensitive-care",
-                            "title": "Sensitive Care Dry Food Grain Free Pork & Potato",
-                            "price": "£7.00",
-                            "desc": "Vet’s Kitchen® Sensitive Care range is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for sensitive adult dogs.",
-                            "feed_per_day": parseInt(portk_potato_sensitive_care),
-                        },
-                        {
-                            "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/everyday-health-chicken-rice-adult-vetskitchen_1024x1024.jpg?v=1610444949",
-                            "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/everyday-health-dry-food",
-                            "title": "Everyday Health Dry Food Chicken & Brown Rice",
-                            "price": "£6.00",
-                            "desc": "Vet’s Kitchen® Everyday Health Chicken & Brown Rice is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal to maintain the everyday health of your adult dog.",
-                            "feed_per_day": parseInt(chicken_brown_rice),
-                        },
-                        {
-                            "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/sensitive-salmon_1024x1024.png?v=1625042084",
-                            "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/sensitive-care-br-salmon-sweet-potato",
-                            "title": "Sensitive Care Salmon & Sweet Potato",
-                            "price": "£7.00",
-                            "desc": "Our Salmon & Potato dog food is hypoallergenic, contains high-quality salmon and has been carefully formulated to give your adult dog the very best in nutritional care.",
-                            "feed_per_day": parseInt(salmon_sweet_potato),
-                        }
+                        // {
+                        //     "img": "/wp-content/uploads/2024/07/Screenshot2023-12-12at10.20.53_1024x1024.webp",
+                        //     "url": "/shop/sensitive-care-grain-free-pork",
+                        //     "title": "Sensitive Care Dry Food Grain Free Pork & Potato",
+                        //     "price": "£7.00",
+                        //     "desc": "Vet’s Kitchen® Sensitive Care range is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for sensitive adult dogs.",
+                        //     "feed_per_day": parseInt(portk_potato_sensitive_care),
+                        // },
+                        // {
+                        //     "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/everyday-health-chicken-rice-adult-vetskitchen_1024x1024.jpg?v=1610444949",
+                        //     "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/everyday-health-dry-food",
+                        //     "title": "Everyday Health Dry Food Chicken & Brown Rice",
+                        //     "price": "£6.00",
+                        //     "desc": "Vet’s Kitchen® Everyday Health Chicken & Brown Rice is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal to maintain the everyday health of your adult dog.",
+                        //     "feed_per_day": parseInt(chicken_brown_rice),
+                        // },
+                        // {
+                        //     "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/sensitive-salmon_1024x1024.png?v=1625042084",
+                        //     "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/sensitive-care-br-salmon-sweet-potato",
+                        //     "title": "Sensitive Care Salmon & Sweet Potato",
+                        //     "price": "£7.00",
+                        //     "desc": "Our Salmon & Potato dog food is hypoallergenic, contains high-quality salmon and has been carefully formulated to give your adult dog the very best in nutritional care.",
+                        //     "feed_per_day": parseInt(salmon_sweet_potato),
+                        // }
                     ];
                 }else if(age_years => 7){
                     var products_array = [
-                        {
-                            "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/protect-care-salmon-rice-senior-vetskitchen_1024x1024.jpg?v=1610999571",
-                            "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/senior-protect-care-dry-food-salmon-brown-rice",
-                            "title": "Senior Protect & Care Dry Food Salmon & Brown Rice",
-                            "price": "£6.00",
-                            "desc": "Vet’s Kitchen® Protect & Care range is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for senior dogs.",
-                            "feed_per_day": parseInt(senior_protect_care),
-                        },
-                        {
-                            "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/sensitive-turkey_1024x1024.png?v=1625131849",
-                            "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/sensitive-care-dry-dog-food-br-grain-free-turkey-sweet-potato",
-                            "title": "Sensitive Care Senior Dry Dog Food Grain Free Turkey & Sweet Potato",
-                            "price": "£7.00",
-                            "desc": "Vet’s Kitchen® Sensitive Care Turkey & Sweet Potato is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for sensitive senior dogs.",
-                            "feed_per_day": parseInt(senior_sensitive_care_turkey),
-                        }
+                        // {
+                        //     "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/protect-care-salmon-rice-senior-vetskitchen_1024x1024.jpg?v=1610999571",
+                        //     "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/senior-protect-care-dry-food-salmon-brown-rice",
+                        //     "title": "Senior Protect & Care Dry Food Salmon & Brown Rice",
+                        //     "price": "£6.00",
+                        //     "desc": "Vet’s Kitchen® Protect & Care range is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for senior dogs.",
+                        //     "feed_per_day": parseInt(senior_protect_care),
+                        // },
+                        // {
+                        //     "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/sensitive-turkey_1024x1024.png?v=1625131849",
+                        //     "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/sensitive-care-dry-dog-food-br-grain-free-turkey-sweet-potato",
+                        //     "title": "Sensitive Care Senior Dry Dog Food Grain Free Turkey & Sweet Potato",
+                        //     "price": "£7.00",
+                        //     "desc": "Vet’s Kitchen® Sensitive Care Turkey & Sweet Potato is a complete dry dog food which provides perfectly balanced nutrition in a delicious tasting meal and is ideal for sensitive senior dogs.",
+                        //     "feed_per_day": parseInt(senior_sensitive_care_turkey),
+                        // }
                     ];
                 }
                 
                 if($("input[name='dog_health']:checked").val() == "-1" || $("input[name='dog_health']:checked").val() == "-1.8"){
                     var products_array = [
-                            {
-                                "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/everyday-health-chicken-rice-vetskitchen_1024x1024.jpg?v=1625041927",
-                                "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/healthy-weight-dry-food",
-                                "title": "Healthy Weight Dry Food Chicken & Brown Rice",
-                                "price": "£6.00",
-                                "desc": "Vet’s Kitchen® Healthy Weight Chicken & Brown Rice is a complete dry dog food, providing balanced nutrition in a delicious tasting meal to help adult dogs achieve & maintain a healthy weight.",
-                                "feed_per_day": parseInt(light_healthy_weight),
-                            }
+                            // {
+                            //     "img": "https://cdn.shopify.com/s/files/1/0388/4223/7067/products/everyday-health-chicken-rice-vetskitchen_1024x1024.jpg?v=1625041927",
+                            //     "url": "https://vetskitchenuk.myshopify.com/collections/dry-dog-food/products/healthy-weight-dry-food",
+                            //     "title": "Healthy Weight Dry Food Chicken & Brown Rice",
+                            //     "price": "£6.00",
+                            //     "desc": "Vet’s Kitchen® Healthy Weight Chicken & Brown Rice is a complete dry dog food, providing balanced nutrition in a delicious tasting meal to help adult dogs achieve & maintain a healthy weight.",
+                            //     "feed_per_day": parseInt(light_healthy_weight),
+                            // }
                     ];
                 }
               products += '<div class="product_box_title">'+
@@ -384,7 +384,7 @@ jQuery(function ($) {
                               '</div>';
                 });
                 
-                $(".product_box_wrapper").html(products);
+                // $(".product_box_wrapper").html(products);
       
             }else{
               alert("Our calorie calculator is designed for adult dogs. We’ll happily give advice for puppies if you’d like to contact us");

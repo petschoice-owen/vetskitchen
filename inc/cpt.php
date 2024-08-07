@@ -6,8 +6,10 @@ string $plural = 'Custom Posts',
 string $menu_icon = 'dashicons-admin-post',
 bool $hierarchical = true,
 bool $has_archive = true,
+string $rewrite_slug = '',
+bool $rewrite_with_front = true,
 string $description = '' ) {
-    register_post_type( $post_type_name, array(
+	$args = array(
         'label'             => __( $singular, 'ocf' ),
         'description'       => $description,
         'menu_icon'         => $menu_icon,
@@ -39,13 +41,17 @@ string $description = '' ) {
         'show_in_admin_bar' => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
-    ));
+    );
+	if(!empty($rewrite_slug)) {
+		$args['rewrite'] = array('slug' => $rewrite_slug, 'with_front' => $rewrite_with_front);
+	}
+    register_post_type( $post_type_name, $args);
 }
  
 add_action( 'init', 'vetskitchen_custom_cpts' );
 
 function vetskitchen_custom_cpts() {
-    vetskitchen_create_post_type( 'community', 'Community', 'Community', 'dashicons-groups' );
+    vetskitchen_create_post_type( 'community', 'Community', 'Community', 'dashicons-groups', true, true, 'knowhow' );
     vetskitchen_create_post_type( 'news', 'News', 'News', 'dashicons-admin-post' );
     // vetskitchen_create_post_type( 'reports', 'Reports', 'Reports', 'dashicons-media-spreadsheet' );
 }
