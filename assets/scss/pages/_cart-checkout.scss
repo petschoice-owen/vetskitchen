@@ -427,6 +427,78 @@
         background: rgba(152, 222, 190, .6);
     }
 
+    &.woocommerce-order-received {
+        .woocommerce-notice--success.woocommerce-thankyou-order-received {
+            padding: 10px;
+            margin-bottom: 30px;
+            font-family: 'Signika', sans-serif;
+            font-size: 20px;
+            color: $primary;
+            text-align: center;
+            background: rgba(152, 222, 190, .6);
+        }
+
+        .woocommerce-order {
+            h2 {
+                margin-bottom: 15px;
+                font-size: 24px;
+            }
+
+            a {
+                color: $green2;
+            }
+
+            table.order_details {
+                border: 1px solid rgba(0,128,119,.2);
+
+                thead {
+                    display: table-header-group;
+                }
+
+                td,th {
+                    padding: 8px;
+                    border-color: rgba(0,0,0,.1);
+                }
+            }
+
+            table.my_account_orders {
+                a.button {
+                    font-family: 'Signika', sans-serif;
+                    font-weight: 500;
+                    color: $white;
+                    background: $orange3;
+                }
+            }
+
+            .woocommerce-customer-details {
+                .woocommerce-columns--2 {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .woocommerce-column {
+                        display: flex;
+                        flex-direction: column;
+
+                        address {
+                            padding: 15px;
+                            margin-bottom: 20px;
+                            flex: 1;
+                            border-radius: 0;
+                            border-width: 1px;
+                        }
+                    }
+
+                    &:before,
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
     @media screen and (min-width: 769px) {
         .restricted-zone-message {
             margin-left: auto;

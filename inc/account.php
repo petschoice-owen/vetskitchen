@@ -11,9 +11,13 @@ function vk_personal_info_query_vars( $vars ) {
 add_filter( 'query_vars', 'vk_personal_info_query_vars' );
   
 function vk_add_personal_info_link_my_account( $items ) {
-    $items = array_slice($items, 0, -1, true) +
+    unset($items['downloads']);
+    $user = wp_get_current_user();
+    if (in_array('customer', $user->roles)) {
+        $items = array_slice($items, 0, -1, true) +
             array('personal-information' => __('Personal Information', 'woocommerce')) +
             array_slice($items, -1, 1, true);
+    }
     return $items;
 }
 add_filter( 'woocommerce_account_menu_items', 'vk_add_personal_info_link_my_account' );

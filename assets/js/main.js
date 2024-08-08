@@ -24,13 +24,19 @@ jQuery(function($) {
     };
 
     const headerScroll = () => {
-        $(window).on('load resize', function() {
+        function setHeaderHeight(){
             var totalHeight = 0;
             $('header.header > div').each(function() {
                 totalHeight += $(this).outerHeight(true); // include margin in the height
             });
             $('header.header').css('height', totalHeight);
-        });
+        }
+        // setHeaderHeight();
+        // $(window).on('load resize', function() {
+        //     setTimeout(() => {
+        //         setHeaderHeight();
+        //     }, 2000);
+        // });
         $(window).on('scroll', function() {
             if($(window).scrollTop() > $('.header').height()) {
                 $('.header__fixedscroll').addClass('fixed');
@@ -238,6 +244,12 @@ jQuery(function($) {
                 $(this).siblings('.wp-widget-group__inner-blocks').slideUp();
             }
         });
+
+        $(document).on('click', '.js-mobile-shop-filter', function(e) {
+            e.preventDefault();
+            $('.vk-shop-sidebar').addClass('open');
+            $('.mobile-overlay').show();
+        });
     };
 
     const cartCheckout = () => {
@@ -324,6 +336,19 @@ jQuery(function($) {
         });
     };
 
+    const registrationFixes = () => {
+        if($('.vk-registration').length > 0) {
+            if($('.woocommerce-notices-wrapper').is(':empty')) {
+                $('.acf-input input[type="text"]').val('');
+                $('.acf-date-picker input[type="hidden"]').val('');
+                $('.acf-input input[type="date"]').val('');
+                $('.acf-input select').val('');
+                $('.acf-input input[type="radio"]').prop('checked', false);
+                $('.acf-input input[type="checkbox"]').prop('checked', false);
+            }
+        }
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -337,4 +362,5 @@ jQuery(function($) {
     shopSidebar();
     cartCheckout();
     mobileNavPopup();
+    registrationFixes();
 });

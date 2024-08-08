@@ -29,6 +29,7 @@ function vk_add_fields_account_registration() {
         'post_id'       => 'new_user',
         'field_groups'  => array('group_66b09d3607029'),
         'return'        => '',
+        'submit_value'  => '',
         'form'          => false,
     ));
 }

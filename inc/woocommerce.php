@@ -218,11 +218,11 @@ add_action( 'woocommerce_after_main_content', 'vk_output_content_wrapper_end', 1
 
 function vk_shop_action_wrapper_open() {
     echo '<div class="vk-shop-nav-actions">';
-    echo '<a href="" class="js-mobile-shop-filter vk-filter-toggle">Filter</a>';
 }
 add_action('woocommerce_before_shop_loop', 'vk_shop_action_wrapper_open', 19);
 
 function vk_shop_view_buttons() {
+    echo '<a href="#" class="js-mobile-shop-filter vk-filter-toggle">Filter</a>';
     echo '<div class="vk-view-buttons">
         <a href="#" class="list-view"></a>
         <a href="#" class="two-col-view"></a>

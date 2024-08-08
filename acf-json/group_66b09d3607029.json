@@ -355,9 +355,9 @@
     "location": [
         [
             {
-                "param": "user_form",
+                "param": "user_role",
                 "operator": "==",
-                "value": "edit"
+                "value": "customer"
             }
         ]
     ],
@@ -370,5 +370,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722868517
+    "modified": 1723101544
 }

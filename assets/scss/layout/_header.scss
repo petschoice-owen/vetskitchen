@@ -297,7 +297,7 @@
                         }
 
                         &:last-of-type > ul.mega-sub-menu {
-                            transform: translateY(13px) translate(-55%) !important;
+                            transform: translateY(13px) translate(-56%) !important;
                         }
 
                         &.mega-menu-megamenu {
@@ -354,13 +354,14 @@
 
         &__fixedscroll {
             position: relative;
-            z-index: 99;
+            z-index: 9999;
         }
 
         &__bottom {
             position: relative;
             padding-top: 10px;
             padding-bottom: 5px;
+            height: 110px;
             background-color: $white;
             border-bottom: 1px solid $lgray3;
 
@@ -618,6 +619,10 @@
     @media screen and (max-width: 749px) {
         &__cta {
             display: none;
+        }
+
+        .trustpilot-widget {
+            margin-top: 20px;
         }
     }
 }
