@@ -14,14 +14,24 @@ add_filter( 'woocommerce_subscription_period_interval_strings', 'vk_add_custom_s
 //PRODUCT PAGE
 function vk_nutritional_information_product_tab_content() {
     global $product;
+    echo '<h2 class="vk-tab-toggler">Nutritional Information</h2>';
+    echo '<div class="vk-tab-content-wrapper">';
     echo get_field( 'vk_product_nutritional_information', $product->get_ID() );
+    echo '</div>';
 }
 
 function vk_feeding_guidelines_product_tab_content() {
     global $product;
+    echo '<h2 class="vk-tab-toggler">Feeding Guidelines</h2>';
+    echo '<div class="vk-tab-content-wrapper">';
     echo get_field( 'vk_product_feeding_guidelines', $product->get_ID() );
+    echo '</div>';
 }
 
+function vk_custom_description_callback() {
+    echo '<h2 class="vk-tab-toggler active">Description</h2>';
+    echo '<div class="vk-tab-content-wrapper">' . get_the_content() . '</div>';
+}
 function vk_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] );
     unset( $tabs['reviews'] );
@@ -40,7 +50,8 @@ function vk_product_tabs( $tabs ) {
             'callback' => 'vk_feeding_guidelines_product_tab_content',
         );
     }
-   return $tabs;
+    $tabs[ 'description' ][ 'callback' ] = 'vk_custom_description_callback';
+    return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'vk_product_tabs', 9999 );
 

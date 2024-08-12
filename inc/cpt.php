@@ -51,7 +51,7 @@ string $description = '' ) {
 add_action( 'init', 'vetskitchen_custom_cpts' );
 
 function vetskitchen_custom_cpts() {
-    vetskitchen_create_post_type( 'community', 'Community', 'Community', 'dashicons-groups', true, true, 'knowhow' );
+    vetskitchen_create_post_type( 'community', 'Know How', 'Know How', 'dashicons-groups', true, true, 'knowhow' );
     vetskitchen_create_post_type( 'news', 'News', 'News', 'dashicons-admin-post' );
     // vetskitchen_create_post_type( 'reports', 'Reports', 'Reports', 'dashicons-media-spreadsheet' );
 }

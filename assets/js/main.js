@@ -349,6 +349,16 @@ jQuery(function($) {
         }
     };
 
+    const productAccordion = () => {
+        if($('.single-product').length > 0) {
+            $(document).on('click', '.vk-tab-toggler', function(e) {
+                e.preventDefault();
+                $(this).closest('.woocommerce-tabs').find('.vk-tab-toggler').not($(this)).removeClass('active');
+                $(this).toggleClass('active');
+            });
+        }
+    };
+
     scrollToTop();
     footerMobileCollapse();
     headerScroll();
@@ -363,4 +373,5 @@ jQuery(function($) {
     cartCheckout();
     mobileNavPopup();
     registrationFixes();
+    productAccordion();
 });

@@ -271,9 +271,36 @@
                         }
                     }
                 }
+            }
 
-                &--description h2 {
-                    display: none;
+            .vk-tab-toggler {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 10px;
+                font-family: 'Hind', sans-serif;
+                font-size: 15px;
+                font-weight: 700;
+                color: #515151;
+                text-transform: uppercase;
+                background: $white;
+                border: 1px solid $lgray3;
+                border-radius: 0;
+                cursor: pointer;
+
+                &:after {
+                    content: '\e90c';
+                    font-family: 'wokiee_icons';
+                }
+
+                &.active {
+                    color: $white;
+                    background: $green2;
+
+                    &:after {
+                        transform: rotate(180deg);
+                    }
                 }
             }
         }
@@ -393,12 +420,45 @@
                     }
                 }
             }
+
+            div.woocommerce-tabs {
+                .vk-tab-toggler {
+                    display: none;
+                }
+            }
         }
     }
 
     @include respond-to(lg-down) {
         .product-modal__close {
             right: 0;
+        }
+    }
+
+    @include respond-to(sm-down) {
+        div.product {
+            div.woocommerce-tabs {
+                ul.tabs {
+                    display: none;
+                }
+
+                .woocommerce-Tabs-panel {
+                    display: block !important;
+                    margin-bottom: 0;
+                }
+
+                .vk-tab-content-wrapper {
+                    display: none;
+                }
+
+                .vk-tab-toggler {
+                    margin-bottom: 10px;
+
+                    &.active + .vk-tab-content-wrapper {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 }
