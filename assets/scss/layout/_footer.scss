@@ -80,6 +80,10 @@
 
             &:hover {
                 color: $dark;
+
+                svg path {
+                    fill: $dark;
+                }
             }
         }
     }
