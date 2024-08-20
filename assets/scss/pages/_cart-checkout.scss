@@ -377,6 +377,7 @@
                     input {
                         margin-top: -2px;
                         margin-right: 5px;
+                        height: 32px;
                     }
 
                     label {
@@ -411,6 +412,10 @@
                 @extend .btn-orange;
                 width: 100%;
                 text-transform: uppercase;
+
+                &.wc-stripe-hide {
+                    width: auto;
+                }
             }
         }
 
