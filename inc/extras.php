@@ -6,7 +6,7 @@ add_action('wp_ajax_nopriv_vk_posts_load_more', 'vk_posts_load_more');
 add_action('wp_ajax_vk_posts_load_more', 'vk_posts_load_more');
 function vk_posts_load_more() {
     $type = $_POST['type'];
-    $page = 2;
+    $page = (int) $_POST['page'];
     $args = array(
         'post_type'         => $type,
         // 'posts_per_page'    => 20,
