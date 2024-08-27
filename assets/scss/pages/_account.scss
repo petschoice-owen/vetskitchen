@@ -189,6 +189,14 @@
                     color: $white;
                     background: $orange3;
                 }
+
+                &.woocommerce-orders-table--orders {
+                    margin-bottom: 24px;
+                }
+            }
+
+            .woocommerce-customer-details--phone {
+                margin-bottom: 0;
             }
         }
     }
